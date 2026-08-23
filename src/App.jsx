@@ -604,6 +604,9 @@ function App() {
   const counts = useMemo(() => topicCounts(content.groups), [content])
   const chapterTree = useMemo(() => lectureChapterTree(content, subject), [content, subject])
   const [topic, setTopic] = useState(() => (SUBJECTS[readLocalStorage('study-subject', 'med')] || SUBJECTS.med).defaultTopic)
+  const showContentWatermark = subject !== 'physiology'
+    && subject !== 'biochemistry'
+    && !(subject === 'surgery' && (topic === '骨科' || topic === '外科总论'))
   const [chapterId, setChapterId] = useState('')
   const [search, setSearch] = useState('')
   const [typeFilter, setTypeFilter] = useState('全部题型')
@@ -991,7 +994,7 @@ function App() {
       {showSource && currentPage && <SourceModal group={group} page={currentPage} sourceName={group.sourceName || subjectConfig.sourceName} onClose={() => setShowSource(false)} />}
       {showLectureEvidence && group.lectureEvidence && <LectureEvidenceModal evidence={group.lectureEvidence} onClose={() => setShowLectureEvidence(false)} />}
       <div className="site-watermark" aria-hidden="true">
-        <span>内容制作byBi8bo</span>
+        {showContentWatermark && <span>内容制作byBi8bo</span>}
         <span>网站制作by戒不掉甜食</span>
       </div>
     </div>
