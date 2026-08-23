@@ -20,6 +20,16 @@ ANSWER_GROUP_RE = re.compile(r"^第\s*(\d+)\s*组$")
 QUESTION_RE = re.compile(r"^(\d+)\.\s*(.+)$")
 
 
+def option_key(position):
+    """Return spreadsheet-style option keys: A...Z, AA...AZ, BA..."""
+    value = position + 1
+    result = []
+    while value:
+        value, remainder = divmod(value - 1, 26)
+        result.append(chr(65 + remainder))
+    return "".join(reversed(result))
+
+
 def parse_options(table):
     return [
         (row.cells[0].text.strip(), row.cells[1].text.strip())
@@ -97,6 +107,36 @@ def parse_workbook():
     raise ValueError("Unexpected extra option table")
 
 
+def merge_cofactor_groups(first, second):
+    """Join the two halves of the lecture's single vitamin cofactor table."""
+    options = []
+    label_to_key = {}
+    for group in (first, second):
+        for _, label in group["options"]:
+            if label not in label_to_key:
+                key = option_key(len(options))
+                label_to_key[label] = key
+                options.append((key, label))
+
+    stems = []
+    answers = {}
+    next_number = 1
+    for group in (first, second):
+        original = dict(group["options"])
+        for number, text in group["stems"]:
+            stems.append((next_number, text))
+            answers[next_number] = [label_to_key[original[key]] for key in group["answers"][number]]
+            next_number += 1
+
+    return {
+        "source_index": first["source_index"],
+        "title": "辅因子小结：B族维生素、VitK 与 VitC",
+        "stems": stems,
+        "answers": answers,
+        "options": options,
+    }
+
+
 def evidence():
     return {
         "lectureId": "lecture-13",
@@ -117,7 +157,7 @@ def make_group(source_group, display_index):
     random.Random(30600 + LECTURE_NUMBER * 100 + source_group["source_index"]).shuffle(shuffled)
     if shuffled == labels:
         shuffled = shuffled[1:] + shuffled[:1]
-    output_keys = {label: chr(65 + position) for position, label in enumerate(shuffled)}
+    output_keys = {label: option_key(position) for position, label in enumerate(shuffled)}
     stems = []
     for number, text in source_group["stems"]:
         if source_group["source_index"] == 1 and number == 3:
@@ -142,7 +182,7 @@ def make_group(source_group, display_index):
         "title": source_group["title"],
         "kind": "B",
         "kindLabel": "B型题",
-        "options": [{"key": chr(65 + position), "label": label} for position, label in enumerate(shuffled)],
+        "options": [{"key": option_key(position), "label": label} for position, label in enumerate(shuffled)],
         "stems": stems,
         "sourceText": source_group["title"],
         "reviewState": "已按维生素讲义、真题要点与思维导图核对",
@@ -157,6 +197,11 @@ def make_group(source_group, display_index):
 
 def main():
     source_groups = parse_workbook()
+    source_groups = [
+        *source_groups[:2],
+        merge_cofactor_groups(source_groups[2], source_groups[3]),
+        *source_groups[4:],
+    ]
     groups = [make_group(group, index) for index, group in enumerate(source_groups, 1)]
     payload = {
         "meta": {
