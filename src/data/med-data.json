@@ -5187,13 +5187,11 @@
         {
           "text": "N0",
           "answer": [
-            "E",
-            "I",
-            "L"
+            "B"
           ],
           "sourceText": "N0 B",
           "sourceY": 318,
-          "answerMode": "多选"
+          "answerMode": "单选"
         },
         {
           "text": "N1",
@@ -5244,7 +5242,7 @@
         }
       ],
       "sourceText": "问： | A.>3、≤5cm | T1 D | B.无区域淋巴结转移 | T2 A | C.同侧纵隔、隆突下淋巴结转移 | T3 F | D.≤3cm | T4 G | E.恶性胸腔/心包积液或胸膜/心包结节 | 远处转移M1 EIL | F.>5、≤7cm | G.>7cm | H.同侧支气管周围、肺门、肺内淋巴结转移 | N0 B | I.对侧肺叶出现癌结节 | J.对侧肺门、纵隔淋巴结转移，或前斜角肌及锁骨上淋巴结转移 | N1 H | K.无远处转移 | N2 C | L.远处器官转移灶 | N3 J | M0 K | 小红书 | 小红书号：385106504",
-      "reviewState": "待讲义复核",
+      "reviewState": "已按原题页与讲义复核",
       "topic": "呼吸",
       "lectureIds": [
         "lecture-12"
