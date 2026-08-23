@@ -4,13 +4,13 @@
     "sourceLabel": "生化第 12 讲学成选择题（酶）",
     "sourcePages": 1,
     "lectureCount": 1,
-    "groupCount": 8,
-    "stemCount": 39,
+    "groupCount": 9,
+    "stemCount": 41,
     "correctionGroupCount": 0,
     "generatedBy": "scripts/build_biochemistry_lecture12.py",
     "siteIntegrated": true,
     "lectureLinked": true,
-    "answerNote": "仅收录第 12 讲《酶》范围内题目；每组选择题选项均已重新打散，答案已按讲义与思维导图复核。"
+    "answerNote": "仅收录第 12 讲《酶》范围内题目；新增酶与一般催化剂共同点/不同点汇总题，选项均已打散，答案已按讲义复核。"
   },
   "topics": [
     "全部",
@@ -29,6 +29,12 @@
       "image": "",
       "topic": "酶",
       "searchText": "酶与一般催化剂的不同点"
+    },
+    {
+      "page": 9,
+      "image": "",
+      "topic": "酶",
+      "searchText": "酶 VS 一般催化剂"
     },
     {
       "page": 3,
@@ -413,6 +419,119 @@
         "title": "第 12 讲《生化 酶》· 第 3 页",
         "description": "已按该讲义页逐项核对答案；点击可查看讲义原页。",
         "method": "按 2027 考研生化第 12 讲及配套思维导图逐项复核。"
+      }
+    },
+    {
+      "id": "bio-12-09",
+      "page": 9,
+      "title": "酶 VS 一般催化剂",
+      "kind": "B",
+      "kindLabel": "B型题",
+      "options": [
+        {
+          "key": "A",
+          "label": "不能改变反应进行的方向（不能改变反应平衡点）"
+        },
+        {
+          "key": "B",
+          "label": "反应前后化学性质、质量不发生改变"
+        },
+        {
+          "key": "C",
+          "label": "催化效率更高：更有效降低反应活化能"
+        },
+        {
+          "key": "D",
+          "label": "邻近效应与定向排列：使诸底物正确定位在活性中心"
+        },
+        {
+          "key": "E",
+          "label": "提高反应速率（缩短达到反应平衡点的时间）"
+        },
+        {
+          "key": "F",
+          "label": "关键酶/限速酶（催化单向反应）可被调节"
+        },
+        {
+          "key": "G",
+          "label": "特异性更高：绝对特异性、相对特异性"
+        },
+        {
+          "key": "H",
+          "label": "促使过渡态形成来降低反应活化能"
+        },
+        {
+          "key": "I",
+          "label": "多元催化：酸碱催化、共价催化"
+        },
+        {
+          "key": "J",
+          "label": "诱导契合：底物和酶相互诱导导致构象改变"
+        },
+        {
+          "key": "K",
+          "label": "不稳定性：反应条件更温和"
+        },
+        {
+          "key": "L",
+          "label": "只催化热力学允许的反应"
+        },
+        {
+          "key": "M",
+          "label": "表面效应：防止形成水化膜"
+        }
+      ],
+      "stems": [
+        {
+          "number": 1,
+          "text": "酶与一般催化剂的不同点",
+          "answerRaw": "C、J、D、M、I、G、K、F",
+          "answer": [
+            "C",
+            "J",
+            "D",
+            "M",
+            "I",
+            "G",
+            "K",
+            "F"
+          ],
+          "answerMode": "多选"
+        },
+        {
+          "number": 2,
+          "text": "酶与一般催化剂的共同点",
+          "answerRaw": "L、E、A、B、H",
+          "answer": [
+            "L",
+            "E",
+            "A",
+            "B",
+            "H"
+          ],
+          "answerMode": "多选"
+        }
+      ],
+      "sourceText": "酶与一般催化剂的共同点和不同点",
+      "reviewState": "已按 2027 考研讲义与思维导图核对",
+      "reviewIssues": [],
+      "reviewNotes": [
+        "共同点 5 项、不同点 8 项均取自讲义第 2–3 页，选项已混合打散。"
+      ],
+      "topic": "酶",
+      "lectureIds": [
+        "lecture-12"
+      ],
+      "optionShuffleVersion": 1,
+      "lectureEvidence": {
+        "lectureId": "lecture-12",
+        "lectureNumber": 12,
+        "lectureTitle": "生化 酶",
+        "page": 2,
+        "image": "biochemistry/lecture-pages/lecture-12-page-02-03.webp",
+        "title": "第 12 讲《生化 酶》· 第 2–3 页",
+        "description": "酶与一般催化剂的共同点和不同点；点击可查看对应讲义原页。",
+        "method": "按 2027 考研生化第 12 讲第 2–3 页逐项复核。"
       }
     },
     {
