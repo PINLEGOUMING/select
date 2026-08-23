@@ -169,21 +169,24 @@
         {
           "number": 3,
           "text": "可结合核受体调节基因表达的维生素 / 代谢产物",
-          "answerRaw": "S、E",
+          "answerRaw": "S、E、D、P",
           "answer": [
             "S",
-            "E"
+            "E",
+            "D",
+            "P"
           ],
           "answerMode": "多选"
         },
         {
           "number": 4,
           "text": "脂溶性维生素的共同特点",
-          "answerRaw": "O",
+          "answerRaw": "H、O",
           "answer": [
+            "H",
             "O"
           ],
-          "answerMode": "单选"
+          "answerMode": "多选"
         },
         {
           "number": 5,

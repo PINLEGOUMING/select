@@ -120,7 +120,15 @@ def make_group(source_group, display_index):
     output_keys = {label: chr(65 + position) for position, label in enumerate(shuffled)}
     stems = []
     for number, text in source_group["stems"]:
-        answers = [output_keys[original[key]] for key in source_group["answers"][number]]
+        if source_group["source_index"] == 1 and number == 3:
+            answer_labels = ["VitA", "VitD", "VitE", "VitK"]
+        elif source_group["source_index"] == 1 and number == 4:
+            # The fat-soluble vitamins share both nuclear-receptor ligand
+            # activity and slow excretion/accumulation in this lecture's scope.
+            answer_labels = ["代谢产物可与核受体结合", "排泄少、易蓄积"]
+        else:
+            answer_labels = [original[key] for key in source_group["answers"][number]]
+        answers = [output_keys[label] for label in answer_labels]
         stems.append({
             "number": number,
             "text": text.replace("（多选）", "").rstrip(),
