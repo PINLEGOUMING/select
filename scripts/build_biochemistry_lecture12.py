@@ -234,7 +234,7 @@ def main():
         payload = json.loads(OUTPUT.read_text(encoding="utf-8"))
         groups = [group for group in payload["groups"] if group["id"] != "bio-12-09"]
 
-    groups.insert(2, make_catalyst_comparison_group())
+    groups.insert(1, make_catalyst_comparison_group())
     payload["groups"] = groups
     payload["pages"] = [{"page": group["page"], "image": "", "topic": TOPIC, "searchText": group["title"]} for group in groups]
     payload["meta"]["groupCount"] = len(groups)
