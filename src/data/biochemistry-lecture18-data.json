@@ -1,0 +1,865 @@
+{
+  "meta": {
+    "title": "生物化学第 18 讲题库",
+    "sourceLabel": "生化第 18 讲《翻译》真题",
+    "sourcePages": 12,
+    "lectureCount": 1,
+    "groupCount": 12,
+    "stemCount": 16,
+    "correctionGroupCount": 0,
+    "generatedBy": "scripts/build_biochemistry_lecture18.py",
+    "siteIntegrated": true,
+    "lectureLinked": true,
+    "answerNote": "完整收录《18翻译》14 个编号条目的 16 个题干；按知识点整理为 12 组，选项已重新打散，答案按精编版讲义逐项复核。"
+  },
+  "topics": [
+    "全部",
+    "氨基酸与蛋白质",
+    "综合"
+  ],
+  "pages": [
+    {
+      "page": 1,
+      "image": "",
+      "topic": "氨基酸与蛋白质",
+      "searchText": "原核生物蛋白质合成概述"
+    },
+    {
+      "page": 2,
+      "image": "",
+      "topic": "氨基酸与蛋白质",
+      "searchText": "蛋白质生物合成的氨基酸原料"
+    },
+    {
+      "page": 3,
+      "image": "",
+      "topic": "氨基酸与蛋白质",
+      "searchText": "翻译所需能量与 GTP 酶"
+    },
+    {
+      "page": 4,
+      "image": "",
+      "topic": "氨基酸与蛋白质",
+      "searchText": "核糖体的氨基酰-tRNA 结合位点"
+    },
+    {
+      "page": 5,
+      "image": "",
+      "topic": "氨基酸与蛋白质",
+      "searchText": "肽酰转移酶与核酶"
+    },
+    {
+      "page": 6,
+      "image": "",
+      "topic": "氨基酸与蛋白质",
+      "searchText": "翻译后形成和磷酸化的氨基酸"
+    },
+    {
+      "page": 7,
+      "image": "",
+      "topic": "氨基酸与蛋白质",
+      "searchText": "常发生磷酸化的氨基酸残基"
+    },
+    {
+      "page": 8,
+      "image": "",
+      "topic": "氨基酸与蛋白质",
+      "searchText": "蛋白质翻译后化学修饰"
+    },
+    {
+      "page": 9,
+      "image": "",
+      "topic": "氨基酸与蛋白质",
+      "searchText": "热激蛋白的生理功能"
+    },
+    {
+      "page": 10,
+      "image": "",
+      "topic": "氨基酸与蛋白质",
+      "searchText": "参与蛋白质折叠的分子"
+    },
+    {
+      "page": 11,
+      "image": "",
+      "topic": "氨基酸与蛋白质",
+      "searchText": "蛋白质折叠与信号分子"
+    },
+    {
+      "page": 12,
+      "image": "",
+      "topic": "氨基酸与蛋白质",
+      "searchText": "蛋白质生物合成的抑制与干扰"
+    }
+  ],
+  "groups": [
+    {
+      "id": "bio-18-01",
+      "page": 1,
+      "title": "原核生物蛋白质合成概述",
+      "kind": "B",
+      "kindLabel": "B型题",
+      "options": [
+        {
+          "key": "A",
+          "label": "蛋白质在细胞核内合成、在胞质中加工"
+        },
+        {
+          "key": "B",
+          "label": "一条 mRNA 可编码多种蛋白质（多顺反子）"
+        },
+        {
+          "key": "C",
+          "label": "释放因子是 eRF"
+        },
+        {
+          "key": "D",
+          "label": "80S 核糖体参与蛋白质合成"
+        }
+      ],
+      "stems": [
+        {
+          "number": 1,
+          "text": "以下关于原核生物蛋白质合成的叙述中，正确的是",
+          "answerRaw": "B",
+          "answer": [
+            "B"
+          ],
+          "answerMode": "单选"
+        }
+      ],
+      "sourceText": "2016N26",
+      "reviewState": "已按《18翻译》、精编版生化合集与思维导图核对",
+      "reviewIssues": [],
+      "reviewNotes": [
+        "原核生物常见多顺反子 mRNA，核糖体为 70S，释放因子为 RF。"
+      ],
+      "topic": "氨基酸与蛋白质",
+      "lectureIds": [
+        "lecture-18"
+      ],
+      "optionShuffleVersion": 1,
+      "lectureEvidence": {
+        "lectureId": "lecture-18",
+        "lectureNumber": 18,
+        "lectureTitle": "生化 翻译",
+        "page": 1,
+        "image": "biochemistry/lecture-pages/lecture-18-page-01.webp",
+        "title": "第 18 讲《生化 翻译》· 思维导图第 275 页",
+        "description": "翻译体系、能量、起始延长终止、翻译后加工及翻译干扰。点击可查看对应思维导图。",
+        "method": "以《18翻译》真题解析和《精编版》生化合集翻译章节为主，结合思维导图逐项复核。"
+      }
+    },
+    {
+      "id": "bio-18-02",
+      "page": 2,
+      "title": "蛋白质生物合成的氨基酸原料",
+      "kind": "B",
+      "kindLabel": "B型题",
+      "options": [
+        {
+          "key": "A",
+          "label": "半胱氨酸"
+        },
+        {
+          "key": "B",
+          "label": "羟脯氨酸"
+        },
+        {
+          "key": "C",
+          "label": "甲硫氨酸"
+        },
+        {
+          "key": "D",
+          "label": "硒代半胱氨酸"
+        }
+      ],
+      "stems": [
+        {
+          "number": 1,
+          "text": "可以作为蛋白质生物合成原料掺入多肽链中的氨基酸有",
+          "answerRaw": "A、D、C",
+          "answer": [
+            "A",
+            "D",
+            "C"
+          ],
+          "answerMode": "多选"
+        }
+      ],
+      "sourceText": "2025N24",
+      "reviewState": "已按《18翻译》、精编版生化合集与思维导图核对",
+      "reviewIssues": [],
+      "reviewNotes": [
+        "硒代半胱氨酸属于第 21 种编码氨基酸；羟脯氨酸由翻译后修饰形成。"
+      ],
+      "topic": "氨基酸与蛋白质",
+      "lectureIds": [
+        "lecture-18"
+      ],
+      "optionShuffleVersion": 1,
+      "lectureEvidence": {
+        "lectureId": "lecture-18",
+        "lectureNumber": 18,
+        "lectureTitle": "生化 翻译",
+        "page": 1,
+        "image": "biochemistry/lecture-pages/lecture-18-page-01.webp",
+        "title": "第 18 讲《生化 翻译》· 思维导图第 275 页",
+        "description": "翻译体系、能量、起始延长终止、翻译后加工及翻译干扰。点击可查看对应思维导图。",
+        "method": "以《18翻译》真题解析和《精编版》生化合集翻译章节为主，结合思维导图逐项复核。"
+      }
+    },
+    {
+      "id": "bio-18-03",
+      "page": 3,
+      "title": "翻译所需能量与 GTP 酶",
+      "kind": "B",
+      "kindLabel": "B型题",
+      "options": [
+        {
+          "key": "A",
+          "label": "CTP"
+        },
+        {
+          "key": "B",
+          "label": "GTP"
+        },
+        {
+          "key": "C",
+          "label": "EF-G"
+        },
+        {
+          "key": "D",
+          "label": "UTP"
+        },
+        {
+          "key": "E",
+          "label": "23S rRNA"
+        },
+        {
+          "key": "F",
+          "label": "EF-Tu"
+        },
+        {
+          "key": "G",
+          "label": "RF2"
+        },
+        {
+          "key": "H",
+          "label": "ATP"
+        }
+      ],
+      "stems": [
+        {
+          "number": 1,
+          "text": "蛋白质生物合成时具有 GTP 酶活性的物质是",
+          "answerRaw": "F",
+          "answer": [
+            "F"
+          ],
+          "answerMode": "单选"
+        },
+        {
+          "number": 2,
+          "text": "参与蛋白质生物合成的能量物质有",
+          "answerRaw": "H、B",
+          "answer": [
+            "H",
+            "B"
+          ],
+          "answerMode": "多选"
+        }
+      ],
+      "sourceText": "2015N31、2014N27",
+      "reviewState": "已按《18翻译》、精编版生化合集与思维导图核对",
+      "reviewIssues": [],
+      "reviewNotes": [
+        "答案按本讲义真题口径核对：GTP 酶为 EF-Tu；翻译消耗 ATP 和 GTP。"
+      ],
+      "topic": "氨基酸与蛋白质",
+      "lectureIds": [
+        "lecture-18"
+      ],
+      "optionShuffleVersion": 1,
+      "lectureEvidence": {
+        "lectureId": "lecture-18",
+        "lectureNumber": 18,
+        "lectureTitle": "生化 翻译",
+        "page": 1,
+        "image": "biochemistry/lecture-pages/lecture-18-page-01.webp",
+        "title": "第 18 讲《生化 翻译》· 思维导图第 275 页",
+        "description": "翻译体系、能量、起始延长终止、翻译后加工及翻译干扰。点击可查看对应思维导图。",
+        "method": "以《18翻译》真题解析和《精编版》生化合集翻译章节为主，结合思维导图逐项复核。"
+      }
+    },
+    {
+      "id": "bio-18-04",
+      "page": 4,
+      "title": "核糖体的氨基酰-tRNA 结合位点",
+      "kind": "B",
+      "kindLabel": "B型题",
+      "options": [
+        {
+          "key": "A",
+          "label": "E 位"
+        },
+        {
+          "key": "B",
+          "label": "核糖体结合位点"
+        },
+        {
+          "key": "C",
+          "label": "A 位"
+        },
+        {
+          "key": "D",
+          "label": "P 位"
+        }
+      ],
+      "stems": [
+        {
+          "number": 1,
+          "text": "在肽链合成中，原核生物核糖体结合新进入的氨基酰-tRNA 的位点是",
+          "answerRaw": "C",
+          "answer": [
+            "C"
+          ],
+          "answerMode": "单选"
+        }
+      ],
+      "sourceText": "2005N24",
+      "reviewState": "已按《18翻译》、精编版生化合集与思维导图核对",
+      "reviewIssues": [],
+      "reviewNotes": [
+        "A 位接纳新进入的氨基酰-tRNA，P 位结合肽酰-tRNA，E 位为出口。"
+      ],
+      "topic": "氨基酸与蛋白质",
+      "lectureIds": [
+        "lecture-18"
+      ],
+      "optionShuffleVersion": 1,
+      "lectureEvidence": {
+        "lectureId": "lecture-18",
+        "lectureNumber": 18,
+        "lectureTitle": "生化 翻译",
+        "page": 1,
+        "image": "biochemistry/lecture-pages/lecture-18-page-01.webp",
+        "title": "第 18 讲《生化 翻译》· 思维导图第 275 页",
+        "description": "翻译体系、能量、起始延长终止、翻译后加工及翻译干扰。点击可查看对应思维导图。",
+        "method": "以《18翻译》真题解析和《精编版》生化合集翻译章节为主，结合思维导图逐项复核。"
+      }
+    },
+    {
+      "id": "bio-18-05",
+      "page": 5,
+      "title": "肽酰转移酶与核酶",
+      "kind": "B",
+      "kindLabel": "B型题",
+      "options": [
+        {
+          "key": "A",
+          "label": "二硫键异构酶"
+        },
+        {
+          "key": "B",
+          "label": "氨基酰-tRNA 合成酶"
+        },
+        {
+          "key": "C",
+          "label": "多糖"
+        },
+        {
+          "key": "D",
+          "label": "脂肪酸"
+        },
+        {
+          "key": "E",
+          "label": "脱甲酰基酶"
+        },
+        {
+          "key": "F",
+          "label": "DNA"
+        },
+        {
+          "key": "G",
+          "label": "肽酰转移酶"
+        },
+        {
+          "key": "H",
+          "label": "RNA"
+        }
+      ],
+      "stems": [
+        {
+          "number": 1,
+          "text": "由 RNA 发挥催化作用的酶是",
+          "answerRaw": "G",
+          "answer": [
+            "G"
+          ],
+          "answerMode": "单选"
+        },
+        {
+          "number": 2,
+          "text": "蛋白质生物合成时，肽酰转移酶的化学本质是",
+          "answerRaw": "H",
+          "answer": [
+            "H"
+          ],
+          "answerMode": "单选"
+        }
+      ],
+      "sourceText": "2017N25、2007N27",
+      "reviewState": "已按《18翻译》、精编版生化合集与思维导图核对",
+      "reviewIssues": [],
+      "reviewNotes": [
+        "肽酰转移酶活性由核糖体大亚基 rRNA 承担，属于核酶。"
+      ],
+      "topic": "氨基酸与蛋白质",
+      "lectureIds": [
+        "lecture-18"
+      ],
+      "optionShuffleVersion": 1,
+      "lectureEvidence": {
+        "lectureId": "lecture-18",
+        "lectureNumber": 18,
+        "lectureTitle": "生化 翻译",
+        "page": 1,
+        "image": "biochemistry/lecture-pages/lecture-18-page-01.webp",
+        "title": "第 18 讲《生化 翻译》· 思维导图第 275 页",
+        "description": "翻译体系、能量、起始延长终止、翻译后加工及翻译干扰。点击可查看对应思维导图。",
+        "method": "以《18翻译》真题解析和《精编版》生化合集翻译章节为主，结合思维导图逐项复核。"
+      }
+    },
+    {
+      "id": "bio-18-06",
+      "page": 6,
+      "title": "翻译后形成和磷酸化的氨基酸",
+      "kind": "B",
+      "kindLabel": "B型题",
+      "options": [
+        {
+          "key": "A",
+          "label": "羟脯氨酸"
+        },
+        {
+          "key": "B",
+          "label": "苏氨酸"
+        },
+        {
+          "key": "C",
+          "label": "亮氨酸"
+        },
+        {
+          "key": "D",
+          "label": "硒代半胱氨酸"
+        }
+      ],
+      "stems": [
+        {
+          "number": 1,
+          "text": "蛋白质生物合成后经修饰形成的氨基酸是",
+          "answerRaw": "A",
+          "answer": [
+            "A"
+          ],
+          "answerMode": "单选"
+        },
+        {
+          "number": 2,
+          "text": "可以通过磷酸化修饰的氨基酸是",
+          "answerRaw": "B",
+          "answer": [
+            "B"
+          ],
+          "answerMode": "单选"
+        }
+      ],
+      "sourceText": "2000N23–24",
+      "reviewState": "已按《18翻译》、精编版生化合集与思维导图核对",
+      "reviewIssues": [],
+      "reviewNotes": [
+        "羟脯氨酸由脯氨酸翻译后羟化形成；苏氨酸侧链羟基可被磷酸化。"
+      ],
+      "topic": "氨基酸与蛋白质",
+      "lectureIds": [
+        "lecture-18"
+      ],
+      "optionShuffleVersion": 1,
+      "lectureEvidence": {
+        "lectureId": "lecture-18",
+        "lectureNumber": 18,
+        "lectureTitle": "生化 翻译",
+        "page": 1,
+        "image": "biochemistry/lecture-pages/lecture-18-page-01.webp",
+        "title": "第 18 讲《生化 翻译》· 思维导图第 275 页",
+        "description": "翻译体系、能量、起始延长终止、翻译后加工及翻译干扰。点击可查看对应思维导图。",
+        "method": "以《18翻译》真题解析和《精编版》生化合集翻译章节为主，结合思维导图逐项复核。"
+      }
+    },
+    {
+      "id": "bio-18-07",
+      "page": 7,
+      "title": "常发生磷酸化的氨基酸残基",
+      "kind": "B",
+      "kindLabel": "B型题",
+      "options": [
+        {
+          "key": "A",
+          "label": "酪氨酸"
+        },
+        {
+          "key": "B",
+          "label": "丝氨酸"
+        },
+        {
+          "key": "C",
+          "label": "苏氨酸"
+        },
+        {
+          "key": "D",
+          "label": "苯丙氨酸"
+        }
+      ],
+      "stems": [
+        {
+          "number": 1,
+          "text": "蛋白质中常发生磷酸化的氨基酸残基有",
+          "answerRaw": "C、A、B",
+          "answer": [
+            "C",
+            "A",
+            "B"
+          ],
+          "answerMode": "多选"
+        }
+      ],
+      "sourceText": "2018N25",
+      "reviewState": "已按《18翻译》、精编版生化合集与思维导图核对",
+      "reviewIssues": [],
+      "reviewNotes": [
+        "丝氨酸、苏氨酸和酪氨酸均含可磷酸化的羟基。"
+      ],
+      "topic": "氨基酸与蛋白质",
+      "lectureIds": [
+        "lecture-18"
+      ],
+      "optionShuffleVersion": 1,
+      "lectureEvidence": {
+        "lectureId": "lecture-18",
+        "lectureNumber": 18,
+        "lectureTitle": "生化 翻译",
+        "page": 1,
+        "image": "biochemistry/lecture-pages/lecture-18-page-01.webp",
+        "title": "第 18 讲《生化 翻译》· 思维导图第 275 页",
+        "description": "翻译体系、能量、起始延长终止、翻译后加工及翻译干扰。点击可查看对应思维导图。",
+        "method": "以《18翻译》真题解析和《精编版》生化合集翻译章节为主，结合思维导图逐项复核。"
+      }
+    },
+    {
+      "id": "bio-18-08",
+      "page": 8,
+      "title": "蛋白质翻译后化学修饰",
+      "kind": "B",
+      "kindLabel": "B型题",
+      "options": [
+        {
+          "key": "A",
+          "label": "形成硒代半胱氨酸"
+        },
+        {
+          "key": "B",
+          "label": "甲基化"
+        },
+        {
+          "key": "C",
+          "label": "乙酰化"
+        },
+        {
+          "key": "D",
+          "label": "形成二硫键"
+        }
+      ],
+      "stems": [
+        {
+          "number": 1,
+          "text": "蛋白质翻译后氨基酸的化学修饰方式有",
+          "answerRaw": "C、B、D",
+          "answer": [
+            "C",
+            "B",
+            "D"
+          ],
+          "answerMode": "多选"
+        }
+      ],
+      "sourceText": "2005N25",
+      "reviewState": "已按《18翻译》、精编版生化合集与思维导图核对",
+      "reviewIssues": [],
+      "reviewNotes": [
+        "硒代半胱氨酸可在翻译过程中直接掺入，不属于本题所列翻译后修饰。"
+      ],
+      "topic": "氨基酸与蛋白质",
+      "lectureIds": [
+        "lecture-18"
+      ],
+      "optionShuffleVersion": 1,
+      "lectureEvidence": {
+        "lectureId": "lecture-18",
+        "lectureNumber": 18,
+        "lectureTitle": "生化 翻译",
+        "page": 1,
+        "image": "biochemistry/lecture-pages/lecture-18-page-01.webp",
+        "title": "第 18 讲《生化 翻译》· 思维导图第 275 页",
+        "description": "翻译体系、能量、起始延长终止、翻译后加工及翻译干扰。点击可查看对应思维导图。",
+        "method": "以《18翻译》真题解析和《精编版》生化合集翻译章节为主，结合思维导图逐项复核。"
+      }
+    },
+    {
+      "id": "bio-18-09",
+      "page": 9,
+      "title": "热激蛋白的生理功能",
+      "kind": "B",
+      "kindLabel": "B型题",
+      "options": [
+        {
+          "key": "A",
+          "label": "作为酶参与蛋白质合成"
+        },
+        {
+          "key": "B",
+          "label": "促进新生多肽链的折叠"
+        },
+        {
+          "key": "C",
+          "label": "参与蛋白质靶向运输"
+        },
+        {
+          "key": "D",
+          "label": "作为肽链合成起始的关键分子"
+        }
+      ],
+      "stems": [
+        {
+          "number": 1,
+          "text": "热激蛋白（热休克蛋白）的生理功能是",
+          "answerRaw": "B",
+          "answer": [
+            "B"
+          ],
+          "answerMode": "单选"
+        }
+      ],
+      "sourceText": "2019N24",
+      "reviewState": "已按《18翻译》、精编版生化合集与思维导图核对",
+      "reviewIssues": [],
+      "reviewNotes": [
+        "热激蛋白属于分子伴侣，帮助新生多肽链正确折叠。"
+      ],
+      "topic": "氨基酸与蛋白质",
+      "lectureIds": [
+        "lecture-18"
+      ],
+      "optionShuffleVersion": 1,
+      "lectureEvidence": {
+        "lectureId": "lecture-18",
+        "lectureNumber": 18,
+        "lectureTitle": "生化 翻译",
+        "page": 1,
+        "image": "biochemistry/lecture-pages/lecture-18-page-01.webp",
+        "title": "第 18 讲《生化 翻译》· 思维导图第 275 页",
+        "description": "翻译体系、能量、起始延长终止、翻译后加工及翻译干扰。点击可查看对应思维导图。",
+        "method": "以《18翻译》真题解析和《精编版》生化合集翻译章节为主，结合思维导图逐项复核。"
+      }
+    },
+    {
+      "id": "bio-18-10",
+      "page": 10,
+      "title": "参与蛋白质折叠的分子",
+      "kind": "B",
+      "kindLabel": "B型题",
+      "options": [
+        {
+          "key": "A",
+          "label": "组蛋白"
+        },
+        {
+          "key": "B",
+          "label": "伴侣蛋白"
+        },
+        {
+          "key": "C",
+          "label": "细胞骨架蛋白"
+        },
+        {
+          "key": "D",
+          "label": "细胞膜受体"
+        }
+      ],
+      "stems": [
+        {
+          "number": 1,
+          "text": "参与蛋白质折叠的蛋白质分子是",
+          "answerRaw": "B",
+          "answer": [
+            "B"
+          ],
+          "answerMode": "单选"
+        }
+      ],
+      "sourceText": "2008N27",
+      "reviewState": "已按《18翻译》、精编版生化合集与思维导图核对",
+      "reviewIssues": [],
+      "reviewNotes": [
+        "分子伴侣为多肽链提供适宜的折叠环境，但不决定蛋白质一级结构。"
+      ],
+      "topic": "氨基酸与蛋白质",
+      "lectureIds": [
+        "lecture-18"
+      ],
+      "optionShuffleVersion": 1,
+      "lectureEvidence": {
+        "lectureId": "lecture-18",
+        "lectureNumber": 18,
+        "lectureTitle": "生化 翻译",
+        "page": 1,
+        "image": "biochemistry/lecture-pages/lecture-18-page-01.webp",
+        "title": "第 18 讲《生化 翻译》· 思维导图第 275 页",
+        "description": "翻译体系、能量、起始延长终止、翻译后加工及翻译干扰。点击可查看对应思维导图。",
+        "method": "以《18翻译》真题解析和《精编版》生化合集翻译章节为主，结合思维导图逐项复核。"
+      }
+    },
+    {
+      "id": "bio-18-11",
+      "page": 11,
+      "title": "蛋白质折叠与信号分子",
+      "kind": "B",
+      "kindLabel": "B型题",
+      "options": [
+        {
+          "key": "A",
+          "label": "热激（休克）蛋白"
+        },
+        {
+          "key": "B",
+          "label": "逆转录酶"
+        },
+        {
+          "key": "C",
+          "label": "泛素"
+        },
+        {
+          "key": "D",
+          "label": "蛋白激酶"
+        }
+      ],
+      "stems": [
+        {
+          "number": 1,
+          "text": "参与合成多肽链正确折叠的蛋白质是",
+          "answerRaw": "A",
+          "answer": [
+            "A"
+          ],
+          "answerMode": "单选"
+        },
+        {
+          "number": 2,
+          "text": "可作为信号传递分子开关的蛋白质是",
+          "answerRaw": "D",
+          "answer": [
+            "D"
+          ],
+          "answerMode": "单选"
+        }
+      ],
+      "sourceText": "2001N23–24",
+      "reviewState": "已按《18翻译》、精编版生化合集与思维导图核对",
+      "reviewIssues": [],
+      "reviewNotes": [
+        "热激蛋白参与折叠；蛋白激酶通过可逆磷酸化调控信号传递。"
+      ],
+      "topic": "氨基酸与蛋白质",
+      "lectureIds": [
+        "lecture-18"
+      ],
+      "optionShuffleVersion": 1,
+      "lectureEvidence": {
+        "lectureId": "lecture-18",
+        "lectureNumber": 18,
+        "lectureTitle": "生化 翻译",
+        "page": 1,
+        "image": "biochemistry/lecture-pages/lecture-18-page-01.webp",
+        "title": "第 18 讲《生化 翻译》· 思维导图第 275 页",
+        "description": "翻译体系、能量、起始延长终止、翻译后加工及翻译干扰。点击可查看对应思维导图。",
+        "method": "以《18翻译》真题解析和《精编版》生化合集翻译章节为主，结合思维导图逐项复核。"
+      }
+    },
+    {
+      "id": "bio-18-12",
+      "page": 12,
+      "title": "蛋白质生物合成的抑制与干扰",
+      "kind": "B",
+      "kindLabel": "B型题",
+      "options": [
+        {
+          "key": "A",
+          "label": "泛素"
+        },
+        {
+          "key": "B",
+          "label": "毒素"
+        },
+        {
+          "key": "C",
+          "label": "抗生素"
+        },
+        {
+          "key": "D",
+          "label": "干扰素"
+        }
+      ],
+      "stems": [
+        {
+          "number": 1,
+          "text": "能够影响蛋白质生物合成的物质有",
+          "answerRaw": "B、C、D",
+          "answer": [
+            "B",
+            "C",
+            "D"
+          ],
+          "answerMode": "多选"
+        }
+      ],
+      "sourceText": "2013N26",
+      "reviewState": "已按《18翻译》、精编版生化合集与思维导图核对",
+      "reviewIssues": [],
+      "reviewNotes": [
+        "毒素、抗生素及干扰素可在不同环节影响翻译；泛素主要参与蛋白质降解标记。"
+      ],
+      "topic": "氨基酸与蛋白质",
+      "lectureIds": [
+        "lecture-18"
+      ],
+      "optionShuffleVersion": 1,
+      "lectureEvidence": {
+        "lectureId": "lecture-18",
+        "lectureNumber": 18,
+        "lectureTitle": "生化 翻译",
+        "page": 1,
+        "image": "biochemistry/lecture-pages/lecture-18-page-01.webp",
+        "title": "第 18 讲《生化 翻译》· 思维导图第 275 页",
+        "description": "翻译体系、能量、起始延长终止、翻译后加工及翻译干扰。点击可查看对应思维导图。",
+        "method": "以《18翻译》真题解析和《精编版》生化合集翻译章节为主，结合思维导图逐项复核。"
+      }
+    }
+  ],
+  "lectures": [
+    {
+      "id": "lecture-18",
+      "number": 18,
+      "title": "生化 翻译",
+      "pageCount": 1
+    }
+  ]
+}
