@@ -10,7 +10,7 @@
     "generatedBy": "scripts/build_biochemistry_lecture18.py",
     "siteIntegrated": true,
     "lectureLinked": true,
-    "answerNote": "完整收录 Word 原 10 组的 81 个题干；按要求合并原第 9、10 组后整理为 9 组。题干、选项和答案均以 Word 原文为准，网页选项已重新打散。"
+    "answerNote": "完整收录 Word 原 10 组的 81 个题干；按要求合并原第 8、9 组后整理为 9 组，原第 10 组单独保留。题干、选项和答案均以 Word 原文为准，网页选项已重新打散。"
   },
   "topics": [
     "全部",
@@ -64,13 +64,13 @@
       "page": 8,
       "image": "",
       "topic": "氨基酸与蛋白质",
-      "searchText": "翻译的干扰——起始、核糖体与成肽"
+      "searchText": "翻译的干扰"
     },
     {
       "page": 9,
       "image": "",
       "topic": "氨基酸与蛋白质",
-      "searchText": "翻译干扰、核酶与含 RNA 的酶"
+      "searchText": "常考核酶与含RNA的酶"
     }
   ],
   "groups": [
@@ -1316,118 +1316,199 @@
     {
       "id": "bio-18-08",
       "page": 8,
-      "title": "翻译的干扰——起始、核糖体与成肽",
+      "title": "翻译的干扰",
       "kind": "B",
       "kindLabel": "B型题",
       "options": [
         {
           "key": "A",
-          "label": "使eEF2糖基化失活"
-        },
-        {
-          "key": "B",
-          "label": "抑制转位"
-        },
-        {
-          "key": "C",
-          "label": "抑制翻译起始复合物"
-        },
-        {
-          "key": "D",
-          "label": "降解28S rRNA，使真核60S亚基失活"
-        },
-        {
-          "key": "E",
-          "label": "导致读码错误"
-        },
-        {
-          "key": "F",
-          "label": "抑制成肽"
-        },
-        {
-          "key": "G",
-          "label": "作用于原核30S亚基"
-        },
-        {
-          "key": "H",
-          "label": "仅作用于真核翻译系统"
-        },
-        {
-          "key": "I",
-          "label": "结合真核60S亚基抑制成肽"
-        },
-        {
-          "key": "J",
-          "label": "抑制进位"
-        },
-        {
-          "key": "K",
-          "label": "结合原核50S亚基抑制成肽"
-        },
-        {
-          "key": "L",
           "label": "结构类似酪氨酰tRNA，并取代其进位"
         },
         {
-          "key": "M",
+          "key": "B",
           "label": "原核和真核均可受影响"
+        },
+        {
+          "key": "C",
+          "label": "抑制EF-G"
+        },
+        {
+          "key": "D",
+          "label": "结合原核50S亚基抑制成肽"
+        },
+        {
+          "key": "E",
+          "label": "抑制转位"
+        },
+        {
+          "key": "F",
+          "label": "抑制进位"
+        },
+        {
+          "key": "G",
+          "label": "导致读码错误"
+        },
+        {
+          "key": "H",
+          "label": "抑制翻译起始复合物"
+        },
+        {
+          "key": "I",
+          "label": "使eEF2糖基化失活"
+        },
+        {
+          "key": "J",
+          "label": "降解28S rRNA，使真核60S亚基失活"
+        },
+        {
+          "key": "K",
+          "label": "抑制eEF2"
+        },
+        {
+          "key": "L",
+          "label": "诱导eIF2磷酸化失活"
+        },
+        {
+          "key": "M",
+          "label": "仅作用于真核翻译系统"
+        },
+        {
+          "key": "N",
+          "label": "结合真核60S亚基抑制成肽"
+        },
+        {
+          "key": "O",
+          "label": "抑制EF-Tu"
+        },
+        {
+          "key": "P",
+          "label": "间接激活核酸内切酶，降解病毒mRNA"
+        },
+        {
+          "key": "Q",
+          "label": "作用靶点涉及eIF2"
+        },
+        {
+          "key": "R",
+          "label": "抑制成肽"
+        },
+        {
+          "key": "S",
+          "label": "作用于原核30S亚基"
         }
       ],
       "stems": [
         {
           "number": 1,
           "text": "伊短菌素",
-          "answerRaw": "C、M",
+          "answerRaw": "H、B",
           "answer": [
-            "C",
-            "M"
+            "H",
+            "B"
           ],
           "answerMode": "多选"
         },
         {
           "number": 2,
           "text": "嘌呤霉素",
-          "answerRaw": "L、F、M",
+          "answerRaw": "A、R、B",
           "answer": [
-            "L",
-            "F",
-            "M"
+            "A",
+            "R",
+            "B"
           ],
           "answerMode": "多选"
         },
         {
           "number": 3,
           "text": "白喉毒素",
-          "answerRaw": "H、A",
+          "answerRaw": "M、I",
           "answer": [
-            "H",
-            "A"
+            "M",
+            "I"
           ],
           "answerMode": "多选"
         },
         {
           "number": 4,
           "text": "蓖麻毒蛋白",
-          "answerRaw": "H、D",
+          "answerRaw": "M、J",
           "answer": [
-            "H",
-            "D"
+            "M",
+            "J"
           ],
           "answerMode": "多选"
         },
         {
           "number": 5,
           "text": "放线菌酮",
-          "answerRaw": "H、I",
+          "answerRaw": "M、N",
           "answer": [
-            "H",
-            "I"
+            "M",
+            "N"
           ],
           "answerMode": "多选"
         },
         {
           "number": 6,
           "text": "氯霉素／林可霉素／红霉素",
+          "answerRaw": "D",
+          "answer": [
+            "D"
+          ],
+          "answerMode": "单选"
+        },
+        {
+          "number": 7,
+          "text": "氨基糖苷类",
+          "answerRaw": "G、S",
+          "answer": [
+            "G",
+            "S"
+          ],
+          "answerMode": "多选"
+        },
+        {
+          "number": 8,
+          "text": "四环素",
+          "answerRaw": "S、F",
+          "answer": [
+            "S",
+            "F"
+          ],
+          "answerMode": "多选"
+        },
+        {
+          "number": 9,
+          "text": "大观霉素",
+          "answerRaw": "E、S",
+          "answer": [
+            "E",
+            "S"
+          ],
+          "answerMode": "多选"
+        },
+        {
+          "number": 10,
+          "text": "黄色霉素／粉霉素",
+          "answerRaw": "O",
+          "answer": [
+            "O"
+          ],
+          "answerMode": "单选"
+        },
+        {
+          "number": 11,
+          "text": "夫西地酸／微球菌素",
+          "answerRaw": "C",
+          "answer": [
+            "C"
+          ],
+          "answerMode": "单选"
+        },
+        {
+          "number": 12,
+          "text": "白喉毒素",
           "answerRaw": "K",
           "answer": [
             "K"
@@ -1435,41 +1516,31 @@
           "answerMode": "单选"
         },
         {
-          "number": 7,
-          "text": "氨基糖苷类",
-          "answerRaw": "E、G",
+          "number": 13,
+          "text": "伊短菌素",
+          "answerRaw": "H",
           "answer": [
-            "E",
-            "G"
+            "H"
           ],
-          "answerMode": "多选"
+          "answerMode": "单选"
         },
         {
-          "number": 8,
-          "text": "四环素",
-          "answerRaw": "G、J",
+          "number": 14,
+          "text": "干扰素",
+          "answerRaw": "Q、L、P",
           "answer": [
-            "G",
-            "J"
-          ],
-          "answerMode": "多选"
-        },
-        {
-          "number": 9,
-          "text": "大观霉素",
-          "answerRaw": "B、G",
-          "answer": [
-            "B",
-            "G"
+            "Q",
+            "L",
+            "P"
           ],
           "answerMode": "多选"
         }
       ],
-      "sourceText": "《生化_翻译_学成选择题》原第 8 组",
+      "sourceText": "《生化_翻译_学成选择题》原第 8、9 组",
       "reviewState": "已按用户提供的 Word、精编版讲义与思维导图核对",
       "reviewIssues": [],
       "reviewNotes": [
-        "题干、选项与答案均按用户提供的 Word 原文录入，网页选项顺序重新打散。"
+        "按用户要求仅合并 Word 原第 8、9 组；两组题干和答案完整保留，共用一个重新打散的选项池。"
       ],
       "topic": "氨基酸与蛋白质",
       "lectureIds": [
@@ -1490,17 +1561,17 @@
     {
       "id": "bio-18-09",
       "page": 9,
-      "title": "翻译干扰、核酶与含 RNA 的酶",
+      "title": "常考核酶与含RNA的酶",
       "kind": "B",
       "kindLabel": "B型题",
       "options": [
         {
           "key": "A",
-          "label": "诱导eIF2磷酸化失活"
+          "label": "切除前体tRNA 5′端多余核苷酸"
         },
         {
           "key": "B",
-          "label": "抑制eEF2"
+          "label": "需要蛋白质帮助参与催化"
         },
         {
           "key": "C",
@@ -1508,173 +1579,98 @@
         },
         {
           "key": "D",
-          "label": "自身剪接时不需要蛋白质参与"
-        },
-        {
-          "key": "E",
-          "label": "作用靶点涉及eIF2"
-        },
-        {
-          "key": "F",
-          "label": "抑制翻译起始复合物"
-        },
-        {
-          "key": "G",
-          "label": "包括组Ⅰ型、组Ⅱ型内含子"
-        },
-        {
-          "key": "H",
-          "label": "抑制EF-G"
-        },
-        {
-          "key": "I",
-          "label": "间接激活核酸内切酶，降解病毒mRNA"
-        },
-        {
-          "key": "J",
-          "label": "切除前体tRNA 5′端多余核苷酸"
-        },
-        {
-          "key": "K",
-          "label": "需要蛋白质帮助参与催化"
-        },
-        {
-          "key": "L",
-          "label": "自带RNA模板、逆转录酶及协同蛋白"
-        },
-        {
-          "key": "M",
-          "label": "真核28S rRNA"
-        },
-        {
-          "key": "N",
           "label": "原核23S rRNA"
         },
         {
-          "key": "O",
-          "label": "抑制EF-Tu"
+          "key": "E",
+          "label": "包括组Ⅰ型、组Ⅱ型内含子"
         },
         {
-          "key": "P",
+          "key": "F",
+          "label": "自带RNA模板、逆转录酶及协同蛋白"
+        },
+        {
+          "key": "G",
           "label": "本质上属于具有催化作用的RNA"
+        },
+        {
+          "key": "H",
+          "label": "自身剪接时不需要蛋白质参与"
+        },
+        {
+          "key": "I",
+          "label": "真核28S rRNA"
         }
       ],
       "stems": [
         {
           "number": 1,
-          "text": "黄色霉素／粉霉素",
-          "answerRaw": "O",
+          "text": "转肽酶／肽酰基转移酶",
+          "answerRaw": "D、G、I",
           "answer": [
-            "O"
-          ],
-          "answerMode": "单选"
-        },
-        {
-          "number": 2,
-          "text": "夫西地酸／微球菌素",
-          "answerRaw": "H",
-          "answer": [
-            "H"
-          ],
-          "answerMode": "单选"
-        },
-        {
-          "number": 3,
-          "text": "白喉毒素",
-          "answerRaw": "B",
-          "answer": [
-            "B"
-          ],
-          "answerMode": "单选"
-        },
-        {
-          "number": 4,
-          "text": "伊短菌素",
-          "answerRaw": "F",
-          "answer": [
-            "F"
-          ],
-          "answerMode": "单选"
-        },
-        {
-          "number": 5,
-          "text": "干扰素",
-          "answerRaw": "E、A、I",
-          "answer": [
-            "E",
-            "A",
+            "D",
+            "G",
             "I"
           ],
           "answerMode": "多选"
         },
         {
-          "number": 6,
-          "text": "转肽酶／肽酰基转移酶",
-          "answerRaw": "N、P、M",
-          "answer": [
-            "N",
-            "P",
-            "M"
-          ],
-          "answerMode": "多选"
-        },
-        {
-          "number": 7,
+          "number": 2,
           "text": "RNase P",
-          "answerRaw": "J、P",
+          "answerRaw": "A、G",
           "answer": [
-            "J",
-            "P"
+            "A",
+            "G"
           ],
           "answerMode": "多选"
         },
         {
-          "number": 8,
+          "number": 3,
           "text": "自身剪接内含子",
-          "answerRaw": "D、G、P",
+          "answerRaw": "H、E、G",
           "answer": [
-            "D",
-            "G",
-            "P"
+            "H",
+            "E",
+            "G"
           ],
           "answerMode": "多选"
         },
         {
-          "number": 9,
+          "number": 4,
           "text": "snRNA",
-          "answerRaw": "K、P",
+          "answerRaw": "B、G",
           "answer": [
-            "K",
-            "P"
+            "B",
+            "G"
           ],
           "answerMode": "多选"
         },
         {
-          "number": 10,
+          "number": 5,
           "text": "核酶",
-          "answerRaw": "P、C",
+          "answerRaw": "G、C",
           "answer": [
-            "P",
+            "G",
             "C"
           ],
           "answerMode": "多选"
         },
         {
-          "number": 11,
+          "number": 6,
           "text": "端粒酶",
-          "answerRaw": "C、L",
+          "answerRaw": "C、F",
           "answer": [
             "C",
-            "L"
+            "F"
           ],
           "answerMode": "多选"
         }
       ],
-      "sourceText": "《生化_翻译_学成选择题》原第 9、10 组",
+      "sourceText": "《生化_翻译_学成选择题》原第 10 组",
       "reviewState": "已按用户提供的 Word、精编版讲义与思维导图核对",
       "reviewIssues": [],
       "reviewNotes": [
-        "按用户要求仅合并 Word 原第 9、10 组；两组题干和答案完整保留，共用一个重新打散的选项池。"
+        "题干、选项与答案均按用户提供的 Word 原文录入，网页选项顺序重新打散。"
       ],
       "topic": "氨基酸与蛋白质",
       "lectureIds": [

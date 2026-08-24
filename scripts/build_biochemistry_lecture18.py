@@ -135,18 +135,18 @@ def parse_word_groups() -> list[dict]:
     return groups
 
 
-def merge_last_two_groups(groups: list[dict]) -> list[dict]:
+def merge_eighth_and_ninth_groups(groups: list[dict]) -> list[dict]:
     if len(groups) != 10:
         raise ValueError(f"Expected 10 groups before merging, found {len(groups)}")
-    ninth, tenth = groups[8], groups[9]
+    eighth, ninth = groups[7], groups[8]
     merged = {
-        "title": "翻译干扰、核酶与含 RNA 的酶",
-        "source": "《生化_翻译_学成选择题》原第 9、10 组",
-        "options": ninth["options"] + tenth["options"],
-        "stems": ninth["stems"] + tenth["stems"],
-        "note": "按用户要求仅合并 Word 原第 9、10 组；两组题干和答案完整保留，共用一个重新打散的选项池。",
+        "title": "翻译的干扰",
+        "source": "《生化_翻译_学成选择题》原第 8、9 组",
+        "options": list(dict.fromkeys(eighth["options"] + ninth["options"])),
+        "stems": eighth["stems"] + ninth["stems"],
+        "note": "按用户要求仅合并 Word 原第 8、9 组；两组题干和答案完整保留，共用一个重新打散的选项池。",
     }
-    return groups[:8] + [merged]
+    return groups[:7] + [merged, groups[9]]
 
 
 def save_mind_map() -> None:
@@ -217,7 +217,7 @@ def build_group(spec: dict, index: int) -> dict:
 
 def main() -> None:
     save_mind_map()
-    specs = merge_last_two_groups(parse_word_groups())
+    specs = merge_eighth_and_ninth_groups(parse_word_groups())
     groups = [build_group(spec, index) for index, spec in enumerate(specs, 1)]
     stem_count = sum(len(group["stems"]) for group in groups)
     if len(groups) != 9 or stem_count != 81:
@@ -235,7 +235,7 @@ def main() -> None:
             "generatedBy": "scripts/build_biochemistry_lecture18.py",
             "siteIntegrated": True,
             "lectureLinked": True,
-            "answerNote": "完整收录 Word 原 10 组的 81 个题干；按要求合并原第 9、10 组后整理为 9 组。题干、选项和答案均以 Word 原文为准，网页选项已重新打散。",
+            "answerNote": "完整收录 Word 原 10 组的 81 个题干；按要求合并原第 8、9 组后整理为 9 组，原第 10 组单独保留。题干、选项和答案均以 Word 原文为准，网页选项已重新打散。",
         },
         "topics": ["全部", TOPIC, "综合"],
         "pages": [{"page": group["page"], "image": "", "topic": TOPIC, "searchText": group["title"]} for group in groups],
