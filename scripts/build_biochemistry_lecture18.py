@@ -20,8 +20,8 @@ TOPIC = "氨基酸与蛋白质"
 
 
 # The source contains 14 numbered entries. Entries 5 and 6 each contain two
-# stems; two other tightly related pairs are merged here, yielding 12 groups
-# and 16 stems while preserving every original question and checked answer.
+# stems; three tightly related pairs are merged here, yielding 11 groups and
+# 16 stems while preserving every original question and checked answer.
 GROUPS = [
     {
         "title": "原核生物蛋白质合成概述",
@@ -94,18 +94,23 @@ GROUPS = [
         "note": "硒代半胱氨酸可在翻译过程中直接掺入，不属于本题所列翻译后修饰。",
     },
     {
-        "title": "热激蛋白的生理功能",
-        "source": "2019N24",
-        "options": ["参与蛋白质靶向运输", "促进新生多肽链的折叠", "作为酶参与蛋白质合成", "作为肽链合成起始的关键分子"],
-        "stems": [("热激蛋白（热休克蛋白）的生理功能是", ["促进新生多肽链的折叠"])],
-        "note": "热激蛋白属于分子伴侣，帮助新生多肽链正确折叠。",
-    },
-    {
-        "title": "参与蛋白质折叠的分子",
-        "source": "2008N27",
-        "options": ["组蛋白", "伴侣蛋白", "细胞膜受体", "细胞骨架蛋白"],
-        "stems": [("参与蛋白质折叠的蛋白质分子是", ["伴侣蛋白"])],
-        "note": "分子伴侣为多肽链提供适宜的折叠环境，但不决定蛋白质一级结构。",
+        "title": "热激蛋白与蛋白质折叠",
+        "source": "2019N24、2008N27",
+        "options": [
+            "参与蛋白质靶向运输",
+            "促进新生多肽链的折叠",
+            "作为酶参与蛋白质合成",
+            "作为肽链合成起始的关键分子",
+            "组蛋白",
+            "伴侣蛋白",
+            "细胞膜受体",
+            "细胞骨架蛋白",
+        ],
+        "stems": [
+            ("热激蛋白（热休克蛋白）的生理功能是", ["促进新生多肽链的折叠"]),
+            ("参与蛋白质折叠的蛋白质分子是", ["伴侣蛋白"]),
+        ],
+        "note": "热激蛋白属于分子伴侣，帮助新生多肽链正确折叠；分子伴侣为多肽链提供适宜的折叠环境，但不决定蛋白质一级结构。",
     },
     {
         "title": "蛋白质折叠与信号分子",
@@ -194,8 +199,8 @@ def main() -> None:
     save_mind_map()
     groups = [build_group(spec, index) for index, spec in enumerate(GROUPS, 1)]
     stem_count = sum(len(group["stems"]) for group in groups)
-    if len(groups) != 12 or stem_count != 16:
-        raise ValueError(f"Expected 12 groups and 16 stems, found {len(groups)} and {stem_count}")
+    if len(groups) != 11 or stem_count != 16:
+        raise ValueError(f"Expected 11 groups and 16 stems, found {len(groups)} and {stem_count}")
     payload = {
         "meta": {
             "title": "生物化学第 18 讲题库",
@@ -208,7 +213,7 @@ def main() -> None:
             "generatedBy": "scripts/build_biochemistry_lecture18.py",
             "siteIntegrated": True,
             "lectureLinked": True,
-            "answerNote": "完整收录《18翻译》14 个编号条目的 16 个题干；按知识点整理为 12 组，选项已重新打散，答案按精编版讲义逐项复核。",
+            "answerNote": "完整收录《18翻译》14 个编号条目的 16 个题干；按知识点整理为 11 组，选项已重新打散，答案按精编版讲义逐项复核。",
         },
         "topics": ["全部", TOPIC, "综合"],
         "pages": [{"page": group["page"], "image": "", "topic": TOPIC, "searchText": group["title"]} for group in groups],

@@ -4,13 +4,13 @@
     "sourceLabel": "生化第 18 讲《翻译》真题",
     "sourcePages": 12,
     "lectureCount": 1,
-    "groupCount": 12,
+    "groupCount": 11,
     "stemCount": 16,
     "correctionGroupCount": 0,
     "generatedBy": "scripts/build_biochemistry_lecture18.py",
     "siteIntegrated": true,
     "lectureLinked": true,
-    "answerNote": "完整收录《18翻译》14 个编号条目的 16 个题干；按知识点整理为 12 组，选项已重新打散，答案按精编版讲义逐项复核。"
+    "answerNote": "完整收录《18翻译》14 个编号条目的 16 个题干；按知识点整理为 11 组，选项已重新打散，答案按精编版讲义逐项复核。"
   },
   "topics": [
     "全部",
@@ -70,22 +70,16 @@
       "page": 9,
       "image": "",
       "topic": "氨基酸与蛋白质",
-      "searchText": "热激蛋白的生理功能"
+      "searchText": "热激蛋白与蛋白质折叠"
     },
     {
       "page": 10,
       "image": "",
       "topic": "氨基酸与蛋白质",
-      "searchText": "参与蛋白质折叠的分子"
-    },
-    {
-      "page": 11,
-      "image": "",
-      "topic": "氨基酸与蛋白质",
       "searchText": "蛋白质折叠与信号分子"
     },
     {
-      "page": 12,
+      "page": 11,
       "image": "",
       "topic": "氨基酸与蛋白质",
       "searchText": "蛋白质生物合成的抑制与干扰"
@@ -617,43 +611,68 @@
     {
       "id": "bio-18-09",
       "page": 9,
-      "title": "热激蛋白的生理功能",
+      "title": "热激蛋白与蛋白质折叠",
       "kind": "B",
       "kindLabel": "B型题",
       "options": [
         {
           "key": "A",
-          "label": "作为酶参与蛋白质合成"
+          "label": "细胞骨架蛋白"
         },
         {
           "key": "B",
-          "label": "促进新生多肽链的折叠"
-        },
-        {
-          "key": "C",
           "label": "参与蛋白质靶向运输"
         },
         {
+          "key": "C",
+          "label": "作为酶参与蛋白质合成"
+        },
+        {
           "key": "D",
+          "label": "组蛋白"
+        },
+        {
+          "key": "E",
           "label": "作为肽链合成起始的关键分子"
+        },
+        {
+          "key": "F",
+          "label": "伴侣蛋白"
+        },
+        {
+          "key": "G",
+          "label": "促进新生多肽链的折叠"
+        },
+        {
+          "key": "H",
+          "label": "细胞膜受体"
         }
       ],
       "stems": [
         {
           "number": 1,
           "text": "热激蛋白（热休克蛋白）的生理功能是",
-          "answerRaw": "B",
+          "answerRaw": "G",
           "answer": [
-            "B"
+            "G"
+          ],
+          "answerMode": "单选"
+        },
+        {
+          "number": 2,
+          "text": "参与蛋白质折叠的蛋白质分子是",
+          "answerRaw": "F",
+          "answer": [
+            "F"
           ],
           "answerMode": "单选"
         }
       ],
-      "sourceText": "2019N24",
+      "sourceText": "2019N24、2008N27",
       "reviewState": "已按《18翻译》、精编版生化合集与思维导图核对",
       "reviewIssues": [],
       "reviewNotes": [
-        "热激蛋白属于分子伴侣，帮助新生多肽链正确折叠。"
+        "热激蛋白属于分子伴侣，帮助新生多肽链正确折叠；分子伴侣为多肽链提供适宜的折叠环境，但不决定蛋白质一级结构。"
       ],
       "topic": "氨基酸与蛋白质",
       "lectureIds": [
@@ -674,100 +693,43 @@
     {
       "id": "bio-18-10",
       "page": 10,
-      "title": "参与蛋白质折叠的分子",
-      "kind": "B",
-      "kindLabel": "B型题",
-      "options": [
-        {
-          "key": "A",
-          "label": "组蛋白"
-        },
-        {
-          "key": "B",
-          "label": "伴侣蛋白"
-        },
-        {
-          "key": "C",
-          "label": "细胞骨架蛋白"
-        },
-        {
-          "key": "D",
-          "label": "细胞膜受体"
-        }
-      ],
-      "stems": [
-        {
-          "number": 1,
-          "text": "参与蛋白质折叠的蛋白质分子是",
-          "answerRaw": "B",
-          "answer": [
-            "B"
-          ],
-          "answerMode": "单选"
-        }
-      ],
-      "sourceText": "2008N27",
-      "reviewState": "已按《18翻译》、精编版生化合集与思维导图核对",
-      "reviewIssues": [],
-      "reviewNotes": [
-        "分子伴侣为多肽链提供适宜的折叠环境，但不决定蛋白质一级结构。"
-      ],
-      "topic": "氨基酸与蛋白质",
-      "lectureIds": [
-        "lecture-18"
-      ],
-      "optionShuffleVersion": 1,
-      "lectureEvidence": {
-        "lectureId": "lecture-18",
-        "lectureNumber": 18,
-        "lectureTitle": "生化 翻译",
-        "page": 1,
-        "image": "biochemistry/lecture-pages/lecture-18-page-01.webp",
-        "title": "第 18 讲《生化 翻译》· 思维导图第 275 页",
-        "description": "翻译体系、能量、起始延长终止、翻译后加工及翻译干扰。点击可查看对应思维导图。",
-        "method": "以《18翻译》真题解析和《精编版》生化合集翻译章节为主，结合思维导图逐项复核。"
-      }
-    },
-    {
-      "id": "bio-18-11",
-      "page": 11,
       "title": "蛋白质折叠与信号分子",
       "kind": "B",
       "kindLabel": "B型题",
       "options": [
         {
           "key": "A",
-          "label": "热激（休克）蛋白"
-        },
-        {
-          "key": "B",
-          "label": "逆转录酶"
-        },
-        {
-          "key": "C",
           "label": "泛素"
         },
         {
-          "key": "D",
+          "key": "B",
           "label": "蛋白激酶"
+        },
+        {
+          "key": "C",
+          "label": "热激（休克）蛋白"
+        },
+        {
+          "key": "D",
+          "label": "逆转录酶"
         }
       ],
       "stems": [
         {
           "number": 1,
           "text": "参与合成多肽链正确折叠的蛋白质是",
-          "answerRaw": "A",
+          "answerRaw": "C",
           "answer": [
-            "A"
+            "C"
           ],
           "answerMode": "单选"
         },
         {
           "number": 2,
           "text": "可作为信号传递分子开关的蛋白质是",
-          "answerRaw": "D",
+          "answerRaw": "B",
           "answer": [
-            "D"
+            "B"
           ],
           "answerMode": "单选"
         }
@@ -795,38 +757,38 @@
       }
     },
     {
-      "id": "bio-18-12",
-      "page": 12,
+      "id": "bio-18-11",
+      "page": 11,
       "title": "蛋白质生物合成的抑制与干扰",
       "kind": "B",
       "kindLabel": "B型题",
       "options": [
         {
           "key": "A",
-          "label": "泛素"
+          "label": "干扰素"
         },
         {
           "key": "B",
-          "label": "毒素"
-        },
-        {
-          "key": "C",
           "label": "抗生素"
         },
         {
+          "key": "C",
+          "label": "毒素"
+        },
+        {
           "key": "D",
-          "label": "干扰素"
+          "label": "泛素"
         }
       ],
       "stems": [
         {
           "number": 1,
           "text": "能够影响蛋白质生物合成的物质有",
-          "answerRaw": "B、C、D",
+          "answerRaw": "C、B、A",
           "answer": [
-            "B",
             "C",
-            "D"
+            "B",
+            "A"
           ],
           "answerMode": "多选"
         }
