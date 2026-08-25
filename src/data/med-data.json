@@ -10466,7 +10466,7 @@
     {
       "id": "p32-g1",
       "page": 32,
-      "title": "HCC",
+      "title": "HCC及肝脏影像学鉴别",
       "kind": "B",
       "kindLabel": "B型题",
       "options": [
@@ -10507,28 +10507,8 @@
         },
         {
           "key": "H",
-          "label": "早出晚归征(造影剂向心性填充)",
-          "sourceText": "H.早出晚归征(造影剂向心性填充)"
-        },
-        {
-          "key": "I",
-          "label": "糖皮质激素",
-          "sourceText": "1.糖皮质激素"
-        },
-        {
-          "key": "J",
-          "label": "胰高血糖素",
-          "sourceText": "J.胰高血糖素"
-        },
-        {
-          "key": "K",
-          "label": "促黑素(肝病面容-面色黑黄)",
-          "sourceText": "K.促黑素(肝病面容-面色黑黄)"
-        },
-        {
-          "key": "L",
-          "label": "甲状腺激素",
-          "sourceText": "L.甲状腺激素"
+          "label": "早出晚归征（造影剂向心性填充）",
+          "sourceText": "H.早出晚归征（造影剂向心性填充）"
         }
       ],
       "stems": [
@@ -10537,7 +10517,7 @@
           "answer": [
             "B"
           ],
-          "sourceText": "HCC (B",
+          "sourceText": "HCC（B）",
           "sourceY": 62,
           "answerMode": "单选"
         },
@@ -10546,7 +10526,7 @@
           "answer": [
             "F"
           ],
-          "sourceText": "胃肠道癌转移至肝F",
+          "sourceText": "胃肠道癌转移至肝（F）",
           "sourceY": 0,
           "answerMode": "单选"
         },
@@ -10556,7 +10536,7 @@
             "E",
             "H"
           ],
-          "sourceText": "肝血管瘤EH",
+          "sourceText": "肝血管瘤（EH）",
           "sourceY": 0,
           "answerMode": "多选"
         },
@@ -10565,23 +10545,107 @@
           "answer": [
             "D"
           ],
-          "sourceText": "肝囊肿（D",
+          "sourceText": "肝囊肿（D）",
           "sourceY": 215,
           "answerMode": "单选"
         },
         {
-          "text": "肝脓肿(急性)",
+          "text": "肝脓肿（急性）",
           "answer": [
             "A",
             "C",
             "G"
           ],
-          "sourceText": "肝脓肿(急性)（ACG",
+          "sourceText": "肝脓肿（急性）（ACG）",
           "sourceY": 262,
           "answerMode": "多选"
+        }
+      ],
+      "sourceText": "HCC及肝脏影像学鉴别（按原题第32页第1组及第21讲第2页讲义逐项复核）",
+      "reviewState": "已按原题第32页与对应讲义逐项复核",
+      "topic": "消化",
+      "lectureIds": [
+        "lecture-21"
+      ],
+      "lectureEvidence": {
+        "lectureId": "lecture-21",
+        "page": 2,
+        "image": "med/lecture-pages/lecture-21-page-02.jpg",
+        "title": "第21讲第2页：内科+外科 原发性肝癌",
+        "description": "本题组对应第21讲第2页讲义。"
+      }
+    },
+    {
+      "id": "p32-g1b",
+      "page": 32,
+      "title": "肝硬化时体内激素的变化",
+      "kind": "B",
+      "kindLabel": "B型题",
+      "options": [
+        {
+          "key": "A",
+          "label": "雄激素",
+          "sourceText": "A.雄激素"
         },
         {
-          "text": "肝硬化时体内激素的变化；增高",
+          "key": "B",
+          "label": "雌激素",
+          "sourceText": "B.雌激素"
+        },
+        {
+          "key": "C",
+          "label": "促肾上腺皮质激素释放激素",
+          "sourceText": "C.促肾上腺皮质激素释放激素"
+        },
+        {
+          "key": "D",
+          "label": "抗利尿激素",
+          "sourceText": "D.抗利尿激素"
+        },
+        {
+          "key": "E",
+          "label": "促肾上腺皮质激素释放因子CRH",
+          "sourceText": "E.促肾上腺皮质激素释放因子CRH"
+        },
+        {
+          "key": "F",
+          "label": "醛固酮",
+          "sourceText": "F.醛固酮"
+        },
+        {
+          "key": "G",
+          "label": "促肾上腺皮质激素ACTH",
+          "sourceText": "G.促肾上腺皮质激素ACTH"
+        },
+        {
+          "key": "H",
+          "label": "胰岛素",
+          "sourceText": "H.胰岛素"
+        },
+        {
+          "key": "I",
+          "label": "糖皮质激素",
+          "sourceText": "I.糖皮质激素"
+        },
+        {
+          "key": "J",
+          "label": "胰高血糖素",
+          "sourceText": "J.胰高血糖素"
+        },
+        {
+          "key": "K",
+          "label": "促黑素（肝病面容-面色黑黄）",
+          "sourceText": "K.促黑素（肝病面容-面色黑黄）"
+        },
+        {
+          "key": "L",
+          "label": "甲状腺激素",
+          "sourceText": "L.甲状腺激素"
+        }
+      ],
+      "stems": [
+        {
+          "text": "增高",
           "answer": [
             "B",
             "D",
@@ -10590,7 +10654,7 @@
             "J",
             "K"
           ],
-          "sourceText": "增高（BDFHJK",
+          "sourceText": "增高（BDFHJK）",
           "sourceY": 516,
           "answerMode": "多选"
         },
@@ -10604,16 +10668,60 @@
             "I",
             "L"
           ],
-          "sourceText": "降低（ACEGIL",
+          "sourceText": "降低（ACEGIL）",
           "sourceY": 568,
           "answerMode": "多选"
+        }
+      ],
+      "sourceText": "肝硬化时体内激素的变化（按原题第32页第2组及第22讲第2页讲义逐项复核）",
+      "reviewState": "已按原题第32页与对应讲义逐项复核",
+      "topic": "消化",
+      "lectureIds": [
+        "lecture-22"
+      ],
+      "lectureEvidence": {
+        "lectureId": "lecture-22",
+        "page": 2,
+        "image": "med/lecture-pages/lecture-22-page-02.jpg",
+        "title": "第22讲第2页：内科含诊断 肝硬化",
+        "description": "本题组对应第22讲第2页讲义。"
+      }
+    },
+    {
+      "id": "p32-g1c",
+      "page": 32,
+      "title": "腔静脉阻塞与腹壁静脉曲张",
+      "kind": "B",
+      "kindLabel": "B型题",
+      "options": [
+        {
+          "key": "A",
+          "label": "脐以下血流转而向上",
+          "sourceText": "A.脐以下血流转而向上"
         },
+        {
+          "key": "B",
+          "label": "脐以上向上",
+          "sourceText": "B.脐以上向上"
+        },
+        {
+          "key": "C",
+          "label": "脐以上血流转而向下",
+          "sourceText": "C.脐以上血流转而向下"
+        },
+        {
+          "key": "D",
+          "label": "脐以下向下",
+          "sourceText": "D.脐以下向下"
+        }
+      ],
+      "stems": [
         {
           "text": "上腔静脉阻塞",
           "answer": [
             "C"
           ],
-          "sourceText": "上腔静脉阻塞（C",
+          "sourceText": "上腔静脉阻塞（C）",
           "sourceY": 900,
           "answerMode": "单选"
         },
@@ -10622,7 +10730,7 @@
           "answer": [
             "A"
           ],
-          "sourceText": "下腔静脉阻塞（A",
+          "sourceText": "下腔静脉阻塞（A）",
           "sourceY": 952,
           "answerMode": "单选"
         },
@@ -10632,28 +10740,23 @@
             "B",
             "D"
           ],
-          "sourceText": "腹壁静脉曲张（BD",
+          "sourceText": "腹壁静脉曲张（BD）",
           "sourceY": 1002,
           "answerMode": "多选"
         }
       ],
-      "sourceText": "问： | A.高热、WBC↑ | HCC (B | B.快进快出：动脉期明显强化、静脉期强化退去 | C.液气平 | 胃肠道癌转移至肝（ | D.不强化 | E.灯泡征 | 肝血管瘤（EH | F.牛眼征：边缘明显强化 | G.动脉期楔形强化+边缘明显强化 | 肝囊肿（D | H.早出晚归征(造影剂向心性填充) | 肝脓肿(急性)（ACG | 肝硬化 | A.雄激素 | 肝硬化时体内激素的变化 | B.雌激素 | 增高（BDFHJK | C.促肾上腺皮质激素释放激素 | D.抗利尿激素 | 降低（ACEGIL | E.促皮质素释放因子CRH | F.醛固酮 | G.促肾上腺皮质激素ACTH | H.胰岛素 | 1.糖皮质激素 | J.胰高血糖素 | K.促黑素(肝病面容-面色黑黄) | L.甲状腺激素 | A.脐以下血流转而向上 | 上腔静脉阻塞（C | B.脐以上向上 | C.脐以上血流转而向下 | 下腔静脉阻塞（A | D.脐以下向下 | 腹壁静脉曲张（BD",
-      "reviewState": "待讲义复核",
+      "sourceText": "腔静脉阻塞与腹壁静脉曲张（按原题第32页第3组及第22讲第4页讲义逐项复核）",
+      "reviewState": "已按原题第32页与对应讲义逐项复核",
       "topic": "消化",
       "lectureIds": [
-        "lecture-14",
-        "lecture-15",
-        "lecture-16",
-        "lecture-17",
-        "lecture-18",
-        "lecture-19"
+        "lecture-22"
       ],
       "lectureEvidence": {
-        "lectureId": "lecture-21",
-        "page": 3,
-        "image": "med/lecture-pages/lecture-21-page-03.webp",
-        "title": "第21讲第3页：内科+外科 原发性肝癌",
-        "description": "本题组对应第21讲第3页讲义。"
+        "lectureId": "lecture-22",
+        "page": 4,
+        "image": "med/lecture-pages/lecture-22-page-04.webp",
+        "title": "第22讲第4页：内科含诊断 肝硬化",
+        "description": "本题组对应第22讲第4页讲义。"
       }
     },
     {
@@ -10712,12 +10815,7 @@
       "reviewState": "待讲义复核",
       "topic": "消化",
       "lectureIds": [
-        "lecture-14",
-        "lecture-15",
-        "lecture-16",
-        "lecture-17",
-        "lecture-18",
-        "lecture-19"
+        "lecture-22"
       ],
       "lectureEvidence": {
         "lectureId": "lecture-22",
@@ -10801,12 +10899,7 @@
       "reviewState": "待讲义复核",
       "topic": "消化",
       "lectureIds": [
-        "lecture-14",
-        "lecture-15",
-        "lecture-16",
-        "lecture-17",
-        "lecture-18",
-        "lecture-19"
+        "lecture-22"
       ],
       "lectureEvidence": {
         "lectureId": "lecture-22",

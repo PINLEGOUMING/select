@@ -275,6 +275,72 @@ def reviewed_groups(payload: dict) -> list[dict]:
     p31_4["sourceText"] = "原发性肝癌治疗（按原题第31页五个题干及第21讲第3页讲义逐项复核）"
     p31_4["reviewState"] = "已按原题第31页与第21讲第3页讲义逐项复核"
 
+    # 第32页前半部分连续排了三个独立的B型题组。初次OCR把它们合并进
+    # p32-g1，导致HCC、肝硬化激素变化和腔静脉阻塞共用一个选项池。
+    p32_1 = group(
+        "p32-g1", "HCC及肝脏影像学鉴别", "消化", ["lecture-21"],
+        opts(
+            ("A", "高热、WBC↑"), ("B", "快进快出：动脉期明显强化、静脉期强化退去"),
+            ("C", "液气平"), ("D", "不强化"), ("E", "灯泡征"),
+            ("F", "牛眼征：边缘明显强化"), ("G", "动脉期楔形强化+边缘明显强化"),
+            ("H", "早出晚归征（造影剂向心性填充）"),
+        ),
+        stems(
+            ("HCC", "B"), ("胃肠道癌转移至肝", "F"), ("肝血管瘤", "EH"),
+            ("肝囊肿", "D"), ("肝脓肿（急性）", "ACG"),
+        ),
+    )
+    p32_1["sourceText"] = "HCC及肝脏影像学鉴别（按原题第32页第1组及第21讲第2页讲义逐项复核）"
+    p32_1["reviewState"] = "已按原题第32页与第21讲第2页讲义逐项复核"
+    p32_1["lectureEvidence"] = {
+        "lectureId": "lecture-21", "page": 2,
+        "image": "med/lecture-pages/lecture-21-page-02.jpg",
+        "title": "第21讲第2页：内科+外科 原发性肝癌",
+        "description": "本题组对应第21讲第2页讲义。",
+    }
+    p32_2 = group(
+        "p32-g1b", "肝硬化时体内激素的变化", "消化", ["lecture-22"],
+        opts(
+            ("A", "雄激素"), ("B", "雌激素"), ("C", "促肾上腺皮质激素释放激素"),
+            ("D", "抗利尿激素"), ("E", "促肾上腺皮质激素释放因子CRH"), ("F", "醛固酮"),
+            ("G", "促肾上腺皮质激素ACTH"), ("H", "胰岛素"), ("I", "糖皮质激素"),
+            ("J", "胰高血糖素"), ("K", "促黑素（肝病面容-面色黑黄）"), ("L", "甲状腺激素"),
+        ),
+        stems(("增高", "BDFHJK"), ("降低", "ACEGIL")),
+    )
+    p32_2["sourceText"] = "肝硬化时体内激素的变化（按原题第32页第2组及第22讲讲义逐项复核）"
+    p32_2["reviewState"] = "已按原题第32页与第22讲讲义逐项复核"
+    p32_2["lectureEvidence"] = {
+        "lectureId": "lecture-22", "page": 2,
+        "image": "med/lecture-pages/lecture-22-page-02.jpg",
+        "title": "第22讲第2页：内科含诊断 肝硬化",
+        "description": "本题组对应第22讲第2页讲义。",
+    }
+    p32_3 = group(
+        "p32-g1c", "腔静脉阻塞与腹壁静脉曲张", "消化", ["lecture-22"],
+        opts(
+            ("A", "脐以下血流转而向上"), ("B", "脐以上向上"),
+            ("C", "脐以上血流转而向下"), ("D", "脐以下向下"),
+        ),
+        stems(("上腔静脉阻塞", "C"), ("下腔静脉阻塞", "A"), ("腹壁静脉曲张", "BD")),
+    )
+    p32_3["sourceText"] = "腔静脉阻塞与腹壁静脉曲张（按原题第32页第3组及第22讲讲义逐项复核）"
+    p32_3["reviewState"] = "已按原题第32页与第22讲讲义逐项复核"
+    p32_3["lectureEvidence"] = {
+        "lectureId": "lecture-22", "page": 4,
+        "image": "med/lecture-pages/lecture-22-page-04.webp",
+        "title": "第22讲第4页：内科含诊断 肝硬化",
+        "description": "本题组对应第22讲第4页讲义。",
+    }
+    existing_p32_2 = next((item for item in payload["groups"] if item["id"] == "p32-g2"), None)
+    existing_p32_3 = next((item for item in payload["groups"] if item["id"] == "p32-g3"), None)
+    if existing_p32_2:
+        existing_p32_2 = dict(existing_p32_2)
+        existing_p32_2.update({"topic": "消化", "lectureIds": ["lecture-22"]})
+    if existing_p32_3:
+        existing_p32_3 = dict(existing_p32_3)
+        existing_p32_3.update({"topic": "消化", "lectureIds": ["lecture-22"]})
+
     p39_1 = group(
         "p39-g1", "肾炎综合征与肾病综合征鉴别", "肾脏", ["lecture-24", "lecture-25"],
         opts(
@@ -904,6 +970,7 @@ def reviewed_groups(payload: dict) -> list[dict]:
         p07_1, p07_2, p07_3, existing_p07_4,
         p19, p22_1, p22_2, p26, p27_1, p27_2,
         existing_p31_1, p31_2, p31_3, p31_4,
+        p32_1, p32_2, p32_3, existing_p32_2, existing_p32_3,
         p39_1, p39_2, p39_3, p40,
         p46_1, p46_2, p46_3, p49_1, p49_2, p49_3, p50_1, p50_2, p50_3, p52_1, p52_2, p52_3, p52_4, p53_1, p53_2, p53_3, p53_4, p54_1, p54_2, p54_3,
         p69_1, p69_2, p69_3,
