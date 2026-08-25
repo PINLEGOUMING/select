@@ -93,6 +93,14 @@ def main() -> None:
     assert [option["key"] for option in by_id["p11-g1"]["options"]] == list("ABCDEFGHIJKLM")
     assert by_id["p11-g1"]["options"][-1]["label"] == "抗IL-4R抗体/抗TSLP抗体"
     assert by_id["p20-g1"]["topic"] == "消化" and by_id["p20-g2"]["topic"] == "消化"
+    assert [group["id"] for group in payload["groups"] if group["page"] == 31] == ["p31-g1", "p31-g2", "p31-g3", "p31-g4"]
+    assert by_id["p31-g4"]["title"] == "原发性肝癌治疗"
+    assert [stem["text"] for stem in by_id["p31-g4"]["stems"]] == ["首选治疗方案", "适合手术者", "TACE", "消融", "肝癌破裂大出血"]
+    assert [stem["answer"] for stem in by_id["p31-g4"]["stems"]] == [list("B"), list("DFGIJK"), list("AL"), list("C"), list("EH")]
+    assert by_id["p31-g4"]["options"][0]["label"].startswith("不符合手术指征者选择TACE")
+    assert by_id["p31-g4"]["options"][2]["label"].endswith("肝切除术后早期复发者")
+    assert "肿瘤包膜完整（周围界限清楚）" in by_id["p31-g4"]["options"][9]["label"]
+    assert "黄疸" in by_id["p31-g4"]["options"][11]["label"]
     assert by_id["p85-g1"]["stems"][1]["answer"] == list("ABDFJLNSUaegikmqrv①")
     assert by_id["p85-g1"]["options"][26]["label"] == "有相对性二尖瓣狭窄"
     assert by_id["p85-g1"]["options"][27]["label"] == "有相对性主动脉瓣狭窄"

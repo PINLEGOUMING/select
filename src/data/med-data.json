@@ -10256,12 +10256,7 @@
       "reviewState": "已按原题页与讲义复核",
       "topic": "消化",
       "lectureIds": [
-        "lecture-14",
-        "lecture-15",
-        "lecture-16",
-        "lecture-17",
-        "lecture-18",
-        "lecture-19"
+        "lecture-21"
       ],
       "lectureEvidence": {
         "lectureId": "lecture-21",
@@ -10274,7 +10269,7 @@
     {
       "id": "p31-g3",
       "page": 31,
-      "title": "肝脏血液供应",
+      "title": "肝脏与肝细胞癌的供血供氧",
       "kind": "B",
       "kindLabel": "B型题",
       "options": [
@@ -10309,25 +10304,20 @@
           "answerMode": "单选"
         },
         {
-          "text": "肝细胞癌供血主要来自",
+          "text": "肝细胞癌（HCC）供血主要来自",
           "answer": [
             "B"
           ],
-          "sourceText": "肝细胞癌供血主要来自B",
+          "sourceText": "肝细胞癌（HCC）供血主要来自B",
           "sourceY": 0,
           "answerMode": "单选"
         }
       ],
-      "sourceText": "肝脏血液供应（按原题页重新分组并结合讲义复核）",
+      "sourceText": "肝脏与肝细胞癌的供血供氧（按原题页重新分组并结合讲义复核）",
       "reviewState": "已按原题页与讲义复核",
       "topic": "消化",
       "lectureIds": [
-        "lecture-14",
-        "lecture-15",
-        "lecture-16",
-        "lecture-17",
-        "lecture-18",
-        "lecture-19"
+        "lecture-21"
       ],
       "lectureEvidence": {
         "lectureId": "lecture-21",
@@ -10340,39 +10330,39 @@
     {
       "id": "p31-g4",
       "page": 31,
-      "title": "首选治疗方案",
+      "title": "原发性肝癌治疗",
       "kind": "B",
       "kindLabel": "B型题",
       "options": [
         {
           "key": "A",
-          "label": "不符合手术指征选择_一，部分不适合一期手术者经此方法可获得手术机会",
-          "sourceText": "A.不符合手术指征选择_一，部分不适合一期手术者经此方法可获得手术机会"
+          "label": "不符合手术指征者选择TACE；部分不适合一期手术者经此方法可获得手术机会",
+          "sourceText": "A.不符合手术指征者选择TACE；部分不适合一期手术者经此方法可获得手术机会"
         },
         {
           "key": "B",
-          "label": "根治性手术切除肝段或肝叶(解剖性肝切除术)",
-          "sourceText": "B.根治性手术切除肝段或肝叶(解剖性肝切除术)"
+          "label": "根治性手术切除肝段或肝叶（解剖性肝切除术）",
+          "sourceText": "B.根治性手术切除肝段或肝叶（解剖性肝切除术）"
         },
         {
           "key": "C",
-          "label": "可用于单个肿瘤<5cm、或2-3个肿瘤最大<3cm且又不宜手术者，特别是肝切除术",
-          "sourceText": "C.可用于单个肿瘤<5cm、或2-3个肿瘤最大<3cm且又不宜手术者，特别是肝切除术"
+          "label": "可用于单个肿瘤≤5cm，或2～3个肿瘤中最大者≤3cm且不宜手术者，特别是肝切除术后早期复发者",
+          "sourceText": "C.可用于单个肿瘤≤5cm，或2～3个肿瘤中最大者≤3cm且不宜手术者，特别是肝切除术后早期复发者"
         },
         {
           "key": "D",
-          "label": "肝功能Child-PughA级、吲哚菁绿15分钟滞留率<30%",
-          "sourceText": "D.肝功能Child-PughA级、吲哚菁绿15分钟滞留率<30%"
+          "label": "肝功能Child-Pugh A级、吲哚菁绿15分钟滞留率＜30%",
+          "sourceText": "D.肝功能Child-Pugh A级、吲哚菁绿15分钟滞留率＜30%"
         },
         {
           "key": "E",
-          "label": "急诊TAE或TACE、或急诊肝切除术",
-          "sourceText": "E.急诊TAE或TACE、或急诊肝切除术"
+          "label": "急诊TAE或TACE，或急诊肝切除术",
+          "sourceText": "E.急诊TAE或TACE，或急诊肝切除术"
         },
         {
           "key": "F",
-          "label": "剩余肝脏体积须占标准肝脏体积30%以上(无肝纤维化)或40%以上(有肝纤维化）",
-          "sourceText": "F.剩余肝脏体积须占标准肝脏体积30%以上(无肝纤维化)或40%以上(有肝纤维化）"
+          "label": "剩余肝脏体积须占标准肝脏体积30%以上（无肝纤维化）或40%以上（有肝纤维化）",
+          "sourceText": "F.剩余肝脏体积须占标准肝脏体积30%以上（无肝纤维化）或40%以上（有肝纤维化）"
         },
         {
           "key": "G",
@@ -10386,13 +10376,13 @@
         },
         {
           "key": "I",
-          "label": "最适合单发<5cm的微小肝癌和小肝癌",
-          "sourceText": "1.最适合单发<5cm的微小肝癌和小肝癌"
+          "label": "最适合单发≤5cm的微小肝癌和小肝癌",
+          "sourceText": "I.最适合单发≤5cm的微小肝癌和小肝癌"
         },
         {
           "key": "J",
-          "label": "若为单发的大肝癌或巨大肝癌，应要求其向肝外生长(破坏肝组织<30%)、肿瘤包膜",
-          "sourceText": "J.若为单发的大肝癌或巨大肝癌，应要求其向肝外生长(破坏肝组织<30%)、肿瘤包膜"
+          "label": "若为单发的大肝癌或巨大肝癌，应要求其向肝外生长（破坏肝组织＜30%）、肿瘤包膜完整（周围界限清楚）",
+          "sourceText": "J.若为单发的大肝癌或巨大肝癌，应要求其向肝外生长（破坏肝组织＜30%）、肿瘤包膜完整（周围界限清楚）"
         },
         {
           "key": "K",
@@ -10401,8 +10391,8 @@
         },
         {
           "key": "L",
-          "label": "肝功能Child-PughC级(黄痘+腹水)",
-          "sourceText": "L.肝功能Child-PughC级(黄痘+腹水)"
+          "label": "肝功能Child-Pugh C级（黄疸＋腹水）",
+          "sourceText": "L.肝功能Child-Pugh C级（黄疸＋腹水）"
         }
       ],
       "stems": [
@@ -10416,7 +10406,7 @@
           "answerMode": "单选"
         },
         {
-          "text": "适合手术的",
+          "text": "适合手术者",
           "answer": [
             "D",
             "F",
@@ -10425,7 +10415,7 @@
             "J",
             "K"
           ],
-          "sourceText": "适合手术的（DFGIJK",
+          "sourceText": "适合手术者DFGIJK",
           "sourceY": 1219,
           "answerMode": "多选"
         },
@@ -10440,6 +10430,15 @@
           "answerMode": "多选"
         },
         {
+          "text": "消融",
+          "answer": [
+            "C"
+          ],
+          "sourceText": "消融C",
+          "sourceY": 1319,
+          "answerMode": "单选"
+        },
+        {
           "text": "肝癌破裂大出血",
           "answer": [
             "E",
@@ -10450,16 +10449,11 @@
           "answerMode": "多选"
         }
       ],
-      "sourceText": "A.不符合手术指征选择_一，部分不适合一期手术者经此方法可获得手术机会 | 问： | B.根治性手术切除肝段或肝叶(解剖性肝切除术) | 首选治疗方案B | C.可用于单个肿瘤<5cm、或2-3个肿瘤最大<3cm且又不宜手术者，特别是肝切除术 | 后早期复发者 | 适合手术的（DFGIJK | D.肝功能Child-PughA级、吲哚菁绿15分钟滞留率<30% | E.急诊TAE或TACE、或急诊肝切除术 | TACE (AL) | F.剩余肝脏体积须占标准肝脏体积30%以上(无肝纤维化)或40%以上(有肝纤维化） | G.无肝外转移 | H.病情危急、术中情况不允许者先立即行纱布填塞止血 | 1.最适合单发<5cm的微小肝癌和小肝癌 | 肝癌破裂大出血（EH | J.若为单发的大肝癌或巨大肝癌，应要求其向肝外生长(破坏肝组织<30%)、肿瘤包膜 | 完整(周围界限清楚) | K.若为多发肿瘤，应要求肿瘤结节数目少于3个且局限在肝的一段或一叶内 | L.肝功能Child-PughC级(黄痘+腹水) | 小红书号：385106504",
-      "reviewState": "待讲义复核",
+      "sourceText": "原发性肝癌治疗（按原题第31页五个题干及第21讲第3页讲义逐项复核）",
+      "reviewState": "已按原题第31页与第21讲第3页讲义逐项复核",
       "topic": "消化",
       "lectureIds": [
-        "lecture-14",
-        "lecture-15",
-        "lecture-16",
-        "lecture-17",
-        "lecture-18",
-        "lecture-19"
+        "lecture-21"
       ],
       "lectureEvidence": {
         "lectureId": "lecture-21",
