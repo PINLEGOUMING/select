@@ -9,6 +9,7 @@ from pathlib import Path
 
 
 FILL_GROUPS = {
+    "surgery-general-p02c": 1,
     "surgery-general-p02b": 8,
     "surgery-general-p03b": 6,
     "surgery-general-p05": 8,
@@ -22,7 +23,7 @@ RANKING_GROUPS = {
     "surgery-general-a12": ["ABCDE", "EDCBA"],
 }
 REQUIRED_GROUPS = {
-    "surgery-general-p01", "surgery-general-p02a", "surgery-general-p02b",
+    "surgery-general-p01", "surgery-general-p02a", "surgery-general-p02c", "surgery-general-p02b",
     "surgery-general-p03a", "surgery-general-p03b", "surgery-general-p04",
     "surgery-general-p05", "surgery-general-p06", "surgery-general-p07",
     "surgery-general-p08", "surgery-general-p09", "surgery-general-p10a",
@@ -42,11 +43,11 @@ def main() -> None:
     by_id = {group["id"]: group for group in groups}
 
     assert payload["topics"] == ["外科总论"]
-    assert len(groups) == 30
+    assert len(groups) == 31
     assert len(by_id) == len(groups)
     assert set(by_id) == REQUIRED_GROUPS
     assert sum(len(group["stems"]) for group in groups) == 136
-    assert sum(len(group["options"]) for group in groups) == 187
+    assert sum(len(group["options"]) for group in groups) == 186
 
     forbidden = re.compile(r"\s{2,}|[|°•“”‘’]")
     for group in groups:
@@ -114,13 +115,18 @@ def main() -> None:
         "A", "BC", "D", "EFGHI", "JK", "L"
     ]
 
+    p02a = by_id["surgery-general-p02a"]
+    p02a_map = {option["key"]: option["sourceKey"] for option in p02a["options"]}
+    assert ["".join(p02a_map[key] for key in stem["answer"]) for stem in p02a["stems"]] == ["A", "B", "C"]
+    assert by_id["surgery-general-p02c"]["stems"][0]["answer"] == ["手术开始前"]
+
     all_ids = []
     for filename in ["surgery-data.json", "surgery-fracture-data.json", "surgery-general-data.json"]:
         data = json.loads((root / "src/data" / filename).read_text(encoding="utf-8"))
         all_ids.extend(group["id"] for group in data["groups"])
     assert len(all_ids) == len(set(all_ids)), "duplicate surgery group ids"
 
-    print({"groups": 30, "stems": 136, "options": 187, "fill": 7, "ranking": 2, "status": "ok"})
+    print({"groups": 31, "stems": 136, "options": 186, "fill": 8, "ranking": 2, "status": "ok"})
 
 
 if __name__ == "__main__":

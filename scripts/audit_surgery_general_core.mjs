@@ -12,12 +12,12 @@ const groups = content.groups
 const byId = new Map(groups.map((group) => [group.id, group]))
 
 assert.deepEqual(content.topics, ['外科总论'])
-assert.equal(groups.length, 23)
-assert.equal(byId.size, 23)
+assert.equal(groups.length, 29)
+assert.equal(byId.size, 29)
 assert.equal(groups.reduce((sum, group) => sum + group.stems.length, 0), 111)
-assert.equal(groups.reduce((sum, group) => sum + group.options.length, 0), 235)
-assert.equal(groups.filter((group) => group.kind === 'B').length, 19)
-assert.equal(groups.filter((group) => group.kind === 'FILL').length, 4)
+assert.equal(groups.reduce((sum, group) => sum + group.options.length, 0), 234)
+assert.equal(groups.filter((group) => group.kind === 'B').length, 24)
+assert.equal(groups.filter((group) => group.kind === 'FILL').length, 5)
 
 const expectedChoiceAnswers = {
   'surgery-general-core-t01': ['GJ', 'DFHI', 'BC', 'A', 'E', 'K'],
@@ -30,21 +30,27 @@ const expectedChoiceAnswers = {
   'surgery-general-core-f03b': ['B', 'B', 'C', 'A'],
   'surgery-general-core-f04a': ['MNQ', 'ABCDEFGHIJKLOP'],
   'surgery-general-core-f04b': ['B', 'A', 'C', 'D'],
-  'surgery-general-core-n01': ['E', 'AF', 'G', 'H', 'B', 'C', 'K', 'J', 'J', 'J', 'I', 'D'],
+  'surgery-general-core-n01a': ['D', 'AE', 'F', 'G', 'B', 'C'],
+  'surgery-general-core-n01b': ['D', 'C', 'C', 'C', 'B', 'A'],
   'surgery-general-core-n02': ['FG', 'ACEIKLMNOPQ', 'BR', 'DHJ'],
-  'surgery-general-core-n03': ['J', 'FGHK', 'B', 'CD', 'A', 'E', 'I'],
-  'surgery-general-core-n04': ['DHW', 'GLSU', 'ANV', 'BCFOQ', 'EIKMPR', 'JTX'],
+  'surgery-general-core-n03a': ['G', 'DEFH', 'A', 'BC'],
+  'surgery-general-core-n03b': ['A', 'B'],
+  'surgery-general-core-n04a': ['ABC'],
+  'surgery-general-core-n04b': ['FJQS', 'ALT', 'BCEMO', 'DGIKNP', 'HRU'],
   'surgery-general-core-b01': ['BKOP', 'FHMN', 'ACGI', 'DEJL'],
-  'surgery-general-core-b02': ['E', 'AJ', 'BCDFH', 'CDGHI'],
+  'surgery-general-core-b02': ['E', 'AJ', 'BCDFH', 'CDGHI', 'K'],
   'surgery-general-core-b03': ['BDEG', 'ACF', 'H'],
-  'surgery-general-core-b04': ['O', 'HIJ', 'G', 'M', 'ALS', 'P', 'Q', 'BCDEFKNRTU'],
-  'surgery-general-core-b05': ['AC', 'CD', 'B'],
+  'surgery-general-core-b04a': ['A', 'BCD'],
+  'surgery-general-core-b04b': ['B', 'D', 'ACG', 'E', 'F'],
+  'surgery-general-core-b04c': ['ABCDEFGHIJ'],
+  'surgery-general-core-b05a': ['AB', 'BC'],
 }
 
 const expectedFillAnswers = {
   'surgery-general-core-t05': [['100', '70', '70', '100'], ['500', '1000', '1500', '1500'], ['30', '10', '3']],
   'surgery-general-core-f05': [['135', '150', '142'], ['280', '310'], ['5.5', '3.5'], ['130', '135', '120', '130', '120'], ['2.75', '2.25'], ['1', '1']],
   'surgery-general-core-n05': [['16'], ['2', '2'], ['2', '2'], ['3', '3.5', '2', '3', '50', '60'], ['0.7', '1.3', '30', '40'], ['1.2', '1.5', '1', '1', '1', '2', '150', '200']],
+  'surgery-general-core-n03c': [['其他药物']],
   'surgery-general-core-b06': [['9', '46'], ['9', '18', '27', '46', '1'], ['1.5', '2000'], ['2', '1', '1', '1'], ['8', '16'], ['2000'], ['3', '5']],
 }
 
@@ -106,4 +112,16 @@ assert.deepEqual(groups.slice(7, 11).map((group) => [group.id, group.stems.map((
   ['surgery-general-core-f04b', ['体液缓冲系统', '肺', '肾', '组织细胞']],
 ])
 
-console.log({ groups: 23, stems: 111, options: 235, choice: 19, fill: 4, lecturePages: 12, status: 'ok' })
+for (const retiredMixedId of [
+  'surgery-general-core-n01', 'surgery-general-core-n03', 'surgery-general-core-n04',
+  'surgery-general-core-b04', 'surgery-general-core-b05',
+]) assert.equal(byId.has(retiredMixedId), false, `${retiredMixedId}: mixed option pool returned`)
+
+assert.deepEqual(groups.filter((group) => /^surgery-general-core-(n01|n03|n04|b04)/.test(group.id)).map((group) => group.id), [
+  'surgery-general-core-n01a', 'surgery-general-core-n01b',
+  'surgery-general-core-n03a', 'surgery-general-core-n03b', 'surgery-general-core-n03c',
+  'surgery-general-core-n04a', 'surgery-general-core-n04b',
+  'surgery-general-core-b04a', 'surgery-general-core-b04b', 'surgery-general-core-b04c',
+])
+
+console.log({ groups: 29, stems: 111, options: 234, choice: 24, fill: 5, lecturePages: 12, status: 'ok' })

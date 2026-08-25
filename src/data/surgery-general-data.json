@@ -141,35 +141,28 @@
     {
       "id": "surgery-general-p02a",
       "page": 0,
-      "title": "围术期·术前准备（系统疾病与一般准备）",
+      "title": "围术期·术前准备（系统疾病）",
       "kind": "B",
       "kindLabel": "B型题",
       "options": [
         {
           "key": "A",
+          "label": "继续服用降压药，避免戒断综合征",
+          "sourceText": "C. 继续服用降压药，避免戒断综合征",
+          "ocrScore": 1.0,
+          "sourceKey": "C"
+        },
+        {
+          "key": "B",
           "label": "暂时不手术，可行TIPS、TACE等",
           "sourceText": "A. 暂时不手术，可行TIPS、TACE等",
           "ocrScore": 1.0,
           "sourceKey": "A"
         },
         {
-          "key": "B",
-          "label": "继续服用降压药，避免戒断综合征",
-          "sourceText": "B. 继续服用降压药，避免戒断综合征",
-          "ocrScore": 1.0,
-          "sourceKey": "C"
-        },
-        {
           "key": "C",
-          "label": "手术开始前",
-          "sourceText": "C. 手术开始前",
-          "ocrScore": 1.0,
-          "sourceKey": "D"
-        },
-        {
-          "key": "D",
           "label": "在有效透析后可耐受手术",
-          "sourceText": "D. 在有效透析后可耐受手术",
+          "sourceText": "B. 在有效透析后可耐受手术",
           "ocrScore": 1.0,
           "sourceKey": "B"
         }
@@ -178,7 +171,7 @@
         {
           "text": "肝功能Child C级（黄疸＋腹水）",
           "answer": [
-            "A"
+            "B"
           ],
           "answerMode": "单选",
           "sourceText": "肝功能Child C级（黄疸＋腹水） A",
@@ -187,7 +180,7 @@
         {
           "text": "肾功能严重损害",
           "answer": [
-            "D"
+            "C"
           ],
           "answerMode": "单选",
           "sourceText": "肾功能严重损害 D",
@@ -196,23 +189,14 @@
         {
           "text": "高血压",
           "answer": [
-            "B"
+            "A"
           ],
           "answerMode": "单选",
           "sourceText": "高血压 B",
           "ocrScore": 1.0
-        },
-        {
-          "text": "备皮最佳时间",
-          "answer": [
-            "C"
-          ],
-          "answerMode": "单选",
-          "sourceText": "备皮最佳时间 C",
-          "ocrScore": 1.0
         }
       ],
-      "sourceText": "围术期·术前准备（系统疾病与一般准备）；A. 暂时不手术，可行TIPS、TACE等；B. 继续服用降压药，避免戒断综合征；C. 手术开始前；D. 在有效透析后可耐受手术；肝功能Child C级（黄疸＋腹水） A；肾功能严重损害 D；高血压 B；备皮最佳时间 C",
+      "sourceText": "围术期·术前准备（系统疾病）；A. 暂时不手术，可行TIPS、TACE等；B. 在有效透析后可耐受手术；C. 继续服用降压药，避免戒断综合征；肝功能Child C级（黄疸＋腹水）；肾功能严重损害；高血压",
       "reviewState": "已完成结构校对",
       "reviewIssues": [],
       "reviewNotes": [],
@@ -232,9 +216,48 @@
       "optionOriginalOrder": [
         "A",
         "B",
-        "C",
-        "D"
+        "C"
       ]
+    },
+    {
+      "id": "surgery-general-p02c",
+      "page": 0,
+      "title": "围术期·备皮时间",
+      "kind": "FILL",
+      "kindLabel": "填空题",
+      "options": [],
+      "stems": [
+        {
+          "text": "备皮最佳时间为____。",
+          "answer": [
+            "手术开始前"
+          ],
+          "answerMode": "填空",
+          "sourceText": "备皮最佳时间为手术开始前。",
+          "ocrScore": 1.0,
+          "blankLabels": [
+            "时间"
+          ],
+          "answerDisplay": "手术开始前",
+          "inputMode": "text"
+        }
+      ],
+      "sourceText": "围术期·备皮时间；备皮最佳时间为手术开始前。",
+      "reviewState": "已完成结构校对",
+      "reviewIssues": [],
+      "reviewNotes": [],
+      "topic": "外科总论",
+      "hideSource": true,
+      "lectureIds": [
+        "lecture-35"
+      ],
+      "lectureEvidence": {
+        "lectureId": "lecture-35",
+        "page": 1,
+        "image": "surgery/lecture-pages/lecture-35-page-01.webp",
+        "title": "第35讲第1页 · 围术期",
+        "description": "本题组已按《核心精讲·围术期》对应页逐项复核。"
+      }
     },
     {
       "id": "surgery-general-p02b",

@@ -72,13 +72,13 @@ function choiceGroup({ id, title, lecture, page, options, stems, note }) {
   }
 }
 
-function fillGroup({ id, title, lecture, page, stems }) {
+function fillGroup({ id, title, lecture, page, stems, inputMode = 'decimal' }) {
   const lectureEvidence = evidence(lecture, page, `数字与单位已按《核心精讲·${title.split('·')[0]}》对应页逐项复核。`)
   return {
     id, page: 0, title, kind: 'FILL', kindLabel: '填空题', options: [],
     stems: stems.map(([text, answer]) => ({
       text, answer, answerDisplay: answer.join('；'), answerMode: '填空',
-      blankLabels: answer.map((_, index) => `第${index + 1}空`), inputMode: 'decimal', sourceText: text, ocrScore: 1,
+      blankLabels: answer.map((_, index) => `第${index + 1}空`), inputMode, sourceText: text, ocrScore: 1,
     })),
     sourceText: [title, ...stems.map(([text]) => text)].join('；'), reviewState: '已完成结构校对',
     reviewIssues: [], reviewNotes: [], topic: '外科总论', hideSource: true,
@@ -88,9 +88,14 @@ function fillGroup({ id, title, lecture, page, stems }) {
 
 export const surgeryGeneralInfectionGroups = [
   choiceGroup({
-    id: 'surgery-general-infection-01', title: '感染·感染类型与抗菌药原则', lecture: 34, page: 1,
-    options: ['破伤风','表浅且局限的疖','感染性心内膜炎','病因未明的严重感染','不敏感菌趁机生长繁殖','去除感染灶','手术＞3 h或失血＞1500 ml，术中可给第二剂','通畅引流','总预防用药＜24～48 h','继发性腹膜炎','念珠菌感染','尿路感染','气性坏疽','两性霉素B＋氟胞嘧啶治疗真菌感染','结核','免疫缺陷者的严重感染','脓毒症','长期使用广谱抗生素','院内感染','麻醉开始或术前0.5～2 h首次给药'],
-    stems: [['特异性感染',['A','K','M','O']],['条件／机会感染',['S']],['二重感染／菌群交替',['E','K','R']],['无需抗生素',['B']],['外科治疗基本原则',['F','H']],['预防性用药',['G','I','T']],['联合用药',['C','D','J','L','N','O','P','Q']]],
+    id: 'surgery-general-infection-01a', title: '感染·感染类型', lecture: 34, page: 1,
+    options: ['破伤风','不敏感菌趁机生长繁殖','念珠菌感染','气性坏疽','结核','长期使用广谱抗生素','院内感染'],
+    stems: [['特异性感染',['A','C','D','E']],['条件／机会感染',['G']],['二重感染／菌群交替',['B','C','F']]],
+  }),
+  choiceGroup({
+    id: 'surgery-general-infection-01b', title: '感染·外科治疗与抗菌药原则', lecture: 34, page: 1,
+    options: ['感染性心内膜炎','病因未明的严重感染','去除感染灶','手术＞3 h或失血＞1500 ml，术中可给第二剂','通畅引流','总预防用药＜24～48 h','继发性腹膜炎','尿路感染','两性霉素B＋氟胞嘧啶治疗真菌感染','结核','免疫缺陷者的严重感染','脓毒症','麻醉开始或术前0.5～2 h首次给药','表浅且局限的疖'],
+    stems: [['外科治疗基本原则',['C','E']],['预防性用药',['D','F','M']],['联合用药',['A','B','G','H','I','J','K','L']],['无需抗生素',['N']]],
   }),
   choiceGroup({
     id: 'surgery-general-infection-02', title: '感染·浅部组织感染', lecture: 34, page: 2,
@@ -104,9 +109,14 @@ export const surgeryGeneralInfectionGroups = [
     stems: [['甲沟炎',['G','L']],['脓性指头炎',['C','D','I','J','K','O']],['掌中间隙感染',['B','E','F','P']],['鱼际间隙感染',['A','B','F','H']],['化脓性腱鞘炎',['M','N','Q','R','S']],['化脓性滑囊炎',['T']]],
   }),
   choiceGroup({
-    id: 'surgery-general-infection-04', title: '感染·脓毒症', lecture: 34, page: 4,
-    options: ['多次血培养阴性考虑厌氧菌、真菌','金黄色葡萄球菌','真菌','迁徙／转移性脓肿','心肌炎','易发生冷休克','导管内采样送检','皮疹','脓液／穿刺液培养','休克者同时补充血容量','处理原发感染灶','G⁻杆菌','寒战发热时进行血培养','寒战高热','多合并需氧菌感染','结膜瘀斑','视网膜灶性絮样斑','血压、体温、WBC三低','1 h内静脉用抗生素','恶臭','厌氧菌'],
-    stems: [['G⁻杆菌',['F','L','R']],['金黄色葡萄球菌',['B','D','E','H','N']],['厌氧菌',['O','T','U']],['真菌',['C','P','Q']],['检查',['A','G','I','M']],['治疗',['J','K','S']]],
+    id: 'surgery-general-infection-04a', title: '感染·脓毒症病原体特征', lecture: 34, page: 4,
+    options: ['金黄色葡萄球菌','真菌','迁徙／转移性脓肿','心肌炎','易发生冷休克','皮疹','G⁻杆菌','寒战高热','多合并需氧菌感染','结膜瘀斑','视网膜灶性絮样斑','血压、体温、WBC三低','恶臭','厌氧菌'],
+    stems: [['G⁻杆菌',['E','G','L']],['金黄色葡萄球菌',['A','C','D','F','H']],['厌氧菌',['I','M','N']],['真菌',['B','J','K']]],
+  }),
+  choiceGroup({
+    id: 'surgery-general-infection-04b', title: '感染·脓毒症检查与治疗', lecture: 34, page: 4,
+    options: ['多次血培养阴性考虑厌氧菌、真菌','导管内采样送检','脓液／穿刺液培养','休克者同时补充血容量','处理原发感染灶','寒战发热时进行血培养','1 h内静脉用抗生素'],
+    stems: [['检查',['A','B','C','F']],['治疗',['D','E','G']]],
   }),
   choiceGroup({
     id: 'surgery-general-infection-05', title: '感染·破伤风与气性坏疽', lecture: 34, page: 5,
@@ -121,9 +131,14 @@ export const surgeryGeneralInfectionGroups = [
 
 const shockGroups = [
   choiceGroup({
-    id: 'surgery-general-shock-01', title: '休克·概述与微循环', lecture: 37, page: 1,
-    options: ['补充血容量','只进不出','收缩期／代偿期／休克早期','扩张期／抑制期','组织灌注不足→氧供给不足和氧需求增加','衰竭期','可出现DIC','只出不进','DIC早期／高凝期用肝素抗凝','必要时输血','可联合人工胶体液','炎症介质释放','平衡盐等晶体液'],
-    stems: [['本质',['E']],['特征',['L']],['首选治疗',['A','J','K','M']],['收缩期',['C','H']],['扩张期',['B','D']],['衰竭期',['F','G','I']]],
+    id: 'surgery-general-shock-01a', title: '休克·概述与治疗', lecture: 37, page: 1,
+    options: ['补充血容量','组织灌注不足→氧供给不足和氧需求增加','必要时输血','可联合人工胶体液','炎症介质释放','平衡盐等晶体液'],
+    stems: [['本质',['B']],['特征',['E']],['首选治疗',['A','C','D','F']]],
+  }),
+  choiceGroup({
+    id: 'surgery-general-shock-01b', title: '休克·微循环分期', lecture: 37, page: 1,
+    options: ['只进不出','收缩期／代偿期／休克早期','扩张期／抑制期','衰竭期','可出现DIC','只出不进','DIC早期／高凝期用肝素抗凝'],
+    stems: [['收缩期',['B','F']],['扩张期',['A','C']],['衰竭期',['D','E','G']]],
   }),
   choiceGroup({
     id: 'surgery-general-shock-02', title: '休克·休克分度', lecture: 37, page: 2,
@@ -146,9 +161,19 @@ const shockGroups = [
     stems: [['常见病因',['C','F','J','Q','Y']],['冷休克',['B','I','N','P','R','T','U','W','X']],['暖休克',['A','G']],['SIRS',['D','L','S','V']],['治疗',['E','H','K','M','O']]],
   }),
   choiceGroup({
-    id: 'surgery-general-shock-06', title: '休克·常考疾病的休克处理', lecture: 37, page: 5,
-    options: ['手术探查止血','心包穿刺','同步电复律','补充血容量','手术同时补充血容量','PCI或溶栓','同时治疗感染灶','＜2 h PCI','正性肌力药','补充血容量→处理组织损伤→处理骨折','EVL＋生长抑素／奥曲肽，可考虑TIPS／急诊断流术','禁用硝酸酯类、利尿剂','rt-PA等溶栓→肝素等抗凝','立即穿刺抽气','PPI或联合胃镜','主动脉内球囊反搏IABP','起搏器','人工瓣膜置换术','急诊解除胆道梗阻降低压力'],
-    stems: [['急性肺血栓栓塞：高危',['M']],['急性左心衰：SBP＜90 mmHg',['I']],['快速型心律失常：SBP＜90 mmHg',['C']],['严重缓慢型心律失常',['Q']],['急性二尖瓣关闭不全：SBP＜90 mmHg',['P']],['NSTE-ACS：极高危',['H','P']],['STEMI：SBP＜90 mmHg',['F','P']],['右室急性梗死',['D','L']],['心脏压塞',['B']],['感染性心内膜炎：瓣叶穿孔／瘘并心衰休克',['R']],['消化性溃疡上消化道出血：SBP＜90 mmHg',['D']],['食管胃底静脉曲张出血：SBP＜90 mmHg',['D']],['食管胃底静脉曲张出血：BP稳定',['K']],['感染性休克',['D','G']],['进行性血胸',['A','D']],['张力性气胸',['N']],['脾、肝损伤伴休克',['E']],['AOSC伴休克',['D','S']],['骨折伴休克',['J']],['消化性溃疡上消化道出血：BP稳定',['O']]],
+    id: 'surgery-general-shock-06a', title: '休克·心血管疾病处理', lecture: 37, page: 5,
+    options: ['心包穿刺','同步电复律','补充血容量','PCI或溶栓','＜2 h PCI','正性肌力药','禁用硝酸酯类、利尿剂','rt-PA等溶栓→肝素等抗凝','主动脉内球囊反搏IABP','起搏器','人工瓣膜置换术'],
+    stems: [['急性肺血栓栓塞：高危',['H']],['急性左心衰：SBP＜90 mmHg',['F']],['快速型心律失常：SBP＜90 mmHg',['B']],['严重缓慢型心律失常',['J']],['急性二尖瓣关闭不全：SBP＜90 mmHg',['I']],['NSTE-ACS：极高危',['E','I']],['STEMI：SBP＜90 mmHg',['D','I']],['右室急性梗死',['C','G']],['心脏压塞',['A']],['感染性心内膜炎：瓣叶穿孔／瘘并心衰休克',['K']]],
+  }),
+  choiceGroup({
+    id: 'surgery-general-shock-06b', title: '休克·消化道与感染性疾病处理', lecture: 37, page: 5,
+    options: ['补充血容量','同时治疗感染灶','EVL＋生长抑素／奥曲肽，可考虑TIPS／急诊断流术','PPI或联合胃镜','急诊解除胆道梗阻降低压力'],
+    stems: [['消化性溃疡上消化道出血：SBP＜90 mmHg',['A']],['食管胃底静脉曲张出血：SBP＜90 mmHg',['A']],['食管胃底静脉曲张出血：BP稳定',['C']],['感染性休克',['A','B']],['AOSC伴休克',['A','E']],['消化性溃疡上消化道出血：BP稳定',['D']]],
+  }),
+  choiceGroup({
+    id: 'surgery-general-shock-06c', title: '休克·创伤处理', lecture: 37, page: 5,
+    options: ['手术探查止血','补充血容量','手术同时补充血容量','补充血容量→处理组织损伤→处理骨折','立即穿刺抽气'],
+    stems: [['进行性血胸',['A','B']],['张力性气胸',['E']],['脾、肝损伤伴休克',['C']],['骨折伴休克',['D']]],
   }),
   fillGroup({
     id: 'surgery-general-shock-07', title: '休克·数字挖空', lecture: 37, page: 3,
@@ -163,9 +188,14 @@ const otherGroups = [
     stems: [['高压蒸汽',['G','K']],['化学气体',['D','F','J','M']],['煮沸',['B','E','H','I']],['化学药液浸泡',['A','F','O']],['干热／火烧',['C','I','L']],['电离辐射',['N']]],
   }),
   choiceGroup({
-    id: 'surgery-general-other-02', title: '其它外科总论·手术区与特殊污染处理', lecture: 38, page: 1,
-    options: ['由外周开始消毒','由中心向四周消毒','切口周围15 cm','肩部以下、腰部以上身前区至腋中线＋双侧手臂＋手术台面以上','重新洗手＋消毒＋更换手套','40%甲醛＋高锰酸钾熏蒸','乙肝','2000 mg/L有效氯浸泡1小时＋高压蒸汽灭菌','铜绿假单胞菌','开放性结核','气性坏疽'],
-    stems: [['一般皮肤消毒',['B','C']],['感染区／肛门区',['A','C']],['无菌区域',['D']],['手套破损／接触有菌处',['E']],['手术室熏蒸',['F','I','K']],['器械特殊处理',['G','H','I','J']]],
+    id: 'surgery-general-other-02a', title: '其它外科总论·手术区消毒', lecture: 38, page: 1,
+    options: ['由外周开始消毒','由中心向四周消毒','切口周围15 cm','肩部以下、腰部以上身前区至腋中线＋双侧手臂＋手术台面以上'],
+    stems: [['一般皮肤消毒',['B','C']],['感染区／肛门区',['A','C']],['无菌区域',['D']]],
+  }),
+  choiceGroup({
+    id: 'surgery-general-other-02b', title: '其它外科总论·特殊污染处理', lecture: 38, page: 1,
+    options: ['重新洗手＋消毒＋更换手套','40%甲醛＋高锰酸钾熏蒸','乙肝','2000 mg/L有效氯浸泡1小时＋高压蒸汽灭菌','铜绿假单胞菌','开放性结核','气性坏疽'],
+    stems: [['手套破损／接触有菌处',['A']],['手术室熏蒸',['B','E','G']],['器械特殊处理',['C','D','E','F']]],
   }),
   choiceGroup({
     id: 'surgery-general-other-03', title: '其它外科总论·急性肝衰竭', lecture: 38, page: 1,
@@ -173,19 +203,43 @@ const otherGroups = [
     stems: [['我国最主要原因',['C']],['表现与化验',['A','B','D','E','F','G']]],
   }),
   choiceGroup({
-    id: 'surgery-general-other-04', title: '其它外科总论·创伤', lecture: 38, page: 1,
-    options: ['加压包扎无法止血的四肢大出血','禁用细绳、电线','切除创缘皮肤1～2 mm','窒息','清创后不一期缝合','开放伤','闭合伤','盲管伤','休克','心跳呼吸骤停','贯通伤','清创后一期缝合','张力性气胸'],
-    stems: [['按皮肤／黏膜完整性分类',['F','G']],['开放伤',['H','K']],['止血带',['A','B']],['开放伤清创',['C']],['规定时限内',['L']],['超过时限／火器伤／重污染',['E']],['优先抢救',['D','I','J','M']]],
+    id: 'surgery-general-other-04a', title: '其它外科总论·创伤分类', lecture: 38, page: 1,
+    options: ['开放伤','闭合伤','盲管伤','贯通伤'],
+    stems: [['按皮肤／黏膜完整性分类',['A','B']],['开放伤',['C','D']]],
   }),
   choiceGroup({
-    id: 'surgery-general-other-05', title: '其它外科总论·移植与微创', lecture: 38, page: 2,
-    options: ['易并发严重感染','易发生GVHD','CO₂气腹相关并发症','排斥反应发生率最高','肾','供受者ABO血型不符','慢性排斥反应是最大障碍','小肠','受者已有供者特异性HLA抗体','角膜','皮肤','皮肌瓣'],
-    stems: [['组织移植',['J','K','L']],['超急性排斥反应',['F','I']],['移植疗效最显著',['E','G']],['小肠移植',['A','B','D','H']],['腹腔镜手术',['C']]],
+    id: 'surgery-general-other-04b', title: '其它外科总论·止血带', lecture: 38, page: 1,
+    options: ['加压包扎无法止血的四肢大出血','禁用细绳、电线'],
+    stems: [['止血带适应证',['A']],['止血带禁用材料',['B']]],
   }),
   choiceGroup({
-    id: 'surgery-general-other-06', title: '其它外科总论·肿瘤预防与癌痛', lecture: 38, page: 2,
-    options: ['高危人群定期筛查','药物以外的治疗','强阿片类：吗啡','早发现、早诊断、早治疗','从小剂量开始，视止痛效果逐渐增量','疫苗','非阿片类：阿司匹林','防止癌症发生','定期给药','弱阿片类：可待因','姑息、对症治疗','戒烟','口服→直肠→注射'],
-    stems: [['一级预防',['F','H','L']],['二级预防',['A','D']],['三级预防',['K']],['癌痛阶梯',['B','C','G','J']],['癌痛给药原则',['E','I','M']]],
+    id: 'surgery-general-other-04c', title: '其它外科总论·开放伤清创', lecture: 38, page: 1,
+    options: ['切除创缘皮肤1～2 mm','清创后不一期缝合','清创后一期缝合'],
+    stems: [['开放伤清创',['A']],['规定时限内',['C']],['超过时限／火器伤／重污染',['B']]],
+  }),
+  choiceGroup({
+    id: 'surgery-general-other-04d', title: '其它外科总论·创伤优先处理', lecture: 38, page: 1,
+    options: ['窒息','休克','心跳呼吸骤停','张力性气胸'],
+    stems: [['优先解除呼吸危机',['A','D']],['优先复苏循环与生命体征',['B','C']]],
+  }),
+  choiceGroup({
+    id: 'surgery-general-other-05a', title: '其它外科总论·移植', lecture: 38, page: 2,
+    options: ['易并发严重感染','易发生GVHD','排斥反应发生率最高','肾','供受者ABO血型不符','慢性排斥反应是最大障碍','小肠','受者已有供者特异性HLA抗体','角膜','皮肤','皮肌瓣'],
+    stems: [['组织移植',['I','J','K']],['超急性排斥反应',['E','H']],['移植疗效最显著',['D','F']],['小肠移植',['A','B','C','G']]],
+  }),
+  fillGroup({
+    id: 'surgery-general-other-05b', title: '其它外科总论·腹腔镜手术', lecture: 38, page: 2, inputMode: 'text',
+    stems: [['腹腔镜手术常见并发症与____气腹相关。',['CO₂']]],
+  }),
+  choiceGroup({
+    id: 'surgery-general-other-06a', title: '其它外科总论·肿瘤预防', lecture: 38, page: 2,
+    options: ['高危人群定期筛查','早发现、早诊断、早治疗','疫苗','防止癌症发生','姑息、对症治疗','戒烟'],
+    stems: [['一级预防',['C','D','F']],['二级预防',['A','B']],['三级预防',['E']]],
+  }),
+  choiceGroup({
+    id: 'surgery-general-other-06b', title: '其它外科总论·癌痛治疗', lecture: 38, page: 2,
+    options: ['药物以外的治疗','强阿片类：吗啡','从小剂量开始，视止痛效果逐渐增量','非阿片类：阿司匹林','定期给药','弱阿片类：可待因','口服→直肠→注射'],
+    stems: [['癌痛阶梯',['A','B','D','F']],['癌痛给药原则',['C','E','G']]],
   }),
   choiceGroup({
     id: 'surgery-general-other-07', title: '其它外科总论·抗肿瘤药分类', lecture: 38, page: 2,

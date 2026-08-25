@@ -7,10 +7,10 @@ const choiceGroups = groups.filter((group) => group.kind === 'B')
 const fillGroups = groups.filter((group) => group.kind === 'FILL')
 const stems = groups.flatMap((group) => group.stems)
 
-if (groups.length !== 22) errors.push(`题组数应为22，实际${groups.length}`)
-if (choiceGroups.length !== 19) errors.push(`选择题组应为19，实际${choiceGroups.length}`)
-if (fillGroups.length !== 3) errors.push(`填空题组应为3，实际${fillGroups.length}`)
-if (stems.length !== 139) errors.push(`题干数应为139，实际${stems.length}`)
+if (groups.length !== 33) errors.push(`题组数应为33，实际${groups.length}`)
+if (choiceGroups.length !== 29) errors.push(`选择题组应为29，实际${choiceGroups.length}`)
+if (fillGroups.length !== 4) errors.push(`填空题组应为4，实际${fillGroups.length}`)
+if (stems.length !== 141) errors.push(`题干数应为141，实际${stems.length}`)
 
 const ids = new Set()
 for (const group of groups) {
@@ -53,9 +53,55 @@ for (const key of ['E', 'J']) {
   if (!sourceAnswerFor('疖').includes(key) || sourceAnswerFor('痈').includes(key)) errors.push(`浅部感染讲义修正未落实：${key}`)
 }
 
+const byId = new Map(groups.map((group) => [group.id, group]))
+for (const retiredMixedId of [
+  'surgery-general-infection-01', 'surgery-general-infection-04',
+  'surgery-general-shock-01', 'surgery-general-shock-06',
+  'surgery-general-other-02', 'surgery-general-other-04', 'surgery-general-other-05', 'surgery-general-other-06',
+]) {
+  if (byId.has(retiredMixedId)) errors.push(`${retiredMixedId} 混合选项池重新出现`)
+}
+
+const expectedSplitAnswers = {
+  'surgery-general-infection-01a': ['ACDE', 'G', 'BCF'],
+  'surgery-general-infection-01b': ['CE', 'DFM', 'ABGHIJKL', 'N'],
+  'surgery-general-infection-04a': ['EGL', 'ACDFH', 'IMN', 'BJK'],
+  'surgery-general-infection-04b': ['ABCF', 'DEG'],
+  'surgery-general-shock-01a': ['B', 'E', 'ACDF'],
+  'surgery-general-shock-01b': ['BF', 'AC', 'DEG'],
+  'surgery-general-shock-06a': ['H', 'F', 'B', 'J', 'I', 'EI', 'DI', 'CG', 'A', 'K'],
+  'surgery-general-shock-06b': ['A', 'A', 'C', 'AB', 'AE', 'D'],
+  'surgery-general-shock-06c': ['AB', 'E', 'C', 'D'],
+  'surgery-general-other-02a': ['BC', 'AC', 'D'],
+  'surgery-general-other-02b': ['A', 'BEG', 'CDEF'],
+  'surgery-general-other-04a': ['AB', 'CD'],
+  'surgery-general-other-04b': ['A', 'B'],
+  'surgery-general-other-04c': ['A', 'C', 'B'],
+  'surgery-general-other-04d': ['AD', 'BC'],
+  'surgery-general-other-05a': ['IJK', 'EH', 'DF', 'ABCG'],
+  'surgery-general-other-06a': ['CDF', 'AB', 'E'],
+  'surgery-general-other-06b': ['ABDF', 'CEG'],
+}
+for (const [groupId, expected] of Object.entries(expectedSplitAnswers)) {
+  const group = byId.get(groupId)
+  if (!group) {
+    errors.push(`缺少拆分题组：${groupId}`)
+    continue
+  }
+  const currentToSource = Object.fromEntries(group.options.map((option) => [option.key, option.sourceKey]))
+  const semantic = group.stems.map((stem) => stem.answer.map((key) => currentToSource[key]).sort().join(''))
+  const normalizedExpected = expected.map((answer) => [...answer].sort().join(''))
+  if (JSON.stringify(semantic) !== JSON.stringify(normalizedExpected)) errors.push(`${groupId} 拆分后答案映射错误`)
+}
+
+const laparoscopy = byId.get('surgery-general-other-05b')
+if (laparoscopy?.kind !== 'FILL' || laparoscopy?.stems[0]?.text !== '腹腔镜手术常见并发症与____气腹相关。' || laparoscopy?.stems[0]?.answer[0] !== 'CO₂') {
+  errors.push('腹腔镜单知识点未规范为有效填空题')
+}
+
 if (errors.length) {
   console.error(errors.join('\n'))
   process.exit(1)
 }
 
-console.log(`外科总论后续内容审计通过：${groups.length}组，${stems.length}题干；感染已置于围术期前，休克与其它总论置于麻醉后。`)
+console.log(`外科总论后续内容审计通过：${groups.length}组，${stems.length}题干；混合选项池已拆分，感染已置于围术期前。`)
