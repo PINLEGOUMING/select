@@ -12,11 +12,11 @@ const groups = content.groups
 const byId = new Map(groups.map((group) => [group.id, group]))
 
 assert.deepEqual(content.topics, ['外科总论'])
-assert.equal(groups.length, 21)
-assert.equal(byId.size, 21)
+assert.equal(groups.length, 23)
+assert.equal(byId.size, 23)
 assert.equal(groups.reduce((sum, group) => sum + group.stems.length, 0), 111)
 assert.equal(groups.reduce((sum, group) => sum + group.options.length, 0), 235)
-assert.equal(groups.filter((group) => group.kind === 'B').length, 17)
+assert.equal(groups.filter((group) => group.kind === 'B').length, 19)
 assert.equal(groups.filter((group) => group.kind === 'FILL').length, 4)
 
 const expectedChoiceAnswers = {
@@ -26,8 +26,10 @@ const expectedChoiceAnswers = {
   'surgery-general-core-t04': ['G', 'BHJK', 'ABDFJ', 'AI', 'L', 'CE'],
   'surgery-general-core-f01': ['BEFJN', 'DHMOS', 'AEGIKLQ', 'CPR'],
   'surgery-general-core-f02': ['ABCFKLNPQV', 'DEGHIJMORSTUW'],
-  'surgery-general-core-f03': ['AGHJM', 'CDEIK', 'F', 'F', 'L', 'B'],
-  'surgery-general-core-f04': ['ORU', 'ABCDEFGHIJKNST', 'M', 'L', 'P', 'Q'],
+  'surgery-general-core-f03a': ['AEFHJ', 'BCDGI'],
+  'surgery-general-core-f03b': ['B', 'B', 'C', 'A'],
+  'surgery-general-core-f04a': ['MNQ', 'ABCDEFGHIJKLOP'],
+  'surgery-general-core-f04b': ['B', 'A', 'C', 'D'],
   'surgery-general-core-n01': ['E', 'AF', 'G', 'H', 'B', 'C', 'K', 'J', 'J', 'J', 'I', 'D'],
   'surgery-general-core-n02': ['FG', 'ACEIKLMNOPQ', 'BR', 'DHJ'],
   'surgery-general-core-n03': ['J', 'FGHK', 'B', 'CD', 'A', 'E', 'I'],
@@ -97,4 +99,11 @@ for (const filename of [
 allIds.push(...groups.map((group) => group.id))
 assert.equal(allIds.length, new Set(allIds).size, 'duplicate surgery group ids')
 
-console.log({ groups: 21, stems: 111, options: 235, choice: 17, fill: 4, lecturePages: 12, status: 'ok' })
+assert.deepEqual(groups.slice(7, 11).map((group) => [group.id, group.stems.map((stem) => stem.text)]), [
+  ['surgery-general-core-f03a', ['高钾血症', '静脉补KCl']],
+  ['surgery-general-core-f03b', ['DKA：K⁺＜3.5 mmol/L', 'DKA：K⁺正常且尿量＞40 ml/h', 'DKA：K⁺正常且尿量＜30 ml/h', 'DKA：K⁺＞5.5 mmol/L']],
+  ['surgery-general-core-f04a', ['高钙血症', '低钙血症']],
+  ['surgery-general-core-f04b', ['体液缓冲系统', '肺', '肾', '组织细胞']],
+])
+
+console.log({ groups: 23, stems: 111, options: 235, choice: 19, fill: 4, lecturePages: 12, status: 'ok' })

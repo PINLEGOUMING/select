@@ -192,29 +192,37 @@ const groups = [
     stems: [['高钾血症', ['A', 'B', 'C', 'F', 'K', 'L', 'N', 'P', 'Q', 'V']], ['低钾血症', ['D', 'E', 'G', 'H', 'I', 'J', 'M', 'O', 'R', 'S', 'T', 'U', 'W']]],
   }),
   choiceGroup({
-    id: 'surgery-general-core-f03', title: '体液失衡·钾失衡治疗', lecture: 31, page: 3,
+    id: 'surgery-general-core-f03a', title: '体液失衡·高低钾治疗', lecture: 31, page: 3,
     options: [
-      '5% NaHCO₃', '暂缓补钾', '浓度＜40 mmol/L', '速度＜20 mmol/h', '尿量＞40 ml/h补钾',
-      '立即补钾', '立即停用一切含钾药物', '胰岛素＋葡萄糖', '补钾40～80 mmol/d（KCl 3～6 g/d）',
+      '5% NaHCO₃', '浓度＜40 mmol/L', '速度＜20 mmol/h', '尿量＞40 ml/h补钾',
+      '立即停用一切含钾药物', '胰岛素＋葡萄糖', '补钾40～80 mmol/d（KCl 3～6 g/d）',
       '排钾利尿剂、阳离子交换树脂、透析', '补钾后未改善考虑低镁血症',
-      '暂缓补钾，待尿量增加后补钾', '首选10%葡萄糖酸钙，拮抗K⁺对心脏的毒性',
+      '首选10%葡萄糖酸钙，拮抗K⁺对心脏的毒性',
     ],
+    stems: [['高钾血症', ['A', 'E', 'F', 'H', 'J']], ['静脉补KCl', ['B', 'C', 'D', 'G', 'I']]],
+  }),
+  choiceGroup({
+    id: 'surgery-general-core-f03b', title: '体液失衡·DKA补钾判断', lecture: 31, page: 3,
+    options: ['暂缓补钾', '立即补钾', '暂缓补钾，待尿量增加后补钾'],
     stems: [
-      ['高钾血症', ['A', 'G', 'H', 'J', 'M']], ['静脉补KCl', ['C', 'D', 'E', 'I', 'K']],
-      ['DKA：K⁺＜3.5 mmol/L', ['F']], ['DKA：K⁺正常且尿量＞40 ml/h', ['F']],
-      ['DKA：K⁺正常且尿量＜30 ml/h', ['L']], ['DKA：K⁺＞5.5 mmol/L', ['B']],
+      ['DKA：K⁺＜3.5 mmol/L', ['B']], ['DKA：K⁺正常且尿量＞40 ml/h', ['B']],
+      ['DKA：K⁺正常且尿量＜30 ml/h', ['C']], ['DKA：K⁺＞5.5 mmol/L', ['A']],
     ],
   }),
   choiceGroup({
-    id: 'surgery-general-core-f04', title: '体液失衡·钙失衡与酸碱调节', lecture: 31, page: 3,
+    id: 'surgery-general-core-f04a', title: '体液失衡·钙失衡', lecture: 31, page: 3,
     options: [
       '补充钙剂，可加服骨化三醇', '肾衰', '痉挛、抽搐', '呼吸困难', 'Trousseau征',
       '急性胰腺炎', 'ST段延长', '甲状旁腺功能减退', 'Chvostek征', '维生素D缺乏',
-      '麻木、针刺感', '调节PaCO₂', 'NaHCO₃/H₂CO₃、KHb/Hb等', '癔症（呼吸性碱中毒）',
-      'ST段缩短', '重吸收HCO₃⁻、分泌H⁺、分泌NH₃/NH₄⁺', 'H⁺-K⁺交换等',
+      '麻木、针刺感', '癔症（呼吸性碱中毒）', 'ST段缩短',
       '甲状旁腺功能亢进', '腱反射亢进', '小肠瘘', '骨肿瘤导致骨质破坏',
     ],
-    stems: [['高钙血症', ['O', 'R', 'U']], ['低钙血症', ['A', 'B', 'C', 'D', 'E', 'F', 'G', 'H', 'I', 'J', 'K', 'N', 'S', 'T']], ['体液缓冲系统', ['M']], ['肺', ['L']], ['肾', ['P']], ['组织细胞', ['Q']]],
+    stems: [['高钙血症', ['M', 'N', 'Q']], ['低钙血症', ['A', 'B', 'C', 'D', 'E', 'F', 'G', 'H', 'I', 'J', 'K', 'L', 'O', 'P']]],
+  }),
+  choiceGroup({
+    id: 'surgery-general-core-f04b', title: '体液失衡·酸碱调节系统', lecture: 31, page: 3,
+    options: ['调节PaCO₂', 'NaHCO₃/H₂CO₃、KHb/Hb等', '重吸收HCO₃⁻、分泌H⁺、分泌NH₃/NH₄⁺', 'H⁺-K⁺交换等'],
+    stems: [['体液缓冲系统', ['B']], ['肺', ['A']], ['肾', ['C']], ['组织细胞', ['D']]],
   }),
   fillGroup({
     id: 'surgery-general-core-f05', title: '体液失衡·数字挖空', lecture: 31, page: 4,
