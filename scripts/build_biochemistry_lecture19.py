@@ -32,6 +32,23 @@ OPTION_RE = re.compile(r"^([A-Z])[.．]\s*(.+)$")
 EXPECTED_GROUPS = 10
 EXPECTED_STEMS = 60
 
+# The source Word intentionally groups related facts into a few long options.
+# Groups 6 and 7 are easier to answer cleanly when those compound statements
+# are presented as independent choices.  Answers inherit every fragment from
+# the original correct option, so splitting never changes the tested fact.
+OPTION_SPLITS = {
+    6: {
+        "A": ["富含谷氨酰胺结构域", "与 GC 盒结合"],
+        "B": ["二聚化结构域"],
+        "D": ["酸性激活结构域", "与 TFⅡD 相互作用，协助组装转录起始复合物"],
+        "F": ["富含脯氨酸结构域", "与 CAAT 盒结合"],
+    },
+    7: {
+        "D": ["属于转录激活因子", "结合增强子", "只在特定时间、特定组织被诱导"],
+        "I": ["RNApol Ⅰ、Ⅱ、Ⅲ对应不同类型的启动子", "对应的通用转录因子为 TFⅠ、TFⅡ、TFⅢ"],
+    },
+}
+
 
 def normalize(text: str) -> str:
     return re.sub(r"\s+", " ", text.replace("\u3000", " ")).strip()
@@ -168,7 +185,16 @@ def lecture_evidence(source_group: int) -> dict:
 
 def build_group(source_group: dict, display_index: int) -> dict:
     original_options = dict(source_group["options"])
-    labels = list(original_options.values())
+    split_map = OPTION_SPLITS.get(source_group["source_index"], {})
+    expanded_options = {
+        key: split_map.get(key, [label])
+        for key, label in source_group["options"]
+    }
+    labels = [
+        fragment
+        for key, _ in source_group["options"]
+        for fragment in expanded_options[key]
+    ]
     if len(labels) != len(set(labels)):
         raise ValueError(f"Group {source_group['source_index']} contains duplicate option text")
     if len(labels) > 26:
@@ -182,7 +208,11 @@ def build_group(source_group: dict, display_index: int) -> dict:
 
     stems = []
     for number, text in source_group["stems"]:
-        answer_labels = [original_options[key] for key in source_group["answers"][number]]
+        answer_labels = [
+            fragment
+            for key in source_group["answers"][number]
+            for fragment in expanded_options[key]
+        ]
         answer = [key_for[label] for label in answer_labels]
         stems.append(
             {
@@ -208,10 +238,13 @@ def build_group(source_group: dict, display_index: int) -> dict:
         "sourceText": f"《生化_基因表达调控_学成选择题_修订版》原第 {source_group['source_index']} 组",
         "reviewState": "已按修订版 Word 与对应思维导图核对",
         "reviewIssues": [],
-        "reviewNotes": ["题干、选项和答案按 Word 原文录入；网页选项顺序重新打散。"],
+        "reviewNotes": [
+            "题干、选项和答案按 Word 原文录入；网页选项顺序重新打散。"
+            + (" 复合选项已拆分为独立知识点，答案同步重映射。" if split_map else "")
+        ],
         "topic": TOPIC,
         "lectureIds": ["lecture-19"],
-        "optionShuffleVersion": 1,
+        "optionShuffleVersion": 2 if split_map else 1,
         "lectureEvidence": lecture_evidence(source_group["source_index"]),
     }
 

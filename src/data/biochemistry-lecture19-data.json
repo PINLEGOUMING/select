@@ -829,19 +829,19 @@
       "options": [
         {
           "key": "A",
-          "label": "酸性激活结构域（与 TFⅡD 相互作用协助组装转录起始复合物）"
+          "label": "螺旋-环-螺旋"
         },
         {
           "key": "B",
-          "label": "富含脯氨酸结构域（与 CAAT 盒结合）"
+          "label": "与 TFⅡD 相互作用，协助组装转录起始复合物"
         },
         {
           "key": "C",
-          "label": "富含谷氨酰胺结构域（与 GC 盒结合）"
+          "label": "富含谷氨酰胺结构域"
         },
         {
           "key": "D",
-          "label": "亮氨酸拉链"
+          "label": "富含脯氨酸结构域"
         },
         {
           "key": "E",
@@ -849,42 +849,57 @@
         },
         {
           "key": "F",
-          "label": "如二聚化结构域"
+          "label": "与 GC 盒结合"
         },
         {
           "key": "G",
-          "label": "螺旋-环-螺旋"
+          "label": "与 CAAT 盒结合"
+        },
+        {
+          "key": "H",
+          "label": "酸性激活结构域"
+        },
+        {
+          "key": "I",
+          "label": "二聚化结构域"
+        },
+        {
+          "key": "J",
+          "label": "亮氨酸拉链"
         }
       ],
       "stems": [
         {
           "number": 1,
           "text": "DNA 结合结构域",
-          "answerRaw": "E、G、D",
+          "answerRaw": "E、A、J",
           "answer": [
             "E",
-            "G",
-            "D"
+            "A",
+            "J"
           ],
           "answerMode": "多选"
         },
         {
           "number": 2,
           "text": "转录激活结构域",
-          "answerRaw": "C、A、B",
+          "answerRaw": "C、F、H、B、D、G",
           "answer": [
             "C",
-            "A",
-            "B"
+            "F",
+            "H",
+            "B",
+            "D",
+            "G"
           ],
           "answerMode": "多选"
         },
         {
           "number": 3,
           "text": "介导蛋白质-蛋白质相互作用结构域",
-          "answerRaw": "F",
+          "answerRaw": "I",
           "answer": [
-            "F"
+            "I"
           ],
           "answerMode": "单选"
         }
@@ -893,13 +908,13 @@
       "reviewState": "已按修订版 Word 与对应思维导图核对",
       "reviewIssues": [],
       "reviewNotes": [
-        "题干、选项和答案按 Word 原文录入；网页选项顺序重新打散。"
+        "题干、选项和答案按 Word 原文录入；网页选项顺序重新打散。 复合选项已拆分为独立知识点，答案同步重映射。"
       ],
       "topic": "核酸",
       "lectureIds": [
         "lecture-19"
       ],
-      "optionShuffleVersion": 1,
+      "optionShuffleVersion": 2,
       "lectureEvidence": {
         "lectureId": "lecture-19",
         "lectureNumber": 19,
@@ -920,35 +935,35 @@
       "options": [
         {
           "key": "A",
-          "label": "属于转录激活因子（结合增强子），但只在特定时间、特定组织被诱导"
+          "label": "只在特定时间、特定组织被诱导"
         },
         {
           "key": "B",
-          "label": "C/EBP 结合 CAAT 盒"
+          "label": "多结合增强子"
         },
         {
           "key": "C",
-          "label": "SP1 结合 GC 盒"
+          "label": "属于转录激活因子"
         },
         {
           "key": "D",
-          "label": "决定基因表达时空特异性最重要的反式作用因子"
+          "label": "RNApol Ⅰ、Ⅱ、Ⅲ对应不同类型的启动子"
         },
         {
           "key": "E",
-          "label": "帮助 RNApol 结合启动子"
+          "label": "决定基因表达时空特异性最重要的反式作用因子"
         },
         {
           "key": "F",
-          "label": "RNApol Ⅰ/Ⅱ/Ⅲ对应不同类型的启动子和转录因子：TFⅠ、TFⅡ、TFⅢ"
-        },
-        {
-          "key": "G",
           "label": "在缺氧时高表达"
         },
         {
+          "key": "G",
+          "label": "结合增强子"
+        },
+        {
           "key": "H",
-          "label": "多结合沉默子"
+          "label": "SP1 结合 GC 盒"
         },
         {
           "key": "I",
@@ -956,57 +971,72 @@
         },
         {
           "key": "J",
-          "label": "多结合增强子"
+          "label": "多结合沉默子"
+        },
+        {
+          "key": "K",
+          "label": "C/EBP 结合 CAAT 盒"
+        },
+        {
+          "key": "L",
+          "label": "帮助 RNApol 结合启动子"
+        },
+        {
+          "key": "M",
+          "label": "对应的通用转录因子为 TFⅠ、TFⅡ、TFⅢ"
         }
       ],
       "stems": [
         {
           "number": 1,
           "text": "通用/基本转录因子",
-          "answerRaw": "E、F",
+          "answerRaw": "L、D、M",
           "answer": [
-            "E",
-            "F"
+            "L",
+            "D",
+            "M"
           ],
           "answerMode": "多选"
         },
         {
           "number": 2,
           "text": "上游因子",
-          "answerRaw": "C、B",
+          "answerRaw": "H、K",
           "answer": [
-            "C",
-            "B"
+            "H",
+            "K"
           ],
           "answerMode": "多选"
         },
         {
           "number": 3,
           "text": "转录激活因子",
-          "answerRaw": "J、D",
+          "answerRaw": "B、E",
           "answer": [
-            "J",
-            "D"
+            "B",
+            "E"
           ],
           "answerMode": "多选"
         },
         {
           "number": 4,
           "text": "转录抑制因子",
-          "answerRaw": "H",
+          "answerRaw": "J",
           "answer": [
-            "H"
+            "J"
           ],
           "answerMode": "单选"
         },
         {
           "number": 5,
           "text": "可诱导因子",
-          "answerRaw": "A",
+          "answerRaw": "C、G、A",
           "answer": [
+            "C",
+            "G",
             "A"
           ],
-          "answerMode": "单选"
+          "answerMode": "多选"
         },
         {
           "number": 6,
@@ -1020,27 +1050,27 @@
         {
           "number": 7,
           "text": "缺氧诱导因子 HIF",
-          "answerRaw": "G",
+          "answerRaw": "F",
           "answer": [
-            "G"
+            "F"
           ],
           "answerMode": "单选"
         },
         {
           "number": 8,
           "text": "SP1",
-          "answerRaw": "C",
+          "answerRaw": "H",
           "answer": [
-            "C"
+            "H"
           ],
           "answerMode": "单选"
         },
         {
           "number": 9,
           "text": "C/EBP",
-          "answerRaw": "B",
+          "answerRaw": "K",
           "answer": [
-            "B"
+            "K"
           ],
           "answerMode": "单选"
         }
@@ -1049,13 +1079,13 @@
       "reviewState": "已按修订版 Word 与对应思维导图核对",
       "reviewIssues": [],
       "reviewNotes": [
-        "题干、选项和答案按 Word 原文录入；网页选项顺序重新打散。"
+        "题干、选项和答案按 Word 原文录入；网页选项顺序重新打散。 复合选项已拆分为独立知识点，答案同步重映射。"
       ],
       "topic": "核酸",
       "lectureIds": [
         "lecture-19"
       ],
-      "optionShuffleVersion": 1,
+      "optionShuffleVersion": 2,
       "lectureEvidence": {
         "lectureId": "lecture-19",
         "lectureNumber": 19,
