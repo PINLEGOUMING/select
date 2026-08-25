@@ -112,6 +112,15 @@ def parse_workbook():
         option_map = dict(group["options"])
         if not all(set(answer).issubset(option_map) for answer in group["answers"].values()):
             raise ValueError(f"Group {group['source_index']}: answer has an unknown option")
+
+        # The poly(A) tail participates specifically in translation initiation.
+        # Keep the supplied option position and answer key, but use the precise
+        # lecture wording instead of the overly broad "参与翻译过程".
+        if group["source_index"] == 5:
+            group["options"] = [
+                (key, "参与翻译的起始过程" if label == "参与翻译过程" else label)
+                for key, label in group["options"]
+            ]
     return groups
 
 
