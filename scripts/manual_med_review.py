@@ -290,7 +290,7 @@ def reviewed_groups(payload: dict) -> list[dict]:
             ("肝囊肿", "D"), ("肝脓肿（急性）", "ACG"),
         ),
     )
-    p32_1["sourceText"] = "HCC及肝脏影像学鉴别（按原题第32页第1组及第21讲第2页讲义逐项复核）"
+    p32_1["sourceText"] = "HCC及肝脏影像学鉴别（按原题第32页第1–5题及第21讲第2页讲义逐项复核）"
     p32_1["reviewState"] = "已按原题第32页与第21讲第2页讲义逐项复核"
     p32_1["lectureEvidence"] = {
         "lectureId": "lecture-21", "page": 2,
@@ -308,7 +308,7 @@ def reviewed_groups(payload: dict) -> list[dict]:
         ),
         stems(("增高", "BDFHJK"), ("降低", "ACEGIL")),
     )
-    p32_2["sourceText"] = "肝硬化时体内激素的变化（按原题第32页第2组及第22讲讲义逐项复核）"
+    p32_2["sourceText"] = "肝硬化时体内激素的变化（按原题第32页第6–7题及第22讲第2页讲义逐项复核）"
     p32_2["reviewState"] = "已按原题第32页与第22讲讲义逐项复核"
     p32_2["lectureEvidence"] = {
         "lectureId": "lecture-22", "page": 2,
@@ -317,14 +317,14 @@ def reviewed_groups(payload: dict) -> list[dict]:
         "description": "本题组对应第22讲第2页讲义。",
     }
     p32_3 = group(
-        "p32-g1c", "腔静脉阻塞与腹壁静脉曲张", "消化", ["lecture-22"],
+        "p32-g1c", "肝硬化：腔静脉阻塞与腹壁静脉曲张", "消化", ["lecture-22"],
         opts(
             ("A", "脐以下血流转而向上"), ("B", "脐以上向上"),
             ("C", "脐以上血流转而向下"), ("D", "脐以下向下"),
         ),
         stems(("上腔静脉阻塞", "C"), ("下腔静脉阻塞", "A"), ("腹壁静脉曲张", "BD")),
     )
-    p32_3["sourceText"] = "腔静脉阻塞与腹壁静脉曲张（按原题第32页第3组及第22讲讲义逐项复核）"
+    p32_3["sourceText"] = "肝硬化相关腔静脉阻塞与腹壁静脉曲张（按原题第32页第8–10题及第22讲讲义逐项复核）"
     p32_3["reviewState"] = "已按原题第32页与第22讲讲义逐项复核"
     p32_3["lectureEvidence"] = {
         "lectureId": "lecture-22", "page": 4,
