@@ -22132,19 +22132,71 @@
     {
       "id": "p63-g3",
       "page": 63,
-      "title": "库欣综合征定性与定因定位",
+      "title": "库欣综合征定性与定因定位检查",
       "kind": "B",
       "kindLabel": "B型题",
       "options": [
         {
           "key": "A",
-          "label": "小剂量地塞米松抑制试验-",
-          "sourceText": "A.小剂量地塞米松抑制试验-"
+          "label": "小剂量地塞米松抑制试验",
+          "sourceText": "A.小剂量地塞米松抑制试验"
         },
         {
           "key": "B",
+          "label": "大剂量地塞米松抑制试验",
+          "sourceText": "B.大剂量地塞米松抑制试验"
+        }
+      ],
+      "stems": [
+        {
+          "text": "确诊库欣综合征（定性）",
+          "answer": [
+            "A"
+          ],
+          "sourceText": "确诊库欣综合征（定性）（A）",
+          "sourceY": 0,
+          "answerMode": "单选"
+        },
+        {
+          "text": "定因定位",
+          "answer": [
+            "B"
+          ],
+          "sourceText": "定因定位（B）",
+          "sourceY": 0,
+          "answerMode": "单选"
+        }
+      ],
+      "sourceText": "库欣综合征定性与定因定位检查（按原题第63页第3组及第40讲第2页讲义逐项复核）",
+      "reviewState": "已按原题第63页与第40讲讲义逐项复核",
+      "topic": "内分泌",
+      "lectureIds": [
+        "lecture-40"
+      ],
+      "lectureEvidence": {
+        "lectureId": "lecture-40",
+        "page": 2,
+        "image": "med/lecture-pages/lecture-40-page-02.webp",
+        "title": "第40讲第2页：内科 库欣综合征",
+        "description": "本题组对应第40讲第2页讲义。"
+      }
+    },
+    {
+      "id": "p63-g4",
+      "page": 63,
+      "title": "库欣综合征病因定位检查结果",
+      "kind": "B",
+      "kindLabel": "B型题",
+      "options": [
+        {
+          "key": "A",
           "label": "大剂量地塞米松抑制试验-",
-          "sourceText": "B.大剂量地塞米松抑制试验-"
+          "sourceText": "A.大剂量地塞米松抑制试验-"
+        },
+        {
+          "key": "B",
+          "label": "ACTH↓",
+          "sourceText": "B.ACTH↓"
         },
         {
           "key": "C",
@@ -22204,34 +22256,16 @@
       ],
       "stems": [
         {
-          "text": "确诊库欣综合征（定性）",
-          "answer": [
-            "A"
-          ],
-          "sourceText": "确诊库欣综合征（定性） A",
-          "sourceY": 0,
-          "answerMode": "单选"
-        },
-        {
-          "text": "定因定位",
-          "answer": [
-            "B"
-          ],
-          "sourceText": "定因定位 B",
-          "sourceY": 0,
-          "answerMode": "单选"
-        },
-        {
           "text": "库欣病",
           "answer": [
             "C",
             "D",
             "H",
-            "L",
+            "I",
             "J",
             "K"
           ],
-          "sourceText": "库欣病 CDHLJK",
+          "sourceText": "库欣病（CDHIJK）",
           "sourceY": 0,
           "answerMode": "多选"
         },
@@ -22244,7 +22278,7 @@
             "K",
             "L"
           ],
-          "sourceText": "异位ACTH综合征 AEJKL",
+          "sourceText": "异位ACTH综合征（AEJKL）",
           "sourceY": 0,
           "answerMode": "多选"
         },
@@ -22257,7 +22291,7 @@
             "G",
             "L"
           ],
-          "sourceText": "肾上腺皮质瘤或癌 ABFGL",
+          "sourceText": "肾上腺皮质瘤或癌（ABFGL）",
           "sourceY": 0,
           "answerMode": "多选"
         },
@@ -22270,13 +22304,13 @@
             "L",
             "M"
           ],
-          "sourceText": "双侧肾上腺小/大结节性增生 ABFLM",
+          "sourceText": "双侧肾上腺小/大结节性增生（ABFLM）",
           "sourceY": 0,
           "answerMode": "多选"
         }
       ],
-      "sourceText": "库欣综合征定性与定因定位（按原题页分组并结合讲义复核）",
-      "reviewState": "已按原题页与讲义复核",
+      "sourceText": "库欣综合征病因定位检查结果（按原题第63页第4组及第40讲第2页讲义逐项复核）",
+      "reviewState": "已按原题第63页与第40讲讲义逐项复核",
       "topic": "内分泌",
       "lectureIds": [
         "lecture-40"
