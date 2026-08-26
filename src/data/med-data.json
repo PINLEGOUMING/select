@@ -10058,13 +10058,7 @@
         "lecture-18",
         "lecture-19"
       ],
-      "lectureEvidence": {
-        "lectureId": "lecture-20",
-        "page": 1,
-        "image": "med/lecture-pages/lecture-20-page-01.webp",
-        "title": "第20讲第1页：内科 肝性脑病",
-        "description": "本题组对应第20讲第1页讲义中的肝性脑病分期表。"
-      }
+      "lectureEvidence": null
     },
     {
       "id": "p31-g1",

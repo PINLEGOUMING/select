@@ -24,10 +24,12 @@
     "audit:surgery-general": "python3 scripts/audit_surgery_general_content.py",
     "audit:surgery-general-core": "node scripts/audit_surgery_general_core.mjs",
     "audit:surgery-general-late": "node scripts/audit_surgery_general_late.mjs",
+    "audit:deployment-assets": "${CODEX_PYTHON:-python3} scripts/audit_deployment_assets.py",
     "audit:content": "pnpm run audit:pathology && pnpm run audit:surgery && pnpm run audit:surgery-hpb && pnpm run audit:thyroid && pnpm run audit:fracture && pnpm run audit:deformity && pnpm run audit:chronic-injury && pnpm run audit:ortho-mixed && pnpm run audit:ortho-infection && pnpm run audit:nonpurulent-arthritis && pnpm run audit:bone-tumor && pnpm run audit:trunk-spine && pnpm run audit:degenerative-spine && pnpm run audit:limb-fracture && pnpm run audit:surgery-general && pnpm run audit:surgery-general-core && pnpm run audit:surgery-general-late",
     "dev": "WRANGLER_LOG_PATH=.wrangler/wrangler.log vinext dev",
-    "build": "WRANGLER_LOG_PATH=.wrangler/wrangler.log vinext build",
+    "build": "VITE_ASSET_BASE=https://rray1228.github.io/neike-306-tiku/ WRANGLER_LOG_PATH=.wrangler/wrangler.log vinext build",
     "build:pages": "vite build --config vite.pages.config.ts && cp dist-pages/index.html dist-pages/404.html",
+    "check:sites-artifact": "node scripts/check_sites_artifact_size.mjs",
     "start": "WRANGLER_LOG_PATH=.wrangler/wrangler.log vinext start",
     "test": "npm run build && node --test tests/rendered-html.test.mjs"
   },

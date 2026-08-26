@@ -10,8 +10,13 @@ export default defineConfig(async () => {
   process.env.WRANGLER_WRITE_LOGS ??= "false";
   process.env.WRANGLER_LOG_PATH ??= ".wrangler/logs";
   process.env.MINIFLARE_REGISTRY_PATH ??= ".wrangler/registry";
+  const externalAssetBase = process.env.VITE_ASSET_BASE?.trim();
   const { cloudflare } = await import("@cloudflare/vite-plugin");
   return {
+    // Sites production loads the large, public teaching images from GitHub
+    // Pages. Local development keeps Vite's normal public/ directory so the
+    // same source paths continue to work without a network dependency.
+    publicDir: externalAssetBase ? false : "public",
     plugins: [
       vinext(),
       sites(),

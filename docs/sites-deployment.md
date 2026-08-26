@@ -9,7 +9,12 @@
 - OpenAI Sites saved versions and production deployments are build artifacts.
   They do not define source history.
 - GitHub Pages deploys the `dist-pages` artifact from canonical `main`; it does
-  not use a `gh-pages` source branch.
+  not use a `gh-pages` source branch. It also serves the repository's public
+  teaching images at `https://rray1228.github.io/neike-306-tiku/`.
+- Sites production uses that GitHub Pages URL as its single external asset
+  base. The Sites build deliberately does not copy `public/` into `dist`, while
+  local development and the GitHub Pages build continue to use the same source
+  images from `public/`.
 
 Never create an orphan commit, initialize a temporary repository, replay a
 patch on a snapshot, or force-push a generated tree during normal deployment.
@@ -35,8 +40,16 @@ patch on a snapshot, or force-push a generated tree during normal deployment.
 4. Push the current canonical commit to the Sites source repository with a
    normal fast-forward `HEAD:main` push. Do not use `--force` or
    `--force-with-lease` during routine deployment.
-5. Build, package, save, and deploy the Sites version using that exact pushed
-   commit SHA.
+5. Build and check the production artifact before upload:
+
+   ```bash
+   pnpm run build
+   pnpm run check:sites-artifact
+   ```
+
+   A result above 30 MiB warns; above 40 MiB fails and must not be uploaded.
+6. Package, save, and deploy the Sites version using that exact pushed commit
+   SHA. Verify several public image URLs on GitHub Pages before publishing.
 
 The check intentionally fails when either remote ref was not fetched, the two
 histories have no merge base, the local source is not exactly `origin/main`, or

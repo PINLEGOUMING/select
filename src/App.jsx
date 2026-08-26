@@ -452,8 +452,8 @@ function unique(values) {
 
 function assetPath(path) {
   if (!path) return path
-  const base = import.meta.env.BASE_URL || '/'
-  return `${base}${String(path).replace(/^\/+/, '')}`
+  const base = import.meta.env.VITE_ASSET_BASE || import.meta.env.BASE_URL || '/'
+  return `${base.replace(/\/?$/, '/')}${String(path).replace(/^\/+/, '')}`
 }
 
 function answerLetters(stem) {
@@ -595,19 +595,17 @@ function biochemistryParentForTopic(topic) {
 }
 
 function App() {
-  const [subject, setSubject] = useState(() => {
-    const storedSubject = readLocalStorage('study-subject', 'med')
-    return SUBJECTS[storedSubject] ? storedSubject : 'med'
-  })
+  const [subject, setSubject] = useState('med')
   const subjectConfig = SUBJECTS[subject] || SUBJECTS.med
   const [loadedContent, setLoadedContent] = useState(null)
   const [loadError, setLoadError] = useState(null)
   const [loadAttempt, setLoadAttempt] = useState(0)
+  const [storageReady, setStorageReady] = useState(false)
   const content = loadedContent || EMPTY_CONTENT
   const isLoadingContent = loadedContent === null
   const counts = useMemo(() => topicCounts(content.groups), [content])
   const chapterTree = useMemo(() => lectureChapterTree(content, subject), [content, subject])
-  const [topic, setTopic] = useState(() => (SUBJECTS[readLocalStorage('study-subject', 'med')] || SUBJECTS.med).defaultTopic)
+  const [topic, setTopic] = useState(SUBJECTS.med.defaultTopic)
   const showContentWatermark = subject !== 'physiology'
     && subject !== 'biochemistry'
     && !(subject === 'surgery' && (topic === '骨科' || topic === '外科总论'))
@@ -616,24 +614,34 @@ function App() {
   const [typeFilter, setTypeFilter] = useState('全部题型')
   const [groupIndex, setGroupIndex] = useState(0)
   const [jumpGroupId, setJumpGroupId] = useState('')
-  const [selections, setSelections] = useState(() => readLocalStorage('med-selections', {}))
-  const [submitted, setSubmitted] = useState(() => readLocalStorage('med-submitted', {}))
-  const [favorites, setFavorites] = useState(readFavorites)
+  const [selections, setSelections] = useState({})
+  const [submitted, setSubmitted] = useState({})
+  const [favorites, setFavorites] = useState([])
   const [favoritesOnly, setFavoritesOnly] = useState(false)
-  const [notes, setNotes] = useState(() => readLocalStorage('med-notes', {}))
+  const [notes, setNotes] = useState({})
   const [showSource, setShowSource] = useState(false)
   const [showLectureEvidence, setShowLectureEvidence] = useState(false)
   const [showNote, setShowNote] = useState(false)
   const [mobileEvidence, setMobileEvidence] = useState(false)
-  const [sidebarCollapsed, setSidebarCollapsed] = useState(() => {
-    if (typeof window === 'undefined') return false
-    if (window.innerWidth <= 720) return true
-    const stored = window.localStorage.getItem('med-sidebar-collapsed')
-    return stored === null ? false : readLocalStorage('med-sidebar-collapsed', false)
-  })
-  const [evidenceCollapsed, setEvidenceCollapsed] = useState(() => readLocalStorage('med-evidence-collapsed', false))
+  const [sidebarCollapsed, setSidebarCollapsed] = useState(false)
+  const [evidenceCollapsed, setEvidenceCollapsed] = useState(false)
 
   useEffect(() => {
+    const storedSubject = readLocalStorage('study-subject', 'med')
+    const nextSubject = SUBJECTS[storedSubject] ? storedSubject : 'med'
+    setSubject(nextSubject)
+    setTopic(SUBJECTS[nextSubject].defaultTopic)
+    setSelections(readLocalStorage('med-selections', {}))
+    setSubmitted(readLocalStorage('med-submitted', {}))
+    setFavorites(readFavorites())
+    setNotes(readLocalStorage('med-notes', {}))
+    setSidebarCollapsed(window.innerWidth <= 720 ? true : readLocalStorage('med-sidebar-collapsed', false))
+    setEvidenceCollapsed(readLocalStorage('med-evidence-collapsed', false))
+    setStorageReady(true)
+  }, [])
+
+  useEffect(() => {
+    if (!storageReady) return undefined
     let cancelled = false
     setLoadedContent(null)
     setLoadError(null)
@@ -643,7 +651,7 @@ function App() {
       if (!cancelled) setLoadError('题库数据暂时加载失败，请检查网络后重试。')
     })
     return () => { cancelled = true }
-  }, [subject, loadAttempt])
+  }, [subject, loadAttempt, storageReady])
 
   useEffect(() => {
     if (!chapterId || !loadedContent || typeof window === 'undefined') return undefined
@@ -653,17 +661,17 @@ function App() {
     return () => window.cancelAnimationFrame(frame)
   }, [chapterId, loadedContent])
 
-  useEffect(() => { if (typeof window !== 'undefined') window.localStorage.setItem('study-subject', JSON.stringify(subject)) }, [subject])
-  useEffect(() => { if (typeof window !== 'undefined') window.localStorage.setItem('med-selections', JSON.stringify(selections)) }, [selections])
-  useEffect(() => { if (typeof window !== 'undefined') window.localStorage.setItem('med-submitted', JSON.stringify(submitted)) }, [submitted])
+  useEffect(() => { if (storageReady) window.localStorage.setItem('study-subject', JSON.stringify(subject)) }, [storageReady, subject])
+  useEffect(() => { if (storageReady) window.localStorage.setItem('med-selections', JSON.stringify(selections)) }, [selections, storageReady])
+  useEffect(() => { if (storageReady) window.localStorage.setItem('med-submitted', JSON.stringify(submitted)) }, [storageReady, submitted])
   useEffect(() => {
-    if (typeof window === 'undefined') return
+    if (!storageReady) return
     window.localStorage.setItem('study-favorites-v1', JSON.stringify({ version: 1, items: favorites }))
     window.localStorage.setItem('med-favorites', JSON.stringify(favorites))
-  }, [favorites])
-  useEffect(() => { if (typeof window !== 'undefined') window.localStorage.setItem('med-notes', JSON.stringify(notes)) }, [notes])
-  useEffect(() => { if (typeof window !== 'undefined') window.localStorage.setItem('med-sidebar-collapsed', JSON.stringify(sidebarCollapsed)) }, [sidebarCollapsed])
-  useEffect(() => { if (typeof window !== 'undefined') window.localStorage.setItem('med-evidence-collapsed', JSON.stringify(evidenceCollapsed)) }, [evidenceCollapsed])
+  }, [favorites, storageReady])
+  useEffect(() => { if (storageReady) window.localStorage.setItem('med-notes', JSON.stringify(notes)) }, [notes, storageReady])
+  useEffect(() => { if (storageReady) window.localStorage.setItem('med-sidebar-collapsed', JSON.stringify(sidebarCollapsed)) }, [sidebarCollapsed, storageReady])
+  useEffect(() => { if (storageReady) window.localStorage.setItem('med-evidence-collapsed', JSON.stringify(evidenceCollapsed)) }, [evidenceCollapsed, storageReady])
 
   const favoriteCounts = useMemo(() => {
     const byTopic = {}
