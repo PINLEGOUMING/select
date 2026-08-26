@@ -4,6 +4,7 @@
   "version": "0.2.0",
   "type": "module",
   "scripts": {
+    "check:deployment-history": "bash scripts/check-deployment-history.sh",
     "audit:pathology": "python3 scripts/audit_pathology_content.py",
     "audit:surgery": "python3 scripts/audit_surgery_content.py",
     "audit:surgery-hpb": "python3 scripts/audit_surgery_hpb_content.py",
