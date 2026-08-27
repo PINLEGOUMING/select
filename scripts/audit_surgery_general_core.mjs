@@ -14,8 +14,8 @@ const byId = new Map(groups.map((group) => [group.id, group]))
 assert.deepEqual(content.topics, ['外科总论'])
 assert.equal(groups.length, 29)
 assert.equal(byId.size, 29)
-assert.equal(groups.reduce((sum, group) => sum + group.stems.length, 0), 132)
-assert.equal(groups.reduce((sum, group) => sum + group.options.length, 0), 221)
+assert.equal(groups.reduce((sum, group) => sum + group.stems.length, 0), 118)
+assert.equal(groups.reduce((sum, group) => sum + group.options.length, 0), 235)
 assert.equal(groups.filter((group) => group.kind === 'B').length, 25)
 assert.equal(groups.filter((group) => group.kind === 'FILL').length, 4)
 
@@ -33,8 +33,8 @@ const expectedChoiceAnswers = {
   'surgery-general-core-n01a': ['D', 'AE', 'F', 'G', 'B', 'C'],
   'surgery-general-core-n01b': ['D', 'C', 'C', 'C', 'B', 'A'],
   'surgery-general-core-n02a': ['A', 'A', 'A', 'B', 'B'],
-  'surgery-general-core-n03a': ['A', 'B', 'B', 'B', 'B', 'C', 'D', 'D'],
-  'surgery-general-core-n02b': ['A', 'A', 'A', 'A', 'A', 'A', 'A', 'A', 'A', 'B', 'B', 'B', 'C', 'D', 'E', 'F'],
+  'surgery-general-core-n03a': ['A', 'BCDE', 'F', 'GH'],
+  'surgery-general-core-n02b': ['ABCDEFGHI', 'JKL', 'M', 'N', 'O', 'P'],
   'surgery-general-core-n03b': ['A', 'B', 'C'],
   'surgery-general-core-n04a': ['ABC'],
   'surgery-general-core-n04b': ['FJQS', 'ALT', 'BCEMO', 'DGIKNP', 'HRU'],
@@ -130,4 +130,4 @@ assert.deepEqual(groups.filter((group) => group.id.startsWith('surgery-general-c
   'surgery-general-core-b04a', 'surgery-general-core-b04b', 'surgery-general-core-b04c',
 ])
 
-console.log({ groups: 29, stems: 132, options: 221, choice: 25, fill: 4, lecturePages: 12, status: 'ok' })
+console.log({ groups: 29, stems: 118, options: 235, choice: 25, fill: 4, lecturePages: 12, status: 'ok' })
