@@ -4210,10 +4210,11 @@
           "answer": [
             "B",
             "D",
+            "F",
             "I",
             "K"
           ],
-          "sourceText": "缓解性药物（BDIK）",
+          "sourceText": "缓解性药物（BDFIK）",
           "sourceY": 179,
           "answerMode": "多选"
         },
