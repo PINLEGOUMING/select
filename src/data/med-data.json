@@ -21659,9 +21659,10 @@
           "answer": [
             "A",
             "C",
-            "F"
+            "F",
+            "I"
           ],
-          "sourceText": "淡漠型甲亢 ACF",
+          "sourceText": "淡漠型甲亢 ACFI",
           "sourceY": 0,
           "answerMode": "多选"
         },
