@@ -226,6 +226,42 @@ TEXT_FIXES = {
 }
 
 
+# 仅影响网站的阅读呈现：保留原选项字母、全文与答案，长选项以要点形式展开。
+OPTION_DISPLAY_BREAKDOWNS = {
+    "phys-001": {
+        "C": {
+            "summary": "神经-体液调节的例子（6 项）",
+            "items": [
+                "寒冷引起甲状腺激素分泌",
+                "胃液头期分泌",
+                "应急引起儿茶酚胺分泌",
+                "应激引起糖皮质激素分泌",
+                "催产反射",
+                "射乳反射",
+            ],
+        },
+        "D": {
+            "summary": "自身调节的例子（3 项）",
+            "items": [
+                "肾灌注压在一定范围内，肾血流量和肾小球滤过率维持相对稳定",
+                "球管平衡",
+                "脑动脉压在一定范围内，脑血流量维持相对稳定",
+            ],
+        },
+        "F": {
+            "summary": "自身调节的例子（5 项）",
+            "items": [
+                "渗透性利尿",
+                "异长调节",
+                "儿茶酚胺内在／胞内分泌",
+                "管球反馈",
+                "碘阻滞效应",
+            ],
+        },
+    },
+}
+
+
 def clean_text(value: str) -> str:
     value = (value or "").replace("ttsx", "").replace("天天师兄", "")
     value = value.replace("HCI", "HCl").replace("NaCI", "NaCl")
@@ -375,6 +411,10 @@ def finalize_group(source_group: dict, lectures: list[dict], page_vectors: dict)
         fixed = TEXT_FIXES.get(group["id"], {}).get(option["key"])
         if fixed:
             option["label"] = fixed
+        breakdown = OPTION_DISPLAY_BREAKDOWNS.get(group["id"], {}).get(option["key"])
+        if breakdown:
+            option["displaySummary"] = breakdown["summary"]
+            option["displayItems"] = breakdown["items"]
     for stem in group["stems"]:
         stem["text"] = clean_text(stem["text"])
 

@@ -1019,9 +1019,21 @@ function OptionBank({ group }) {
   return (
     <aside className={`option-bank option-rail ${categorized ? 'categorized-option-bank' : ''}`}>
       <div className="section-label"><span>共用选项</span><em>{group.kindLabel}</em></div>
-      {categorized ? <div className="option-category-list">{categories.map((category) => <section className="option-category" key={category}><h3>{category}</h3><div className="option-grid">{group.options.filter((option) => option.category === category).map((option) => <div className="shared-option" key={option.key}><b>{option.displayKey || option.key}</b><span>{option.label}</span></div>)}</div></section>)}</div> : <div className="option-grid">{group.options.map((option) => <div className="shared-option" key={option.key}><b>{option.displayKey || option.key}</b><span>{option.label}</span></div>)}</div>}
+      {categorized ? <div className="option-category-list">{categories.map((category) => <section className="option-category" key={category}><h3>{category}</h3><div className="option-grid">{group.options.filter((option) => option.category === category).map((option) => <SharedOption key={option.key} option={option} />)}</div></section>)}</div> : <div className="option-grid">{group.options.map((option) => <SharedOption key={option.key} option={option} />)}</div>}
       <p className="option-rail-hint">{categorized ? '选项已按考点分区，区内固定打乱；右侧题干逐题作答。' : '选项固定在左侧，右侧题干逐题作答。'}</p>
     </aside>
+  )
+}
+
+function SharedOption({ option }) {
+  const hasBreakdown = Array.isArray(option.displayItems) && option.displayItems.length > 0
+  return (
+    <div className={`shared-option ${hasBreakdown ? 'has-breakdown' : ''}`}>
+      <b>{option.displayKey || option.key}</b>
+      {hasBreakdown
+        ? <div className="shared-option-breakdown"><span className="shared-option-summary">{option.displaySummary}</span><ul>{option.displayItems.map((item) => <li key={item}>{item}</li>)}</ul><span className="sr-only">{option.label}</span></div>
+        : <span>{option.label}</span>}
+    </div>
   )
 }
 
