@@ -123,6 +123,18 @@ def main() -> None:
     assert "I" in thyroid_answers["甲状腺腺瘤"]
     assert thyroid["reviewState"] == "已按题册原图与讲义逐题复核"
 
+    tumor_marking = groups_by_id["p34-g1"]
+    expected_tumor_modes = {
+        "癌": "多选", "淋巴瘤": "多选", "黑色素瘤": "多选", "肌细胞肿瘤": "单选",
+        "肝细胞癌": "单选", "卵巢癌": "单选", "乳腺癌": "多选", "卵黄囊瘤/内胚窦瘤": "单选",
+        "鼻咽癌": "单选", "胰腺癌": "多选", "经典型霍奇金淋巴瘤": "单选", "胆管癌": "多选",
+        "Burkitt淋巴瘤": "多选", "成骨性病变": "单选", "胆囊癌": "多选", "无性细胞瘤": "单选",
+        "多数腺癌": "单选", "肺癌尤其鳞癌": "单选", "肺癌": "单选", "NK/T细胞淋巴瘤": "单选",
+        "前列腺癌": "多选", "造成胆道梗阻或肝癌": "单选", "神经内分泌肿瘤": "多选",
+        "滋养细胞肿瘤": "单选", "甲状腺髓样癌": "多选", "神经元肿瘤": "单选", "绒癌": "多选",
+    }
+    assert {stem["text"]: stem["answerMode"] for stem in tumor_marking["stems"]} == expected_tumor_modes
+
     page_counts = Counter(group["page"] for group in payload["groups"])
     assert page_counts[5] == 2
     assert page_counts[19] == 2

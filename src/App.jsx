@@ -473,7 +473,7 @@ function isFillStem(stem) {
 }
 
 function isMultiStem(group, stem) {
-  return !isFillStem(stem) && (group.kind !== 'B' || answerLetters(stem).length > 1 || isRankingStem(stem))
+  return !isFillStem(stem) && (stem.answerMode === '多选' || isRankingStem(stem))
 }
 
 function normalizeSelection(selection) {
