@@ -226,54 +226,73 @@ TEXT_FIXES = {
 }
 
 
-# 复合选项拆为可独立作答的选项；答案在拆分后按知识点逐项重映射。
-OPTION_SPLITS = {
+# 复合选项拆为可独立作答的选项。仅拆分可独立判断的并列知识点；定义、因果链和相互依赖的描述保持完整。
+OPTION_SPLIT_ITEMS = {
     "phys-001": {
-        "options": [
-            ("A", "生长发育的调节", ["A"]),
-            ("B", "月经周期的调节", ["A"]),
-            ("C", "抗利尿激素／血管升压素对尿量的调节", ["B"]),
-            ("D", "寒冷引起甲状腺激素分泌", ["C"]),
-            ("E", "胃液头期分泌", ["C"]),
-            ("F", "应急引起儿茶酚胺分泌", ["C"]),
-            ("G", "应激引起糖皮质激素分泌", ["C"]),
-            ("H", "催产反射", ["C"]),
-            ("I", "射乳反射", ["C"]),
-            ("J", "肾灌注压在一定范围内，肾血流量和肾小球滤过率维持相对稳定", ["D"]),
-            ("K", "球管平衡", ["D"]),
-            ("L", "脑动脉压在一定范围内，脑血流量维持相对稳定", ["D"]),
-            ("M", "夜间睡眠时迷走神经引起胰岛素分泌", ["E"]),
-            ("N", "渗透性利尿", ["F"]),
-            ("O", "异长调节", ["F"]),
-            ("P", "儿茶酚胺内在／胞内分泌", ["F"]),
-            ("Q", "管球反馈", ["F"]),
-            ("R", "碘阻滞效应", ["F"]),
-            ("S", "唾液分泌", ["G"]),
-        ],
-        "answers": [list("S"), list("ABC"), list("DEFGHIM"), list("JKLNOPQR")],
+        "A": ["生长发育的调节", "月经周期的调节"],
+        "C": ["寒冷引起甲状腺激素分泌", "胃液头期分泌", "应急引起儿茶酚胺分泌", "应激引起糖皮质激素分泌", "催产反射", "射乳反射"],
+        "D": ["肾灌注压在一定范围内，肾血流量和肾小球滤过率维持相对稳定", "球管平衡", "脑动脉压在一定范围内，脑血流量维持相对稳定"],
+        "F": ["渗透性利尿", "异长调节", "儿茶酚胺内在／胞内分泌", "管球反馈", "碘阻滞效应"],
+    },
+    "phys-003": {
+        "A": ["气体", "尿素", "乙醇", "水", "甘油", "糖皮质激素等类固醇激素"],
+        "B": ["Na⁺内流", "K⁺外流", "集合管顶端膜 AQP-2", "Ca²⁺从内质网释放", "Ca²⁺内流"],
+        "E": ["Na⁺-H⁺／NH₄⁺交换", "Na⁺-Ca²⁺交换", "H⁺-突触囊泡膜再摄取递质"],
+        "F": ["Na⁺-葡萄糖／氨基酸进入肾近端小管和小肠上皮细胞管腔膜", "Na⁺-K⁺-2Cl⁻转运", "Na⁺-HCO₃⁻转运", "Na⁺-I⁻转运", "Na⁺-突触前膜再摄取递质", "H⁺-二／三肽等寡肽在小肠吸收"],
+        "G": ["外分泌腺释放酶原和黏液", "内分泌腺释放激素", "神经末梢释放递质", "肥大细胞释放颗粒"],
+    },
+    "phys-005": {
+        "A": ["醛固酮", "糖皮质激素", "钙三醇／活化维生素 D", "维甲酸／活化维生素 A", "性激素", "甲状腺激素"],
+        "C": ["谷氨酸", "ACh（N 型受体）", "5-HT", "甘氨酸", "GABA（A／C 型受体）"],
+        "E": ["瘦素", "白介素", "促红细胞生成素", "催乳素", "生长激素", "干扰素", "催产素"],
+    },
+    "phys-007": {"B": ["cAMP", "cGMP", "甘油二酯／二脂酰甘油（DG／DAG）"]},
+    "phys-010": {"C": ["肌钙蛋白", "雷诺丁受体", "钙调蛋白（CaM）"]},
+    "phys-019": {"D": ["胞质 Ca²⁺浓度和肌钙蛋白对 Ca²⁺亲和力（活化横桥数目）", "横桥 ATP 酶活性", "肌原纤维肥大"]},
+    "phys-022": {"C": ["肿瘤坏死因子", "干扰素", "转化生长因子 β"]},
+    "phys-024": {"C": ["5-HT", "组胺", "胶原", "凝血酶", "肾上腺素"]},
+    "phys-027": {"D": ["凝血因子Ⅰ", "凝血因子Ⅴ", "凝血因子Ⅷ", "凝血因子Ⅺ", "凝血因子ⅩⅢ", "血小板"]},
+    "phys-028": {"D": ["凝血因子Ⅱ", "凝血因子Ⅸ", "凝血因子Ⅹ", "凝血因子Ⅺ", "凝血因子Ⅻ", "前激肽释放酶", "凝血因子Ⅶ（弱）"]},
+    "phys-041": {"C": ["心肌纤维化或肥厚", "高血压早期", "肥厚型心肌病"]},
+    "phys-056": {
+        "A": ["交感神经兴奋", "去甲肾上腺素（NA／NE）", "肾上腺素（Adr）"],
+        "C": ["缓激肽", "前列腺素（PG）", "小剂量多巴胺"],
+        "D": ["血管紧张素Ⅱ（AngⅡ）", "大剂量血管升压素（VP）", "内皮素（ET）"],
+        "E": ["血压／平均动脉压下降", "血容量下降", "长期低盐饮食"],
+        "F": ["血浆 Na⁺下降", "肾小球滤过 Na⁺下降"],
+    },
+    "phys-058": {"E": ["促进心血管重构", "参与心血管凋亡", "参与心血管分化", "参与心血管表型转化"]},
+    "phys-062": {"A": ["支配唾液腺的血管", "支配胃肠外分泌腺的血管", "支配脑膜的血管", "支配外生殖器的血管"]},
+    "phys-064": {
+        "A": ["FEV₁下降", "FEV₁／FVC下降", "FVC下降或正常", "RV升高", "FRC升高"],
+        "F": ["FEV₁／FVC基本不变", "TLC下降", "FVC下降", "FEV₁下降", "RV下降", "FRC下降"],
+        "G": ["COPD／肺气肿", "支气管哮喘"],
     },
     "phys-069": {
-        "options": [
-            ("A", "吸气", ["A"]),
-            ("B", "儿茶酚胺（β₂ 受体）", ["B"]),
-            ("C", "副交感神经（ACh）", ["C"]),
-            ("D", "血管活性肠肽（VIP）", ["D"]),
-            ("E", "组胺", ["E"]),
-            ("F", "白三烯", ["E"]),
-            ("G", "血栓烷 A₂（TXA₂）", ["E"]),
-            ("H", "内皮素（ET）", ["E"]),
-            ("I", "前列环素（PGI₂）", ["F"]),
-            ("J", "前列腺素 E（PGE）", ["F"]),
-            ("K", "一氧化氮（NO）", ["F"]),
-            ("L", "二氧化碳（CO₂）", ["F"]),
-            ("M", "糖皮质激素", ["F"]),
-            ("N", "气道内压力升高", ["G"]),
-            ("O", "速激肽（如 P 物质）", ["H"]),
-            ("P", "前列腺素 F₂α（PGF₂α）", ["H"]),
-        ],
-        "answers": [list("ABDIJKLMN"), list("CEFGHOP")],
+        "E": ["组胺", "白三烯", "血栓烷 A₂（TXA₂）", "内皮素（ET）"],
+        "F": ["前列环素（PGI₂）", "前列腺素 E（PGE）", "一氧化氮（NO）", "二氧化碳（CO₂）", "糖皮质激素"],
+        "H": ["速激肽（如 P 物质）", "前列腺素 F₂α（PGF₂α）"],
     },
+    "phys-072": {"C": ["糖皮质激素（如布地奈德）", "白三烯受体拮抗剂（如孟鲁司特）"]},
+    "phys-085": {
+        "B": ["迷走神经释放 ACh", "迷走神经释放 GRP／蛙皮素／铃蟾素"],
+        "I": ["前列腺素（PGE₂、PGI₂）", "表皮生长因子（EGF）"],
+        "J": ["胰岛素（低血糖）", "乙醇", "咖啡", "牛奶", "茶"],
+    },
+    "phys-086": {"C": ["食物的轻微刺激", "胃酸的轻微刺激", "胃蛋白酶的轻微刺激", "反流胆汁的轻微刺激"]},
+    "phys-091": {"E": ["维生素 A", "维生素 D", "维生素 E", "维生素 K", "脂类消化产物（除中、短链脂肪酸）"]},
+    "phys-102": {
+        "B": ["集合管主细胞重吸收 Na⁺增加", "集合管主细胞重吸收水增加", "集合管主细胞分泌 K⁺增加"],
+        "G": ["上皮钠通道（ENaC）", "钠钾泵", "ATP 合酶"],
+    },
+    "phys-121": {"F": ["颈动脉窦", "肌梭", "关节囊感受器", "多数其他感受器"]},
+    "phys-124": {"C": ["躯体运动（支配梭外肌收缩）", "本体感觉"]},
+    "phys-147": {"D": ["血糖对胰岛素的反馈调节", "血钙对 PTH 的反馈调节", "血钠、血钾对醛固酮的反馈调节"]},
+    "phys-153": {"C": ["酪氨酸激酶受体", "MAPK 通路", "PI3K 通路"]},
+    "phys-159": {"A": ["子宫平滑肌细胞增生、肥大", "对缩宫素敏感性增高"]},
 }
+
+OPTION_KEYS = [chr(ord("A") + index) for index in range(26)] + list("①②③④⑤⑥⑦⑧⑨⑩⑪⑫⑬⑭⑮⑯⑰⑱⑲⑳")
 
 
 def clean_text(value: str) -> str:
@@ -382,20 +401,29 @@ def set_answer(stem: dict, answer: list[str]) -> None:
 
 
 def apply_option_split(group: dict) -> None:
-    split = OPTION_SPLITS.get(group["id"])
-    if not split:
+    split_items = OPTION_SPLIT_ITEMS.get(group["id"])
+    if not split_items:
         return
-    source_options = {option["key"]: option for option in group["options"]}
-    group["options"] = [
-        {
-            "key": key,
-            "label": label,
-            "sourceText": "；".join(source_options[source_key]["sourceText"] for source_key in source_keys),
-            "splitFrom": source_keys,
-        }
-        for key, label, source_keys in split["options"]
-    ]
-    for stem, answer in zip(group["stems"], split["answers"], strict=True):
+    source_to_split_keys: dict[str, list[str]] = {}
+    options = []
+    for source_option in group["options"]:
+        labels = split_items.get(source_option["key"], [source_option["label"]])
+        split_keys = []
+        for label in labels:
+            if len(options) >= len(OPTION_KEYS):
+                raise ValueError(f"too many split options: {group['id']}")
+            key = OPTION_KEYS[len(options)]
+            split_keys.append(key)
+            options.append({
+                "key": key,
+                "label": label,
+                "sourceText": source_option["sourceText"],
+                "splitFrom": [source_option["key"]],
+            })
+        source_to_split_keys[source_option["key"]] = split_keys
+    group["options"] = options
+    for stem in group["stems"]:
+        answer = [key for source_key in stem["answer"] for key in source_to_split_keys[source_key]]
         set_answer(stem, answer)
     group["answerRaw"] = "、".join("".join(stem["answer"]) for stem in group["stems"])
     group["optionSplitVersion"] = 1

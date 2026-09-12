@@ -40,8 +40,8 @@ def main() -> None:
     assert reconciliation["statusSummary"] == {"与今年讲义一致": 141, "已校正": 19}
 
     platelet_group = next(group for group in payload["groups"] if group["id"] == "phys-024")
-    assert platelet_group["stems"][3]["answer"] == list("ACDE")
-    assert platelet_group["stems"][3]["answerRaw"] == "ACDE"
+    assert platelet_group["stems"][3]["answer"] == list("ACDEFGHI")
+    assert platelet_group["stems"][3]["answerRaw"] == "ACDEFGHI"
     assert platelet_group["lectureEvidence"]["lectureNumber"] == 7
     assert platelet_group["lectureEvidence"]["page"] == 4
 
@@ -67,9 +67,9 @@ def main() -> None:
     assert hormone_group["lectureEvidence"]["page"] == 4
 
     glucagon_group = next(group for group in payload["groups"] if group["id"] == "phys-153")
-    assert glucagon_group["stems"][0]["answer"] == list("ACFG")
-    assert glucagon_group["stems"][1]["answer"] == list("BDEH")
-    assert glucagon_group["stems"][1]["answerRaw"] == "BDEH"
+    assert glucagon_group["stems"][0]["answer"] == list("ACDEHI")
+    assert glucagon_group["stems"][1]["answer"] == list("BFGJ")
+    assert glucagon_group["stems"][1]["answerRaw"] == "BFGJ"
     assert glucagon_group["lectureEvidence"]["lectureNumber"] == 38
     assert glucagon_group["lectureEvidence"]["page"] == 5
 
@@ -90,6 +90,9 @@ def main() -> None:
     assert len(airway_group["options"]) == 16
     assert airway_group["stems"][0]["answer"] == list("ABDIJKLMN")
     assert airway_group["stems"][1]["answer"] == list("CEFGHOP")
+
+    split_groups = [group for group in payload["groups"] if group.get("optionSplitVersion") == 1]
+    assert len(split_groups) == 26
 
     missing_images = []
     duplicate_option_keys = []
