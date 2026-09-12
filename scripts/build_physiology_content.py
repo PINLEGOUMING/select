@@ -226,38 +226,52 @@ TEXT_FIXES = {
 }
 
 
-# 仅影响网站的阅读呈现：保留原选项字母、全文与答案，长选项以要点形式展开。
-OPTION_DISPLAY_BREAKDOWNS = {
+# 复合选项拆为可独立作答的选项；答案在拆分后按知识点逐项重映射。
+OPTION_SPLITS = {
     "phys-001": {
-        "C": {
-            "summary": "神经-体液调节的例子（6 项）",
-            "items": [
-                "寒冷引起甲状腺激素分泌",
-                "胃液头期分泌",
-                "应急引起儿茶酚胺分泌",
-                "应激引起糖皮质激素分泌",
-                "催产反射",
-                "射乳反射",
-            ],
-        },
-        "D": {
-            "summary": "自身调节的例子（3 项）",
-            "items": [
-                "肾灌注压在一定范围内，肾血流量和肾小球滤过率维持相对稳定",
-                "球管平衡",
-                "脑动脉压在一定范围内，脑血流量维持相对稳定",
-            ],
-        },
-        "F": {
-            "summary": "自身调节的例子（5 项）",
-            "items": [
-                "渗透性利尿",
-                "异长调节",
-                "儿茶酚胺内在／胞内分泌",
-                "管球反馈",
-                "碘阻滞效应",
-            ],
-        },
+        "options": [
+            ("A", "生长发育的调节", ["A"]),
+            ("B", "月经周期的调节", ["A"]),
+            ("C", "抗利尿激素／血管升压素对尿量的调节", ["B"]),
+            ("D", "寒冷引起甲状腺激素分泌", ["C"]),
+            ("E", "胃液头期分泌", ["C"]),
+            ("F", "应急引起儿茶酚胺分泌", ["C"]),
+            ("G", "应激引起糖皮质激素分泌", ["C"]),
+            ("H", "催产反射", ["C"]),
+            ("I", "射乳反射", ["C"]),
+            ("J", "肾灌注压在一定范围内，肾血流量和肾小球滤过率维持相对稳定", ["D"]),
+            ("K", "球管平衡", ["D"]),
+            ("L", "脑动脉压在一定范围内，脑血流量维持相对稳定", ["D"]),
+            ("M", "夜间睡眠时迷走神经引起胰岛素分泌", ["E"]),
+            ("N", "渗透性利尿", ["F"]),
+            ("O", "异长调节", ["F"]),
+            ("P", "儿茶酚胺内在／胞内分泌", ["F"]),
+            ("Q", "管球反馈", ["F"]),
+            ("R", "碘阻滞效应", ["F"]),
+            ("S", "唾液分泌", ["G"]),
+        ],
+        "answers": [list("S"), list("ABC"), list("DEFGHIM"), list("JKLNOPQR")],
+    },
+    "phys-069": {
+        "options": [
+            ("A", "吸气", ["A"]),
+            ("B", "儿茶酚胺（β₂ 受体）", ["B"]),
+            ("C", "副交感神经（ACh）", ["C"]),
+            ("D", "血管活性肠肽（VIP）", ["D"]),
+            ("E", "组胺", ["E"]),
+            ("F", "白三烯", ["E"]),
+            ("G", "血栓烷 A₂（TXA₂）", ["E"]),
+            ("H", "内皮素（ET）", ["E"]),
+            ("I", "前列环素（PGI₂）", ["F"]),
+            ("J", "前列腺素 E（PGE）", ["F"]),
+            ("K", "一氧化氮（NO）", ["F"]),
+            ("L", "二氧化碳（CO₂）", ["F"]),
+            ("M", "糖皮质激素", ["F"]),
+            ("N", "气道内压力升高", ["G"]),
+            ("O", "速激肽（如 P 物质）", ["H"]),
+            ("P", "前列腺素 F₂α（PGF₂α）", ["H"]),
+        ],
+        "answers": [list("ABDIJKLMN"), list("CEFGHOP")],
     },
 }
 
@@ -367,6 +381,26 @@ def set_answer(stem: dict, answer: list[str]) -> None:
         stem["answerMode"] = "多选" if len(answer) > 1 else "单选"
 
 
+def apply_option_split(group: dict) -> None:
+    split = OPTION_SPLITS.get(group["id"])
+    if not split:
+        return
+    source_options = {option["key"]: option for option in group["options"]}
+    group["options"] = [
+        {
+            "key": key,
+            "label": label,
+            "sourceText": "；".join(source_options[source_key]["sourceText"] for source_key in source_keys),
+            "splitFrom": source_keys,
+        }
+        for key, label, source_keys in split["options"]
+    ]
+    for stem, answer in zip(group["stems"], split["answers"], strict=True):
+        set_answer(stem, answer)
+    group["answerRaw"] = "、".join("".join(stem["answer"]) for stem in group["stems"])
+    group["optionSplitVersion"] = 1
+
+
 def apply_correction(group: dict) -> list[dict]:
     correction = CORRECTIONS.get(group["id"])
     if not correction:
@@ -411,14 +445,11 @@ def finalize_group(source_group: dict, lectures: list[dict], page_vectors: dict)
         fixed = TEXT_FIXES.get(group["id"], {}).get(option["key"])
         if fixed:
             option["label"] = fixed
-        breakdown = OPTION_DISPLAY_BREAKDOWNS.get(group["id"], {}).get(option["key"])
-        if breakdown:
-            option["displaySummary"] = breakdown["summary"]
-            option["displayItems"] = breakdown["items"]
     for stem in group["stems"]:
         stem["text"] = clean_text(stem["text"])
 
     review_notes = apply_correction(group)
+    apply_option_split(group)
     evidence = best_evidence(group, lectures, page_vectors)
     correction = CORRECTIONS.get(group["id"], {})
     if correction.get("evidence_page"):
@@ -469,6 +500,8 @@ def finalize_group(source_group: dict, lectures: list[dict], page_vectors: dict)
         "lectureIds": [evidence["lectureId"]],
         "lectureEvidence": evidence,
     }
+    if group.get("optionSplitVersion"):
+        site_group["optionSplitVersion"] = group["optionSplitVersion"]
     audit_record = {
         "id": group["id"],
         "topic": group["chapterTitle"],

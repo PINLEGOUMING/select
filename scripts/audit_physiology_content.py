@@ -77,6 +77,20 @@ def main() -> None:
     assert growth_group["stems"][0]["answer"] == list("BCEGHJK")
     assert growth_group["lectureEvidence"]["page"] == 1
 
+    introduction_group = next(group for group in payload["groups"] if group["id"] == "phys-001")
+    assert introduction_group["optionSplitVersion"] == 1
+    assert len(introduction_group["options"]) == 19
+    assert introduction_group["stems"][0]["answer"] == list("S")
+    assert introduction_group["stems"][1]["answer"] == list("ABC")
+    assert introduction_group["stems"][2]["answer"] == list("DEFGHIM")
+    assert introduction_group["stems"][3]["answer"] == list("JKLNOPQR")
+
+    airway_group = next(group for group in payload["groups"] if group["id"] == "phys-069")
+    assert airway_group["optionSplitVersion"] == 1
+    assert len(airway_group["options"]) == 16
+    assert airway_group["stems"][0]["answer"] == list("ABDIJKLMN")
+    assert airway_group["stems"][1]["answer"] == list("CEFGHOP")
+
     missing_images = []
     duplicate_option_keys = []
     invalid_answers = []

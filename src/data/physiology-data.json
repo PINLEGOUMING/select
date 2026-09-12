@@ -800,61 +800,155 @@
       "options": [
         {
           "key": "A",
-          "label": "生长发育的调节、月经周期的调节",
-          "sourceText": "A. 生长发育的调节、月经周期的调节"
+          "label": "生长发育的调节",
+          "sourceText": "A. 生长发育的调节、月经周期的调节",
+          "splitFrom": [
+            "A"
+          ]
         },
         {
           "key": "B",
-          "label": "抗利尿激素/血管升压素对尿量的调节",
-          "sourceText": "B. 抗利尿激素/血管升压素对尿量的调节"
+          "label": "月经周期的调节",
+          "sourceText": "A. 生长发育的调节、月经周期的调节",
+          "splitFrom": [
+            "A"
+          ]
         },
         {
           "key": "C",
-          "label": "寒冷引起甲状腺激素分泌、胃液头期分泌、应急引起儿茶酚胺分泌、应激引起糖皮质激素分泌、催产反射、射乳反射",
-          "sourceText": "C. 寒冷引起甲状腺激素分泌、胃液头期分泌、应急引起儿茶酚胺分泌、应激引起糖皮质激素 分泌、催产反射、射乳反射",
-          "displaySummary": "神经-体液调节的例子（6 项）",
-          "displayItems": [
-            "寒冷引起甲状腺激素分泌",
-            "胃液头期分泌",
-            "应急引起儿茶酚胺分泌",
-            "应激引起糖皮质激素分泌",
-            "催产反射",
-            "射乳反射"
+          "label": "抗利尿激素／血管升压素对尿量的调节",
+          "sourceText": "B. 抗利尿激素/血管升压素对尿量的调节",
+          "splitFrom": [
+            "B"
           ]
         },
         {
           "key": "D",
-          "label": "肾动脉灌注压（平均动脉压）在 70–180 mmHg（或 80–180、80–160 mmHg）时，肾血流量和肾小球滤过率维持相对稳定；球管平衡；脑动脉压在 60–140 mmHg 时脑血流量维持相对稳定",
-          "sourceText": "D.肾动脉灌注压（平均动脉压）在 70-180mmHg（或 80-180、80-160）肾血流量和肾小球滤 过率维持相对稳定L球管平衡、脑动脉压在 60-140mmHg 脑血流量维持相对稳定",
-          "displaySummary": "自身调节的例子（3 项）",
-          "displayItems": [
-            "肾灌注压在一定范围内，肾血流量和肾小球滤过率维持相对稳定",
-            "球管平衡",
-            "脑动脉压在一定范围内，脑血流量维持相对稳定"
+          "label": "寒冷引起甲状腺激素分泌",
+          "sourceText": "C. 寒冷引起甲状腺激素分泌、胃液头期分泌、应急引起儿茶酚胺分泌、应激引起糖皮质激素 分泌、催产反射、射乳反射",
+          "splitFrom": [
+            "C"
           ]
         },
         {
           "key": "E",
-          "label": "夜间睡眠时迷走神经引起胰岛素分泌",
-          "sourceText": "E.夜间睡眠时迷走神经引起胰岛素分泌"
+          "label": "胃液头期分泌",
+          "sourceText": "C. 寒冷引起甲状腺激素分泌、胃液头期分泌、应急引起儿茶酚胺分泌、应激引起糖皮质激素 分泌、催产反射、射乳反射",
+          "splitFrom": [
+            "C"
+          ]
         },
         {
           "key": "F",
-          "label": "渗透性利尿、异长调节、儿茶酚胺内在/胞内分泌、管球反馈、碘阻滞效应",
-          "sourceText": "F.渗透性利尿、异长调节、儿茶酚胺内在/胞内分泌、管球反馈、碘阻滞效应",
-          "displaySummary": "自身调节的例子（5 项）",
-          "displayItems": [
-            "渗透性利尿",
-            "异长调节",
-            "儿茶酚胺内在／胞内分泌",
-            "管球反馈",
-            "碘阻滞效应"
+          "label": "应急引起儿茶酚胺分泌",
+          "sourceText": "C. 寒冷引起甲状腺激素分泌、胃液头期分泌、应急引起儿茶酚胺分泌、应激引起糖皮质激素 分泌、催产反射、射乳反射",
+          "splitFrom": [
+            "C"
           ]
         },
         {
           "key": "G",
+          "label": "应激引起糖皮质激素分泌",
+          "sourceText": "C. 寒冷引起甲状腺激素分泌、胃液头期分泌、应急引起儿茶酚胺分泌、应激引起糖皮质激素 分泌、催产反射、射乳反射",
+          "splitFrom": [
+            "C"
+          ]
+        },
+        {
+          "key": "H",
+          "label": "催产反射",
+          "sourceText": "C. 寒冷引起甲状腺激素分泌、胃液头期分泌、应急引起儿茶酚胺分泌、应激引起糖皮质激素 分泌、催产反射、射乳反射",
+          "splitFrom": [
+            "C"
+          ]
+        },
+        {
+          "key": "I",
+          "label": "射乳反射",
+          "sourceText": "C. 寒冷引起甲状腺激素分泌、胃液头期分泌、应急引起儿茶酚胺分泌、应激引起糖皮质激素 分泌、催产反射、射乳反射",
+          "splitFrom": [
+            "C"
+          ]
+        },
+        {
+          "key": "J",
+          "label": "肾灌注压在一定范围内，肾血流量和肾小球滤过率维持相对稳定",
+          "sourceText": "D.肾动脉灌注压（平均动脉压）在 70-180mmHg（或 80-180、80-160）肾血流量和肾小球滤 过率维持相对稳定L球管平衡、脑动脉压在 60-140mmHg 脑血流量维持相对稳定",
+          "splitFrom": [
+            "D"
+          ]
+        },
+        {
+          "key": "K",
+          "label": "球管平衡",
+          "sourceText": "D.肾动脉灌注压（平均动脉压）在 70-180mmHg（或 80-180、80-160）肾血流量和肾小球滤 过率维持相对稳定L球管平衡、脑动脉压在 60-140mmHg 脑血流量维持相对稳定",
+          "splitFrom": [
+            "D"
+          ]
+        },
+        {
+          "key": "L",
+          "label": "脑动脉压在一定范围内，脑血流量维持相对稳定",
+          "sourceText": "D.肾动脉灌注压（平均动脉压）在 70-180mmHg（或 80-180、80-160）肾血流量和肾小球滤 过率维持相对稳定L球管平衡、脑动脉压在 60-140mmHg 脑血流量维持相对稳定",
+          "splitFrom": [
+            "D"
+          ]
+        },
+        {
+          "key": "M",
+          "label": "夜间睡眠时迷走神经引起胰岛素分泌",
+          "sourceText": "E.夜间睡眠时迷走神经引起胰岛素分泌",
+          "splitFrom": [
+            "E"
+          ]
+        },
+        {
+          "key": "N",
+          "label": "渗透性利尿",
+          "sourceText": "F.渗透性利尿、异长调节、儿茶酚胺内在/胞内分泌、管球反馈、碘阻滞效应",
+          "splitFrom": [
+            "F"
+          ]
+        },
+        {
+          "key": "O",
+          "label": "异长调节",
+          "sourceText": "F.渗透性利尿、异长调节、儿茶酚胺内在/胞内分泌、管球反馈、碘阻滞效应",
+          "splitFrom": [
+            "F"
+          ]
+        },
+        {
+          "key": "P",
+          "label": "儿茶酚胺内在／胞内分泌",
+          "sourceText": "F.渗透性利尿、异长调节、儿茶酚胺内在/胞内分泌、管球反馈、碘阻滞效应",
+          "splitFrom": [
+            "F"
+          ]
+        },
+        {
+          "key": "Q",
+          "label": "管球反馈",
+          "sourceText": "F.渗透性利尿、异长调节、儿茶酚胺内在/胞内分泌、管球反馈、碘阻滞效应",
+          "splitFrom": [
+            "F"
+          ]
+        },
+        {
+          "key": "R",
+          "label": "碘阻滞效应",
+          "sourceText": "F.渗透性利尿、异长调节、儿茶酚胺内在/胞内分泌、管球反馈、碘阻滞效应",
+          "splitFrom": [
+            "F"
+          ]
+        },
+        {
+          "key": "S",
           "label": "唾液分泌",
-          "sourceText": "G.唾液分泌"
+          "sourceText": "G.唾液分泌",
+          "splitFrom": [
+            "G"
+          ]
         }
       ],
       "stems": [
@@ -862,9 +956,9 @@
           "number": 1,
           "text": "神经调节的例子",
           "sourceText": "1. 神经调节的例子：",
-          "answerRaw": "G",
+          "answerRaw": "S",
           "answer": [
-            "G"
+            "S"
           ],
           "answerMode": "单选"
         },
@@ -872,10 +966,11 @@
           "number": 2,
           "text": "体液调节的例子（多选）",
           "sourceText": "2. 体液调节的例子（多选）：",
-          "answerRaw": "AB",
+          "answerRaw": "ABC",
           "answer": [
             "A",
-            "B"
+            "B",
+            "C"
           ],
           "answerMode": "多选"
         },
@@ -883,10 +978,15 @@
           "number": 3,
           "text": "神经-体液调节的例子 （多选）",
           "sourceText": "3. 神经-体液调节的例子 （多选）：",
-          "answerRaw": "CE",
+          "answerRaw": "DEFGHIM",
           "answer": [
-            "C",
-            "E"
+            "D",
+            "E",
+            "F",
+            "G",
+            "H",
+            "I",
+            "M"
           ],
           "answerMode": "多选"
         },
@@ -894,10 +994,16 @@
           "number": 4,
           "text": "自身调节的例子（多选）",
           "sourceText": "4. 自身调节的例子（多选）：",
-          "answerRaw": "DF",
+          "answerRaw": "JKLNOPQR",
           "answer": [
-            "D",
-            "F"
+            "J",
+            "K",
+            "L",
+            "N",
+            "O",
+            "P",
+            "Q",
+            "R"
           ],
           "answerMode": "多选"
         }
@@ -915,12 +1021,13 @@
         "lectureNumber": 1,
         "lectureTitle": "生理 绪论",
         "page": 6,
-        "score": 0.3837,
+        "score": 0.3379,
         "method": "限定本章讲义范围后的字符三元组相似度匹配，并完成人工勘误复核",
         "image": "physiology/lecture-pages/lecture-01-page-06.webp",
         "title": "第1讲第6页：生理 绪论",
         "description": "本题组已按第1讲第6页逐项核对题目、选项与答案。"
-      }
+      },
+      "optionSplitVersion": 1
     },
     {
       "id": "phys-002",
@@ -7650,42 +7757,130 @@
         {
           "key": "A",
           "label": "吸气",
-          "sourceText": "A. 吸气"
+          "sourceText": "A. 吸气",
+          "splitFrom": [
+            "A"
+          ]
         },
         {
           "key": "B",
-          "label": "儿茶酚胺（β2-R）",
-          "sourceText": "B. 儿茶酚胺（β2-R）"
+          "label": "儿茶酚胺（β₂ 受体）",
+          "sourceText": "B. 儿茶酚胺（β2-R）",
+          "splitFrom": [
+            "B"
+          ]
         },
         {
           "key": "C",
           "label": "副交感神经（ACh）",
-          "sourceText": "C. 副交感神经（ACh）"
+          "sourceText": "C. 副交感神经（ACh）",
+          "splitFrom": [
+            "C"
+          ]
         },
         {
           "key": "D",
-          "label": "血管活性肠肽VIP",
-          "sourceText": "D. 血管活性肠肽VIP"
+          "label": "血管活性肠肽（VIP）",
+          "sourceText": "D. 血管活性肠肽VIP",
+          "splitFrom": [
+            "D"
+          ]
         },
         {
           "key": "E",
-          "label": "组胺、白三烯、TXA2、内皮素ET",
-          "sourceText": "E. 组胺、白三烯、TXA2、内皮素ET"
+          "label": "组胺",
+          "sourceText": "E. 组胺、白三烯、TXA2、内皮素ET",
+          "splitFrom": [
+            "E"
+          ]
         },
         {
           "key": "F",
-          "label": "PGI2、PGE、NO、CO2、糖皮质激素",
-          "sourceText": "F. PGI2、PGE、NO、CO2、糖皮质激素"
+          "label": "白三烯",
+          "sourceText": "E. 组胺、白三烯、TXA2、内皮素ET",
+          "splitFrom": [
+            "E"
+          ]
         },
         {
           "key": "G",
-          "label": "气道内压力↑",
-          "sourceText": "G. 气道内压力↑"
+          "label": "血栓烷 A₂（TXA₂）",
+          "sourceText": "E. 组胺、白三烯、TXA2、内皮素ET",
+          "splitFrom": [
+            "E"
+          ]
         },
         {
           "key": "H",
-          "label": "ACh、速激肽如P 物质、PGF2α",
-          "sourceText": "H.ACh、速激肽如P 物质、PGF2α"
+          "label": "内皮素（ET）",
+          "sourceText": "E. 组胺、白三烯、TXA2、内皮素ET",
+          "splitFrom": [
+            "E"
+          ]
+        },
+        {
+          "key": "I",
+          "label": "前列环素（PGI₂）",
+          "sourceText": "F. PGI2、PGE、NO、CO2、糖皮质激素",
+          "splitFrom": [
+            "F"
+          ]
+        },
+        {
+          "key": "J",
+          "label": "前列腺素 E（PGE）",
+          "sourceText": "F. PGI2、PGE、NO、CO2、糖皮质激素",
+          "splitFrom": [
+            "F"
+          ]
+        },
+        {
+          "key": "K",
+          "label": "一氧化氮（NO）",
+          "sourceText": "F. PGI2、PGE、NO、CO2、糖皮质激素",
+          "splitFrom": [
+            "F"
+          ]
+        },
+        {
+          "key": "L",
+          "label": "二氧化碳（CO₂）",
+          "sourceText": "F. PGI2、PGE、NO、CO2、糖皮质激素",
+          "splitFrom": [
+            "F"
+          ]
+        },
+        {
+          "key": "M",
+          "label": "糖皮质激素",
+          "sourceText": "F. PGI2、PGE、NO、CO2、糖皮质激素",
+          "splitFrom": [
+            "F"
+          ]
+        },
+        {
+          "key": "N",
+          "label": "气道内压力升高",
+          "sourceText": "G. 气道内压力↑",
+          "splitFrom": [
+            "G"
+          ]
+        },
+        {
+          "key": "O",
+          "label": "速激肽（如 P 物质）",
+          "sourceText": "H.ACh、速激肽如P 物质、PGF2α",
+          "splitFrom": [
+            "H"
+          ]
+        },
+        {
+          "key": "P",
+          "label": "前列腺素 F₂α（PGF₂α）",
+          "sourceText": "H.ACh、速激肽如P 物质、PGF2α",
+          "splitFrom": [
+            "H"
+          ]
         }
       ],
       "stems": [
@@ -7693,13 +7888,17 @@
           "number": 1,
           "text": "能使气道口径扩大的因素（多选）",
           "sourceText": "1. 能使气道口径扩大的因素（多选）：",
-          "answerRaw": "ABDFG",
+          "answerRaw": "ABDIJKLMN",
           "answer": [
             "A",
             "B",
             "D",
-            "F",
-            "G"
+            "I",
+            "J",
+            "K",
+            "L",
+            "M",
+            "N"
           ],
           "answerMode": "多选"
         },
@@ -7707,11 +7906,15 @@
           "number": 2,
           "text": "能使气道口径缩小的因素（多选）",
           "sourceText": "2. 能使气道口径缩小的因素（多选）：",
-          "answerRaw": "CEH",
+          "answerRaw": "CEFGHOP",
           "answer": [
             "C",
             "E",
-            "H"
+            "F",
+            "G",
+            "H",
+            "O",
+            "P"
           ],
           "answerMode": "多选"
         }
@@ -7729,12 +7932,13 @@
         "lectureNumber": 15,
         "lectureTitle": "生理 肺通气",
         "page": 7,
-        "score": 0.2297,
+        "score": 0.2277,
         "method": "限定本章讲义范围后的字符三元组相似度匹配，并完成人工勘误复核",
         "image": "physiology/lecture-pages/lecture-15-page-07.webp",
         "title": "第15讲第7页：生理 肺通气",
         "description": "本题组已按第15讲第7页逐项核对题目、选项与答案。"
-      }
+      },
+      "optionSplitVersion": 1
     },
     {
       "id": "phys-070",
