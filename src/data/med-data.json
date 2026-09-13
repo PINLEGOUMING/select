@@ -4235,7 +4235,7 @@
           "answerMode": "多选"
         }
       ],
-      "sourceText": "B.短效β₂受体激动剂（SABA） | C.联合用药（ICS+LABA、ICS+LABA+LAMA） | 缓解性药物（BDIK） | D.短效吸入型抗胆碱药物（SAMA） | E.白三烯调节剂 | 控制性药物（ACEGHJLM） | F.ICS+福莫特罗 | G.长效β₂受体激动剂（LABA） | H.缓释茶碱 | I.短效茶碱 | J.抗IgE抗体 | K.全身用糖皮质激素 | L.抗IL-5抗体/抗IL-5R抗体 | M.抗IL-4R抗体/抗TSLP抗体",
+      "sourceText": "B.短效β₂受体激动剂（SABA） | C.联合用药（ICS+LABA、ICS+LABA+LAMA） | 缓解性药物（BDFIK） | D.短效吸入型抗胆碱药物（SAMA） | E.白三烯调节剂 | 控制性药物（ACEGHJLM） | F.ICS+福莫特罗 | G.长效β₂受体激动剂（LABA） | H.缓释茶碱 | I.短效茶碱 | J.抗IgE抗体 | K.全身用糖皮质激素 | L.抗IL-5抗体/抗IL-5R抗体 | M.抗IL-4R抗体/抗TSLP抗体",
       "reviewState": "已按讲义校对",
       "topic": "呼吸",
       "lectureIds": [
@@ -4252,7 +4252,7 @@
     {
       "id": "p11-g2",
       "page": 11,
-      "title": "急性发作可用",
+      "title": "支气管哮喘用药选择",
       "kind": "B",
       "kindLabel": "B型题",
       "options": [
@@ -4285,41 +4285,6 @@
           "key": "F",
           "label": "口服缓释茶碱",
           "sourceText": "F.口服缓释茶碱"
-        },
-        {
-          "key": "G",
-          "label": "意识障碍",
-          "sourceText": "G.意识障碍"
-        },
-        {
-          "key": "H",
-          "label": "单字表达",
-          "sourceText": "H.单字表达"
-        },
-        {
-          "key": "I",
-          "label": "讲话中断",
-          "sourceText": "1.讲话中断"
-        },
-        {
-          "key": "J",
-          "label": "散在哮鸣音",
-          "sourceText": "J.散在哮鸣音"
-        },
-        {
-          "key": "K",
-          "label": "R>30、PEF<60%、心率>120",
-          "sourceText": "K.R>30、PEF<60%、心率>120"
-        },
-        {
-          "key": "L",
-          "label": "弥漫响亮哮鸣音，可三凹征和奇脉",
-          "sourceText": "L.弥漫响亮哮鸣音，可三凹征和奇脉"
-        },
-        {
-          "key": "M",
-          "label": "可沉默肺(哮鸣音减弱甚至消失)，脉率慢或不规则、血压↓，胸腹矛盾运动/反常运动",
-          "sourceText": "M.可沉默肺(哮鸣音减弱甚至消失)，脉率慢或不规则、血压↓，胸腹矛盾运动/反常运动"
         }
       ],
       "stems": [
@@ -4330,7 +4295,7 @@
             "C",
             "D"
           ],
-          "sourceText": "急性发作可用（ACD",
+          "sourceText": "急性发作可用 ACD",
           "sourceY": 593,
           "answerMode": "多选"
         },
@@ -4341,7 +4306,7 @@
             "E",
             "F"
           ],
-          "sourceText": "长期抗炎可用（BEF",
+          "sourceText": "长期抗炎可用 BEF",
           "sourceY": 655,
           "answerMode": "多选"
         },
@@ -4368,17 +4333,56 @@
           "answer": [
             "F"
           ],
-          "sourceText": "适用夜间哮喘控制炎症（F",
+          "sourceText": "适用夜间哮喘控制炎症 F",
           "sourceY": 841,
           "answerMode": "单选"
         }
       ],
-      "sourceText": "问： | 急性发作可用（ACD | A.静注糖皮质激素 | B.LABA+ICS | 长期抗炎可用（BEF | C.静注茶碱 | 急性发作首选D | D.SABA | E.ICS | 长期抗炎首选E | F.口服缓释茶碱 | 适用夜间哮喘控制炎症（F | A.步行或上楼时气短 | B.不能讲话 | C.稍活动气短 | D.讲话正常 | E.端坐呼吸 | F.弥漫响亮哮鸣音，明显三凹征和奇脉 | G.意识障碍 | H.单字表达 | 1.讲话中断 | J.散在哮鸣音 | K.R>30、PEF<60%、心率>120 | L.弥漫响亮哮鸣音，可三凹征和奇脉 | M.可沉默肺(哮鸣音减弱甚至消失)，脉率慢或不规则、血压↓，胸腹矛盾运动/反常运动 | 问： | 轻度ADJ | 中度(C I L) | 重度EFHK | 小红书号：385106504",
-      "reviewState": "待讲义复核",
+      "sourceText": "支气管哮喘用药选择：A～F；急性发作可用ACD，长期抗炎可用BEF，急性发作首选D，长期抗炎首选E，夜间哮喘控制炎症F。",
+      "reviewState": "已按原题页与讲义复核",
       "topic": "呼吸",
       "lectureIds": [
         "lecture-09"
       ],
+      "lectureEvidence": {
+        "lectureId": "lecture-09",
+        "page": 4,
+        "image": "med/lecture-pages/lecture-09-page-04.webp",
+        "title": "第9讲第4页：内科含诊断 支气管哮喘",
+        "description": "本题组对应第9讲第4页讲义。"
+      }
+    },
+    {
+      "id": "p11-g3",
+      "page": 11,
+      "title": "支气管哮喘急性发作分级",
+      "kind": "B",
+      "kindLabel": "B型题",
+      "options": [
+        { "key": "A", "label": "步行或上楼时气短", "sourceText": "A.步行或上楼时气短" },
+        { "key": "B", "label": "不能讲话", "sourceText": "B.不能讲话" },
+        { "key": "C", "label": "稍活动气短", "sourceText": "C.稍活动气短" },
+        { "key": "D", "label": "讲话正常", "sourceText": "D.讲话正常" },
+        { "key": "E", "label": "端坐呼吸", "sourceText": "E.端坐呼吸" },
+        { "key": "F", "label": "弥漫响亮哮鸣音，明显三凹征和奇脉", "sourceText": "F.弥漫响亮哮鸣音，明显三凹征和奇脉" },
+        { "key": "G", "label": "意识障碍", "sourceText": "G.意识障碍" },
+        { "key": "H", "label": "单字表达", "sourceText": "H.单字表达" },
+        { "key": "I", "label": "讲话中断", "sourceText": "I.讲话中断" },
+        { "key": "J", "label": "散在哮鸣音", "sourceText": "J.散在哮鸣音" },
+        { "key": "K", "label": "呼吸频率>30次/分、PEF<60%、心率>120次/分", "sourceText": "K.R>30、PEF<60%、心率>120" },
+        { "key": "L", "label": "弥漫响亮哮鸣音，可有三凹征和奇脉", "sourceText": "L.弥漫响亮哮鸣音，可三凹征和奇脉" },
+        { "key": "M", "label": "可呈沉默肺（哮鸣音减弱甚至消失），脉率慢或不规则、血压下降，胸腹矛盾或反常运动", "sourceText": "M.可沉默肺（哮鸣音减弱甚至消失），脉率慢或不规则、血压↓，胸腹矛盾运动/反常运动" }
+      ],
+      "stems": [
+        { "text": "轻度", "answer": ["A", "D", "J"], "sourceText": "轻度 ADJ", "sourceY": 0, "answerMode": "多选" },
+        { "text": "中度", "answer": ["C", "I", "L"], "sourceText": "中度 CIL", "sourceY": 0, "answerMode": "多选" },
+        { "text": "重度", "answer": ["E", "F", "H", "K"], "sourceText": "重度 EFHK", "sourceY": 0, "answerMode": "多选" },
+        { "text": "危重度", "answer": ["B", "G", "M", "K"], "sourceText": "危重度 BGMK", "sourceY": 0, "answerMode": "多选" }
+      ],
+      "sourceText": "支气管哮喘急性发作分级：轻度ADJ，中度CIL，重度EFHK，危重度BGMK。",
+      "reviewState": "已按原题页与讲义复核",
+      "topic": "呼吸",
+      "lectureIds": ["lecture-09"],
       "lectureEvidence": {
         "lectureId": "lecture-09",
         "page": 5,

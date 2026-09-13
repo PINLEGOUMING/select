@@ -92,6 +92,10 @@ def main() -> None:
     assert by_id["p16-g2"]["options"][2]["label"] == "膈神经麻痹"
     assert [option["key"] for option in by_id["p11-g1"]["options"]] == list("ABCDEFGHIJKLM")
     assert by_id["p11-g1"]["options"][-1]["label"] == "抗IL-4R抗体/抗TSLP抗体"
+    assert [group["id"] for group in payload["groups"] if group["page"] == 11] == ["p11-g1", "p11-g2", "p11-g3"], "page 11 asthma groups were merged or lost"
+    assert [option["key"] for option in by_id["p11-g2"]["options"]] == list("ABCDEF"), "asthma treatment options include another group's items"
+    assert [stem["answer"] for stem in by_id["p11-g3"]["stems"]] == [list("ADJ"), list("CIL"), list("EFHK"), list("BGMK")], "asthma severity questions were truncated or mismatched"
+    assert by_id["p11-g2"]["lectureEvidence"]["page"] == 4 and by_id["p11-g3"]["lectureEvidence"]["page"] == 5
     assert by_id["p20-g1"]["topic"] == "消化" and by_id["p20-g2"]["topic"] == "消化"
     assert [group["id"] for group in payload["groups"] if group["page"] == 31] == ["p31-g1", "p31-g2", "p31-g3", "p31-g4"]
     assert by_id["p31-g4"]["title"] == "原发性肝癌治疗"
