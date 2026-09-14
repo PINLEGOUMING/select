@@ -56,7 +56,23 @@ const loadJson = (loader) => loader().then((module) => module.default)
 const CONTENT_LOADERS = {
   med: () => loadJson(() => import('./data/med-data.json')),
   pathology: () => loadJson(() => import('./data/pathology-data.json')),
-  physiology: () => loadJson(() => import('./data/physiology-data.json')),
+  physiology: async () => {
+    const [content, supplement] = await Promise.all([
+      loadJson(() => import('./data/physiology-data.json')),
+      loadJson(() => import('./data/physiology-teacher-supplement.json')),
+    ])
+    return {
+      ...content,
+      meta: {
+        ...content.meta,
+        groupCount: content.groups.length + supplement.groups.length,
+        stemCount: content.groups.reduce((count, group) => count + group.stems.length, 0) + supplement.groups.length,
+        supplementCount: supplement.groups.length,
+      },
+      groups: [...content.groups, ...supplement.groups],
+      pages: [...content.pages, ...supplement.pages],
+    }
+  },
   surgery: async () => {
     const [surgeryContent, surgeryFractureContent, surgeryDeformityContent, surgeryChronicInjuryContent, surgeryOrthoMixedContent, surgeryOrthoInfectionContent, surgeryNonpurulentArthritisContent, surgeryBoneTumorContent, surgeryTrunkSpineContent, surgeryDegenerativeSpineContent, surgeryLimbFractureContent, surgeryGeneralContent, surgeryGeneralCoreContent, surgeryGeneralLateContent] = await Promise.all([
       loadJson(() => import('./data/surgery-data.json')),
@@ -708,7 +724,7 @@ function App() {
       if (favoritesOnly && !favorites.includes(groupStorageKey(subject, group.id))) return false
       if (typeFilter !== '全部题型' && group.kindLabel !== typeFilter) return false
       if (!query) return true
-      const haystack = [group.title, group.topic, group.sourceText, ...group.options.map((item) => item.label), ...group.stems.map((stem) => stem.text)].join(' ').toLowerCase()
+      const haystack = [group.title, group.topic, group.sourceText, ...(group.diseaseTags || []), ...group.options.map((item) => item.label), ...group.stems.map((stem) => stem.text)].join(' ').toLowerCase()
       return haystack.includes(query)
     })
   }, [chapterId, content, currentChapter, favorites, favoritesOnly, search, subject, topic, typeFilter])
@@ -721,7 +737,7 @@ function App() {
   const groupStorageId = groupStorageKey(subject, group.id)
   const currentSelections = selections[groupStorageId] || {}
   const isSubmitted = Boolean(submitted[groupStorageId])
-  const currentPage = content.pages.find((item) => item.page === group.page)
+  const currentPage = content.pages.find((item) => item.page === group.page && item.sourceKey === group.sourceKey)
   const favorite = favorites.includes(groupStorageId)
   const activeSystem = group.topic || topic
   const systemStorageIds = useMemo(() => new Set(
@@ -920,7 +936,7 @@ function App() {
         </div>
         <div className="top-actions">
           <label className="search-box"><Icon name="search" size={18} /><input value={search} onChange={(event) => { setSearch(event.target.value); setJumpGroupId(''); setGroupIndex(0) }} placeholder="搜索题目 / 关键词" /><kbd>⌘ K</kbd></label>
-          <label className="filter-box"><Icon name="sliders" size={17} /><select value={typeFilter} onChange={(event) => { setTypeFilter(event.target.value); setJumpGroupId(''); setGroupIndex(0) }}><option>全部题型</option><option>B型题</option><option>填空题</option><option>排序题</option><option>多项选择</option><option>匹配 / 归类</option><option>原题页核对</option></select><Icon name="chevron" size={15} /></label>
+          <label className="filter-box"><Icon name="sliders" size={17} /><select value={typeFilter} onChange={(event) => { setTypeFilter(event.target.value); setJumpGroupId(''); setGroupIndex(0) }}><option>全部题型</option><option>B型题</option><option>单项选择</option><option>填空题</option><option>排序题</option><option>多项选择</option><option>匹配 / 归类</option><option>原题页核对</option></select><Icon name="chevron" size={15} /></label>
           <button className="icon-button" aria-label="设置"><Icon name="settings" size={19} /></button>
         </div>
       </header>
@@ -970,9 +986,9 @@ function App() {
           {!filteredGroups.length && <div className="empty-state"><div className="empty-state-icon"><Icon name={favoritesOnly ? 'bookmark' : 'search'} size={22} /></div><h1>{favoritesOnly ? `${notebookName}暂无题组` : '当前筛选下没有题组'}</h1><p>{favoritesOnly ? '点击题组右上角的“收藏”后，它会自动进入当前科目与章节的收藏本。' : '请尝试清除搜索词、切换章节或选择其他题型。'}</p><button className="primary-button" onClick={favoritesOnly ? showAllGroupsInChapter : () => { setTopic('全部'); setSearch(''); setTypeFilter('全部题型'); setGroupIndex(0) }}>{favoritesOnly ? '返回本章全部题组' : '显示全部题库'} <Icon name="arrow" size={17} /></button></div>}
           {filteredGroups.length > 0 && <div className="study-content" data-study-content>
           {favoritesOnly && <div className="favorite-notebook-banner"><span className="favorite-notebook-icon"><Icon name="bookmarkFill" size={18} /></span><div><strong>{notebookName}</strong><small>正在复习已收藏题组 · 共 {filteredGroups.length} 组</small></div><button onClick={showAllGroupsInChapter}>退出收藏本</button></div>}
-          <div className="breadcrumb"><span>{group.topic || '综合'}</span>{currentChapter ? <><Icon name="chevron" size={13} /><span>{currentChapter.title}</span></> : null}<Icon name="chevron" size={13} /><span>{group.kindLabel}</span>{group.hideSource ? null : <><Icon name="chevron" size={13} /><strong>原题第 {group.page} 页</strong></>}</div>
+          <div className="breadcrumb"><span>{group.topic || '综合'}</span>{currentChapter ? <><Icon name="chevron" size={13} /><span>{currentChapter.title}</span></> : null}<Icon name="chevron" size={13} /><span>{group.supplement ? '教师补充' : group.kindLabel}</span>{group.hideSource ? null : <><Icon name="chevron" size={13} /><strong>原题第 {group.page} 页</strong></>}</div>
           <div className="content-heading">
-            <div><h1>{group.title || '题库原题'}</h1><p>{group.kindLabel === '填空题' ? '按题干顺序填写数字或原词，提交后逐题核对。' : (group.kindLabel === '排序题' ? '依次点击选项完成排序；再次点击可移除后重新排列。' : '共用选项组保留在本题组内；每个题干独立作答，提交后逐题反馈。')}</p></div>
+            <div><h1>{group.title || '题库原题'}</h1><p>{group.supplement ? `教师课后巩固 · ${group.sourceSection}第 ${group.sourceQuestion} 题 · 原资料答案，尚未按讲义逐项复核${group.reviewIssues?.length ? `；${group.reviewIssues.join('；')}` : ''}` : (group.kindLabel === '填空题' ? '按题干顺序填写数字或原词，提交后逐题核对。' : (group.kindLabel === '排序题' ? '依次点击选项完成排序；再次点击可移除后重新排列。' : '共用选项组保留在本题组内；每个题干独立作答，提交后逐题反馈。'))}</p></div>
             <div className="heading-actions"><button className={`ghost-button ${favorite ? 'selected' : ''}`} onClick={toggleFavorite} aria-pressed={favorite} title={favorite ? `从${group.topic}收藏本移除` : `收藏到${group.topic}收藏本`}><Icon name={favorite ? 'bookmarkFill' : 'bookmark'} size={17} />{favorite ? '已收藏' : '收藏'}</button><button className="ghost-button" onClick={() => setShowNote((value) => !value)}><Icon name="note" size={17} />笔记</button></div>
           </div>
 
@@ -1152,7 +1168,7 @@ function StemRow({ group, stem, index, selection, submitted, onSelect, onFill })
         : (choiceCategories.length
           ? <div className="answer-choice-category-list">{choiceCategories.map((category) => <div className="answer-choice-category" key={category}><span>{category}</span><div>{choiceOptions.filter((option) => option.category === category).map(renderChoiceButton)}</div></div>)}</div>
           : <div className="answer-choices">{choiceOptions.map(renderChoiceButton)}</div>)}
-      {submitted && <div className={`result-line ${unresolved ? 'pending' : (correct ? 'ok' : 'bad')}`}><Icon name={unresolved ? 'file' : (correct ? 'check' : 'alert')} size={15} />{unresolved ? '原题页核对：暂不自动判分' : (correct ? '正确' : `讲义答案：${answerDisplay}`)}{missed && <span className="missed-legend">橙色 = 漏选</span>}</div>}
+      {submitted && <div className={`result-line ${unresolved ? 'pending' : (correct ? 'ok' : 'bad')}`}><Icon name={unresolved ? 'file' : (correct ? 'check' : 'alert')} size={15} />{unresolved ? '原题页核对：暂不自动判分' : (correct ? '正确' : `${group.answerSourceLabel || '讲义答案'}：${answerDisplay}`)}{missed && <span className="missed-legend">橙色 = 漏选</span>}</div>}
     </div>
   )
 }
@@ -1169,7 +1185,7 @@ function EvidencePanel({ subject, content, group, page, sourceName, submitted, s
         <span className="evidence-rail-label">讲义</span>
       </div>
       <div className="evidence-panel-content">
-      <div className="evidence-section evidence-section-top"><div className="evidence-title"><span className="evidence-icon"><Icon name="check" size={18} /></span><div><h2>讲义依据</h2><p>{lectureItems.length ? `已关联 ${lectureItems.length} 份讲义` : '按章节关联讲义'}</p></div><span className="verified-dot"><Icon name="check" size={13} /></span><button className="evidence-toggle desktop-evidence-toggle" onClick={() => setEvidenceCollapsed(true)} aria-label="收起讲义栏" aria-expanded="true" title="收起讲义栏"><Icon name="right" size={17} /></button><button className="panel-close mobile-panel-close" onClick={() => setMobileEvidence(false)} aria-label="关闭讲义"><Icon name="chevron" size={16} /></button></div>
+      <div className="evidence-section evidence-section-top"><div className="evidence-title"><span className="evidence-icon"><Icon name={group.supplement ? 'file' : 'check'} size={18} /></span><div><h2>{group.supplement ? '章节定位' : '讲义依据'}</h2><p>{group.supplement ? '按考点归入讲义；答案尚未逐项复核' : (lectureItems.length ? `已关联 ${lectureItems.length} 份讲义` : '按章节关联讲义')}</p></div>{group.supplement ? null : <span className="verified-dot"><Icon name="check" size={13} /></span>}<button className="evidence-toggle desktop-evidence-toggle" onClick={() => setEvidenceCollapsed(true)} aria-label="收起讲义栏" aria-expanded="true" title="收起讲义栏"><Icon name="right" size={17} /></button><button className="panel-close mobile-panel-close" onClick={() => setMobileEvidence(false)} aria-label="关闭讲义"><Icon name="chevron" size={16} /></button></div>
         {lectureItems.slice(0, 4).map((lecture) => <div className="lecture-item" key={lecture.id}><Icon name="file" size={18} /><div><strong>{lecture.title}</strong><span>第 {lecture.number} 讲 · {currentEvidence?.lectureId === lecture.id ? currentEvidenceLocation : `共 ${lecture.pageCount} 页`}</span></div><span className="relevance">对应</span></div>)}
         <div className="all-lectures">查看全部 {content.meta.lectureCount} 份讲义 <Icon name="right" size={15} /></div>
       </div>
