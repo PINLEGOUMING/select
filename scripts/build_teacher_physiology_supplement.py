@@ -15,12 +15,10 @@ from collections import Counter
 from pathlib import Path
 
 import pdfplumber
-import pypdfium2 as pdfium
 
 
 ROOT = Path(__file__).resolve().parents[1]
 OUTPUT = ROOT / "src/data/physiology-teacher-supplement.json"
-IMAGE_DIR = ROOT / "public/physiology/teacher-supplement"
 REPORT = ROOT / "reports/teacher-physiology-supplement-2026-09-14.md"
 
 SECTION_NAMES = {
@@ -219,15 +217,6 @@ def parse_answer_rows(text: str) -> dict[int, list[str]]:
     return rows
 
 
-def write_images(source: Path, pages: list[int]) -> None:
-    IMAGE_DIR.mkdir(parents=True, exist_ok=True)
-    document = pdfium.PdfDocument(str(source))
-    for page in pages:
-        destination = IMAGE_DIR / f"page-{page:02d}.webp"
-        bitmap = document[page - 1].render(scale=1.65)
-        bitmap.to_pil().save(destination, format="WEBP", quality=82, method=5)
-
-
 def main() -> None:
     parser = argparse.ArgumentParser()
     parser.add_argument("source_pdf", type=Path)
@@ -243,13 +232,11 @@ def main() -> None:
     for group in groups:
         lecture_order[int(group["lectureIds"][0].split("-")[1])].append(group)
     ordered = [group for lecture in lecture_order.values() for group in lecture]
-    pages = sorted({group["page"] for group in ordered} | {33, 34})
-    write_images(args.source_pdf, pages)
     payload = {
         "meta": {"title": "教师课后巩固·生理补充", "sourcePages": 34, "groupCount": 172,
                  "stemCount": 172, "fillCount": 22, "choiceCount": 150,
                  "answerNote": "答案取自原 PDF 第 33–34 页；尚未按 2027 讲义逐项复核。"},
-        "pages": [{"page": page, "sourceKey": "teacher-2026-08", "image": f"physiology/teacher-supplement/page-{page:02d}.webp"} for page in pages],
+        "pages": [],
         "groups": ordered,
     }
     OUTPUT.write_text(json.dumps(payload, ensure_ascii=False, indent=2) + "\n", encoding="utf-8")
@@ -272,7 +259,7 @@ def main() -> None:
         lines.append(f"- {'、'.join(group['diseaseTags'])}：{section_chinese(group['sourceSection'])}-{group['sourceQuestion']}，第 {int(group['lectureIds'][0][-2:])} 讲，PDF 第 {group['page']} 页")
     lines += ["", "## 数据原则", "", "每题只设一个主归属讲义；疾病名称保存在 `diseaseTags`，可用于检索。题组保留原 PDF 页码和原答案，未将资料中的推广信息作为站点操作指令。", ""]
     REPORT.write_text("\n".join(lines), encoding="utf-8")
-    print({"groups": len(ordered), "pages": len(pages), "lectures": sum(bool(x) for x in lecture_order.values()), "topics": dict(topic_counts)})
+    print({"groups": len(ordered), "lectures": sum(bool(x) for x in lecture_order.values()), "topics": dict(topic_counts)})
 
 
 def section_chinese(name: str) -> str:

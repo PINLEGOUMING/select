@@ -53,25 +53,33 @@ const EMPTY_CONTENT = {
 
 const loadJson = (loader) => loader().then((module) => module.default)
 
+const appendSupplement = (content, supplement) => ({
+  ...content,
+  meta: {
+    ...content.meta,
+    groupCount: content.groups.length + supplement.groups.length,
+    stemCount: [...content.groups, ...supplement.groups].reduce((count, group) => count + group.stems.length, 0),
+    supplementCount: supplement.groups.length,
+  },
+  groups: [...content.groups, ...supplement.groups],
+  pages: [...content.pages, ...supplement.pages],
+})
+
 const CONTENT_LOADERS = {
-  med: () => loadJson(() => import('./data/med-data.json')),
-  pathology: () => loadJson(() => import('./data/pathology-data.json')),
+  med: async () => appendSupplement(...await Promise.all([
+    loadJson(() => import('./data/med-data.json')),
+    loadJson(() => import('./data/med-teacher-supplement.json')),
+  ])),
+  pathology: async () => appendSupplement(...await Promise.all([
+    loadJson(() => import('./data/pathology-data.json')),
+    loadJson(() => import('./data/pathology-teacher-supplement.json')),
+  ])),
   physiology: async () => {
     const [content, supplement] = await Promise.all([
       loadJson(() => import('./data/physiology-data.json')),
       loadJson(() => import('./data/physiology-teacher-supplement.json')),
     ])
-    return {
-      ...content,
-      meta: {
-        ...content.meta,
-        groupCount: content.groups.length + supplement.groups.length,
-        stemCount: content.groups.reduce((count, group) => count + group.stems.length, 0) + supplement.groups.length,
-        supplementCount: supplement.groups.length,
-      },
-      groups: [...content.groups, ...supplement.groups],
-      pages: [...content.pages, ...supplement.pages],
-    }
+    return appendSupplement(content, supplement)
   },
   surgery: async () => {
     const [surgeryContent, surgeryFractureContent, surgeryDeformityContent, surgeryChronicInjuryContent, surgeryOrthoMixedContent, surgeryOrthoInfectionContent, surgeryNonpurulentArthritisContent, surgeryBoneTumorContent, surgeryTrunkSpineContent, surgeryDegenerativeSpineContent, surgeryLimbFractureContent, surgeryGeneralContent, surgeryGeneralCoreContent, surgeryGeneralLateContent] = await Promise.all([
@@ -988,7 +996,7 @@ function App() {
           {favoritesOnly && <div className="favorite-notebook-banner"><span className="favorite-notebook-icon"><Icon name="bookmarkFill" size={18} /></span><div><strong>{notebookName}</strong><small>正在复习已收藏题组 · 共 {filteredGroups.length} 组</small></div><button onClick={showAllGroupsInChapter}>退出收藏本</button></div>}
           <div className="breadcrumb"><span>{group.topic || '综合'}</span>{currentChapter ? <><Icon name="chevron" size={13} /><span>{currentChapter.title}</span></> : null}<Icon name="chevron" size={13} /><span>{group.supplement ? '教师补充' : group.kindLabel}</span>{group.hideSource ? null : <><Icon name="chevron" size={13} /><strong>原题第 {group.page} 页</strong></>}</div>
           <div className="content-heading">
-            <div><h1>{group.title || '题库原题'}</h1><p>{group.supplement ? `教师课后巩固 · ${group.sourceSection}第 ${group.sourceQuestion} 题 · 原资料答案，尚未按讲义逐项复核${group.reviewIssues?.length ? `；${group.reviewIssues.join('；')}` : ''}` : (group.kindLabel === '填空题' ? '按题干顺序填写数字或原词，提交后逐题核对。' : (group.kindLabel === '排序题' ? '依次点击选项完成排序；再次点击可移除后重新排列。' : '共用选项组保留在本题组内；每个题干独立作答，提交后逐题反馈。'))}</p></div>
+            <div><h1>{group.title || '题库原题'}</h1><p>{group.supplement ? `教师课后巩固 · ${group.sourceSection} · 第 ${group.sourceQuestion} 题 · ${group.supplementNotice || '原资料答案，尚未按讲义逐项复核'}${group.reviewIssues?.length ? `；${group.reviewIssues.join('；')}` : ''}` : (group.kindLabel === '填空题' ? '按题干顺序填写数字或原词，提交后逐题核对。' : (group.kindLabel === '排序题' ? '依次点击选项完成排序；再次点击可移除后重新排列。' : '共用选项组保留在本题组内；每个题干独立作答，提交后逐题反馈。'))}</p></div>
             <div className="heading-actions"><button className={`ghost-button ${favorite ? 'selected' : ''}`} onClick={toggleFavorite} aria-pressed={favorite} title={favorite ? `从${group.topic}收藏本移除` : `收藏到${group.topic}收藏本`}><Icon name={favorite ? 'bookmarkFill' : 'bookmark'} size={17} />{favorite ? '已收藏' : '收藏'}</button><button className="ghost-button" onClick={() => setShowNote((value) => !value)}><Icon name="note" size={17} />笔记</button></div>
           </div>
 
@@ -1005,7 +1013,7 @@ function App() {
                 {group.stems.map((stem, index) => <StemRow key={`${subject}-${group.id}-${index}`} group={group} stem={stem} index={index} selection={currentSelections[index] || []} submitted={isSubmitted} onSelect={updateSelection} onFill={updateFillSelection} />)}
               </div>}
             <div className="question-card-bottom">
-              {isSubmitted ? <div className="submit-summary"><Icon name="check" size={18} /><span>已提交 · {group.stems.filter((stem, index) => !isUnresolvedStem(stem) && stemIsCorrect(currentSelections[index] || [], stem)).length} / {group.stems.filter((stem) => !isUnresolvedStem(stem)).length} 个题干正确{group.stems.some(isUnresolvedStem) ? ` · ${group.stems.filter(isUnresolvedStem).length} 个待原题核对` : ''}</span></div> : <span className="hint-text">完成每个题干后提交；排序题按点击先后记录，填空题按空格顺序判分。</span>}
+              {isSubmitted ? <div className="submit-summary"><Icon name="check" size={18} /><span>{group.stems.every((stem) => stem.answerState === '暂无参考答案') ? '已提交 · 暂无参考答案，本题不计分' : `已提交 · ${group.stems.filter((stem, index) => !isUnresolvedStem(stem) && stemIsCorrect(currentSelections[index] || [], stem)).length} / ${group.stems.filter((stem) => !isUnresolvedStem(stem)).length} 个题干正确${group.stems.some(isUnresolvedStem) ? ` · ${group.stems.filter(isUnresolvedStem).length} 个待原题核对` : ''}`}</span></div> : <span className="hint-text">完成每个题干后提交；排序题按点击先后记录，填空题按空格顺序判分。</span>}
               <button className={`primary-button ${isSubmitted ? 'redo-button' : ''}`} onClick={isSubmitted ? redoGroup : submitGroup}>{isSubmitted ? '重新作答' : '提交本题组'}<Icon name={isSubmitted ? 'right' : 'arrow'} size={17} /></button>
             </div>
           </section>
@@ -1150,25 +1158,28 @@ function StemRow({ group, stem, index, selection, submitted, onSelect, onFill })
   const choiceCategories = unique(choiceOptions.map((option) => option.category).filter(Boolean))
   const keys = choiceOptions.map((option) => option.key)
   const answerDisplay = stem.answerDisplay || answer.map((item) => group.options.find((option) => option.key === item)?.displayKey || item).join('、')
+  const unresolvedLabel = stem.answerState === '暂无参考答案' ? '暂无答案' : '待核对'
+  const unresolvedResult = stem.answerState === '暂无参考答案' ? '暂无参考答案：暂不自动判分' : '原题页核对：暂不自动判分'
   const renderChoiceButton = (option) => {
     const item = option.key
     const label = option.displayKey || item
     const active = selection.includes(item)
-    const isAnswer = submitted && answer.includes(item)
+    const isAnswer = submitted && !unresolved && answer.includes(item)
     const isMissed = submitted && isAnswer && !active
     const order = ordered && active ? selection.indexOf(item) + 1 : null
-    const stateLabel = isMissed ? '，漏选' : (submitted && active && !isAnswer ? '，错选' : '')
-    return <button key={item} aria-label={`选项 ${label}${stateLabel}`} className={`answer-chip ${active ? 'active' : ''} ${submitted && isAnswer ? 'answer' : ''} ${isMissed ? 'missed' : ''} ${submitted && active && !isAnswer ? 'wrong' : ''}`} onClick={() => onSelect(index, item)} disabled={submitted}>{label}{order && <sup className="rank-order">{order}</sup>}</button>
+    const isWrong = submitted && !unresolved && active && !isAnswer
+    const stateLabel = isMissed ? '，漏选' : (isWrong ? '，错选' : '')
+    return <button key={item} aria-label={`选项 ${label}${stateLabel}`} className={`answer-chip ${active ? 'active' : ''} ${isAnswer ? 'answer' : ''} ${isMissed ? 'missed' : ''} ${isWrong ? 'wrong' : ''}`} onClick={() => onSelect(index, item)} disabled={submitted}>{label}{order && <sup className="rank-order">{order}</sup>}</button>
   }
   return (
-    <div className={`stem-row ${stem.image ? 'image-stem' : ''} ${choiceCategories.length ? 'has-choice-categories' : ''} ${submitted ? (correct ? 'is-correct' : 'is-wrong') : ''}`}>
-      <div className="stem-main"><span className="stem-number">{String(index + 1).padStart(2, '0')}</span><div className="stem-copy">{stem.image && <figure className="stem-figure"><img src={assetPath(stem.image)} alt={stem.imageAlt || '心电图题干'} /></figure>}{stem.text ? <div className="stem-heading"><p>{stem.text}</p><span className={`answer-mode ${(multi || fill) ? 'is-multi' : ''}`}>{unresolved ? '待核对' : (fill ? '填空' : (ordered ? '排序' : (multi ? '多选' : '单选')))}</span></div> : <div className="stem-image-heading"><span className={`answer-mode ${(multi || fill) ? 'is-multi' : ''}`}>{unresolved ? '待核对' : (fill ? '填空' : (ordered ? '排序' : (multi ? '多选' : '单选')))}</span></div>}{(multi || fill) && !submitted && <small>{fill ? `依次填写 ${answer.length} 个空` : (ordered ? '请按题干要求的先后顺序选择' : '可选择多个共用选项')}</small>}</div></div>
+    <div className={`stem-row ${stem.image ? 'image-stem' : ''} ${choiceCategories.length ? 'has-choice-categories' : ''} ${submitted && !unresolved ? (correct ? 'is-correct' : 'is-wrong') : ''}`}>
+      <div className="stem-main"><span className="stem-number">{String(index + 1).padStart(2, '0')}</span><div className="stem-copy">{stem.image && <figure className="stem-figure"><img src={assetPath(stem.image)} alt={stem.imageAlt || '心电图题干'} /></figure>}{stem.text ? <div className="stem-heading"><p>{stem.text}</p><span className={`answer-mode ${(multi || fill) ? 'is-multi' : ''}`}>{unresolved ? unresolvedLabel : (fill ? '填空' : (ordered ? '排序' : (multi ? '多选' : '单选')))}</span></div> : <div className="stem-image-heading"><span className={`answer-mode ${(multi || fill) ? 'is-multi' : ''}`}>{unresolved ? unresolvedLabel : (fill ? '填空' : (ordered ? '排序' : (multi ? '多选' : '单选')))}</span></div>}{(multi || fill) && !submitted && <small>{fill ? `依次填写 ${answer.length} 个空` : (ordered ? '请按题干要求的先后顺序选择' : '可选择多个共用选项')}</small>}</div></div>
       {fill
         ? <div className="fill-answers">{answer.map((_, blankIndex) => <label key={blankIndex}><span>{stem.blankLabels?.[blankIndex] || `空${blankIndex + 1}`}</span><input value={selection[blankIndex] || ''} onChange={(event) => onFill(index, blankIndex, event.target.value)} disabled={submitted} inputMode={stem.inputMode || 'text'} aria-label={`${stem.text}第${blankIndex + 1}空`} /></label>)}</div>
         : (choiceCategories.length
           ? <div className="answer-choice-category-list">{choiceCategories.map((category) => <div className="answer-choice-category" key={category}><span>{category}</span><div>{choiceOptions.filter((option) => option.category === category).map(renderChoiceButton)}</div></div>)}</div>
           : <div className="answer-choices">{choiceOptions.map(renderChoiceButton)}</div>)}
-      {submitted && <div className={`result-line ${unresolved ? 'pending' : (correct ? 'ok' : 'bad')}`}><Icon name={unresolved ? 'file' : (correct ? 'check' : 'alert')} size={15} />{unresolved ? '原题页核对：暂不自动判分' : (correct ? '正确' : `${group.answerSourceLabel || '讲义答案'}：${answerDisplay}`)}{missed && <span className="missed-legend">橙色 = 漏选</span>}</div>}
+      {submitted && <div className={`result-line ${unresolved ? 'pending' : (correct ? 'ok' : 'bad')}`}><Icon name={unresolved ? 'file' : (correct ? 'check' : 'alert')} size={15} />{unresolved ? unresolvedResult : (correct ? '正确' : `${group.answerSourceLabel || '讲义答案'}：${answerDisplay}`)}{missed && <span className="missed-legend">橙色 = 漏选</span>}</div>}
     </div>
   )
 }
@@ -1185,7 +1196,7 @@ function EvidencePanel({ subject, content, group, page, sourceName, submitted, s
         <span className="evidence-rail-label">讲义</span>
       </div>
       <div className="evidence-panel-content">
-      <div className="evidence-section evidence-section-top"><div className="evidence-title"><span className="evidence-icon"><Icon name={group.supplement ? 'file' : 'check'} size={18} /></span><div><h2>{group.supplement ? '章节定位' : '讲义依据'}</h2><p>{group.supplement ? '按考点归入讲义；答案尚未逐项复核' : (lectureItems.length ? `已关联 ${lectureItems.length} 份讲义` : '按章节关联讲义')}</p></div>{group.supplement ? null : <span className="verified-dot"><Icon name="check" size={13} /></span>}<button className="evidence-toggle desktop-evidence-toggle" onClick={() => setEvidenceCollapsed(true)} aria-label="收起讲义栏" aria-expanded="true" title="收起讲义栏"><Icon name="right" size={17} /></button><button className="panel-close mobile-panel-close" onClick={() => setMobileEvidence(false)} aria-label="关闭讲义"><Icon name="chevron" size={16} /></button></div>
+      <div className="evidence-section evidence-section-top"><div className="evidence-title"><span className="evidence-icon"><Icon name={group.supplement ? 'file' : 'check'} size={18} /></span><div><h2>{group.supplement ? '章节定位' : '讲义依据'}</h2><p>{group.supplement ? `按考点归入讲义；${group.supplementNotice || '答案尚未逐项复核'}` : (lectureItems.length ? `已关联 ${lectureItems.length} 份讲义` : '按章节关联讲义')}</p></div>{group.supplement ? null : <span className="verified-dot"><Icon name="check" size={13} /></span>}<button className="evidence-toggle desktop-evidence-toggle" onClick={() => setEvidenceCollapsed(true)} aria-label="收起讲义栏" aria-expanded="true" title="收起讲义栏"><Icon name="right" size={17} /></button><button className="panel-close mobile-panel-close" onClick={() => setMobileEvidence(false)} aria-label="关闭讲义"><Icon name="chevron" size={16} /></button></div>
         {lectureItems.slice(0, 4).map((lecture) => <div className="lecture-item" key={lecture.id}><Icon name="file" size={18} /><div><strong>{lecture.title}</strong><span>第 {lecture.number} 讲 · {currentEvidence?.lectureId === lecture.id ? currentEvidenceLocation : `共 ${lecture.pageCount} 页`}</span></div><span className="relevance">对应</span></div>)}
         <div className="all-lectures">查看全部 {content.meta.lectureCount} 份讲义 <Icon name="right" size={15} /></div>
       </div>
