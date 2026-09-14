@@ -6314,6 +6314,14 @@
       "title": "肺部疾病体征鉴别",
       "kind": "B",
       "kindLabel": "B型题",
+      "optionBankSections": [
+        { "title": "胸廓", "keys": ["A", "B", "C", "D", "E"] },
+        { "title": "纵隔", "keys": ["F", "G", "H"] },
+        { "title": "语音震颤", "keys": ["I", "J", "K", "L", "M"] },
+        { "title": "叩诊", "keys": ["N", "O", "P"] },
+        { "title": "呼吸音", "keys": ["Q", "R", "S", "T"] },
+        { "title": "啰音", "keys": ["U", "V", "W", "X", "Y"] }
+      ],
       "options": [
         {
           "key": "A",

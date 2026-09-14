@@ -1015,12 +1015,15 @@ function App() {
 
 function OptionBank({ group }) {
   const categories = unique(group.options.map((option) => option.category).filter(Boolean))
-  const categorized = categories.length > 0
+  const sections = group.optionBankSections?.length
+    ? group.optionBankSections.map((section) => ({ title: section.title, options: section.keys.map((key) => group.options.find((option) => option.key === key)).filter(Boolean) }))
+    : categories.map((category) => ({ title: category, options: group.options.filter((option) => option.category === category) }))
+  const categorized = sections.length > 0
   return (
     <aside className={`option-bank option-rail ${categorized ? 'categorized-option-bank' : ''}`}>
       <div className="section-label"><span>共用选项</span><em>{group.kindLabel}</em></div>
-      {categorized ? <div className="option-category-list">{categories.map((category) => <section className="option-category" key={category}><h3>{category}</h3><div className="option-grid">{group.options.filter((option) => option.category === category).map((option) => <div className="shared-option" key={option.key}><b>{option.displayKey || option.key}</b><span>{option.label}</span></div>)}</div></section>)}</div> : <div className="option-grid">{group.options.map((option) => <div className="shared-option" key={option.key}><b>{option.displayKey || option.key}</b><span>{option.label}</span></div>)}</div>}
-      <p className="option-rail-hint">{categorized ? '选项已按考点分区，区内固定打乱；右侧题干逐题作答。' : '选项固定在左侧，右侧题干逐题作答。'}</p>
+      {categorized ? <div className="option-category-list">{sections.map((section) => <section className="option-category" key={section.title}><h3>{section.title}</h3><div className="option-grid">{section.options.map((option) => <div className="shared-option" key={option.key}><b>{option.displayKey || option.key}</b><span>{option.label}</span></div>)}</div></section>)}</div> : <div className="option-grid">{group.options.map((option) => <div className="shared-option" key={option.key}><b>{option.displayKey || option.key}</b><span>{option.label}</span></div>)}</div>}
+      <p className="option-rail-hint">{group.optionBankSections?.length ? '选项按类别分区；字母与右侧答题区对应。' : (categorized ? '选项已按考点分区，区内固定打乱；右侧题干逐题作答。' : '选项固定在左侧，右侧题干逐题作答。')}</p>
     </aside>
   )
 }
