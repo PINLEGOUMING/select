@@ -331,13 +331,79 @@ def med_groups(texts: dict[int, str]) -> list[dict]:
     for section, (first, last) in MED_PAGES.items():
         questions = parse_questions([(page, texts[page]) for page in range(first, last + 1)], expected[section], shared_context=True)
         assert len(MED_LECTURES[section]) == len(questions)
-        for question in questions:
+        question_index = 0
+        while question_index < len(questions):
+            question = questions[question_index]
+            context = clean(question["context"])
+            block = [question]
+            if context:
+                next_index = question_index + 1
+                while next_index < len(questions):
+                    candidate = questions[next_index]
+                    if clean(candidate["context"]) != context or candidate["number"] != block[-1]["number"] + 1:
+                        break
+                    block.append(candidate)
+                    next_index += 1
+            question_index += len(block)
+
+            if len(block) > 1:
+                start_number = block[0]["number"]
+                end_number = block[-1]["number"]
+                lectures = [MED_LECTURES[section][item["number"] - 1] for item in block]
+                topics = {med_topic(lecture) for lecture in lectures}
+                assert len(topics) == 1, (section, start_number, end_number, topics)
+                options = []
+                stems = []
+                for item, lecture in zip(block, lectures):
+                    number = item["number"]
+                    mode = label_mode(item)
+                    category = f"第 {number} 题选项"
+                    item_options = [{
+                        "key": f"q{number}-{option['key']}",
+                        "displayKey": option["key"],
+                        "label": option["label"],
+                        "category": category,
+                    } for option in item["options"]]
+                    options.extend(item_options)
+                    stems.append({
+                        "number": number,
+                        "text": item["text"],
+                        "answerRaw": "",
+                        "answer": [],
+                        "answerMode": mode,
+                        "answerState": "暂无参考答案",
+                        "optionCategory": category,
+                        "sourceQuestion": number,
+                        "lectureId": f"lecture-{lecture:02d}" if lecture else None,
+                    })
+                lecture_ids = list(dict.fromkeys(stem["lectureId"] for stem in stems if stem["lectureId"]))
+                groups.append({
+                    "id": f"med-teacher-{section:02d}-{start_number:02d}-{end_number:02d}",
+                    "page": block[0]["page"],
+                    "sourceKey": "teacher-2026-08",
+                    "sourceName": SOURCE_NAME,
+                    "sourceSection": f"内科含诊断·第 {section} 组",
+                    "sourceQuestion": f"{start_number}–{end_number}",
+                    "title": f"第 {start_number}–{end_number} 题共用题干",
+                    "kind": "A",
+                    "kindLabel": "单项选择",
+                    "sharedStem": context,
+                    "sharedQuestionCount": len(stems),
+                    "options": options,
+                    "stems": stems,
+                    "sourceText": " ".join([context, *(item["text"] for item in block), *(option["label"] for option in options)]),
+                    "topic": next(iter(topics)),
+                    "lectureIds": lecture_ids,
+                    "reviewState": "原PDF未附内科参考答案，暂不判分",
+                    "supplement": True,
+                    "supplementNotice": "原PDF未附参考答案，暂不自动判分",
+                })
+                continue
+
             number = question["number"]
             lecture = MED_LECTURES[section][number - 1]
             mode = label_mode(question)
-            context = clean(question["context"])
             prompt = question["text"]
-            full_stem = f"共用题干：{context} 本题：{prompt}" if context else prompt
             group = {
                 "id": f"med-teacher-{section:02d}-{number:02d}", "page": question["page"],
                 "sourceKey": "teacher-2026-08", "sourceName": SOURCE_NAME,
@@ -345,9 +411,10 @@ def med_groups(texts: dict[int, str]) -> list[dict]:
                 "title": title_for_question(question), "kind": "A",
                 "kindLabel": "多项选择" if mode == "多选" else "单项选择",
                 "options": question["options"],
-                "stems": [{"number": number, "text": full_stem, "answerRaw": "", "answer": [],
-                           "answerMode": mode, "answerState": "暂无参考答案"}],
-                "sourceText": full_stem + " " + " ".join(item["label"] for item in question["options"]),
+                "stems": [{"number": number, "text": prompt, "answerRaw": "", "answer": [],
+                           "answerMode": mode, "answerState": "暂无参考答案", "sourceQuestion": number,
+                           "lectureId": f"lecture-{lecture:02d}" if lecture else None}],
+                "sourceText": prompt + " " + " ".join(item["label"] for item in question["options"]),
                 "topic": med_topic(lecture), "lectureIds": [f"lecture-{lecture:02d}"] if lecture else [],
                 "reviewState": "原PDF未附内科参考答案，暂不判分",
                 "supplement": True, "supplementNotice": "原PDF未附参考答案，暂不自动判分",
@@ -359,18 +426,16 @@ def med_groups(texts: dict[int, str]) -> list[dict]:
 
 
 def order_by_lecture(groups: list[dict], lecture_count: int) -> list[dict]:
-    ordered = []
-    for lecture in range(1, lecture_count + 1):
-        ordered.extend(group for group in groups if group["lectureIds"] == [f"lecture-{lecture:02d}"])
-    ordered.extend(group for group in groups if not group["lectureIds"])
-    assert len(ordered) == len(groups)
-    return ordered
+    def first_lecture(group: dict) -> int:
+        return min((int(lecture_id[-2:]) for lecture_id in group["lectureIds"]), default=lecture_count + 1)
+
+    return sorted(groups, key=first_lecture)
 
 
 def save(output: Path, groups: list[dict], subject: str, source_pages: tuple[int, int]) -> None:
     output.write_text(json.dumps({
         "meta": {"title": f"教师课后巩固·{subject}补充", "sourcePageRange": list(source_pages),
-                 "groupCount": len(groups), "stemCount": len(groups),
+                 "groupCount": len(groups), "stemCount": sum(len(group["stems"]) for group in groups),
                  "answerNote": "答案按原PDF录入，未按讲义逐项复核" if subject == "病理" else "原PDF未附内科答案，暂不判分"},
         "pages": [], "groups": groups,
     }, ensure_ascii=False, indent=2) + "\n", encoding="utf-8")
@@ -384,20 +449,28 @@ def main() -> None:
         texts = {page: document.pages[page - 1].extract_text() or "" for page in list(range(35, 49)) + list(range(55, 73))}
     pathology = order_by_lecture(pathology_groups(texts), 26)
     med = order_by_lecture(med_groups(texts), 57)
-    assert len(pathology) == 90 and len(med) == 92
+    assert len(pathology) == 90 and sum(len(group["stems"]) for group in med) == 92
     assert len({group["id"] for group in pathology}) == 90
-    assert len({group["id"] for group in med}) == 92
+    assert len({group["id"] for group in med}) == len(med)
     save(PATHOLOGY_OUTPUT, pathology, "病理", (35, 54))
     save(MED_OUTPUT, med, "内科", (55, 72))
-    report = ["# 教师课后巩固：病理与内科补充题归类", "", "原PDF第35–54页病理90题（其中扫描页20题），第55–72页内科92题。仅将题目文本、来源页码、章节与题号纳入网站；不纳入原PDF图片。", "", "病理答案取自原PDF，尚未按讲义逐项复核。内科部分在所给PDF中没有答案页，全部暂不自动判分。", ""]
+    report = ["# 教师课后巩固：病理与内科补充题归类", "", "原PDF第35–54页病理90题（其中扫描页20题），第55–72页内科92题。仅将题目文本、来源页码、章节与题号纳入网站；不纳入原PDF图片。内科共用题干的连续小题已合并到同一题组页面。", "", "病理答案取自原PDF，尚未按讲义逐项复核。内科部分在所给PDF中没有答案页，全部暂不自动判分。", ""]
     for subject, groups in [("病理", pathology), ("内科", med)]:
         report += [f"## {subject}归类", "", "| 站内章节 | 题数 |", "| --- | ---: |"]
-        for topic, count in Counter(group["topic"] for group in groups).items():
+        topic_counts = Counter()
+        for group in groups:
+            topic_counts[group["topic"]] += len(group["stems"])
+        for topic, count in topic_counts.items():
             report.append(f"| {topic} | {count} |")
         report += ["", "| 对应讲义 | 题数 | 原PDF节号·题号 |", "| --- | ---: | --- |"]
-        for lecture in sorted({group["lectureIds"][0] for group in groups if group["lectureIds"]}):
-            matched = [group for group in groups if group["lectureIds"] == [lecture]]
-            refs = "、".join(f"{group['sourceSection']}·{group['sourceQuestion']}" for group in matched)
+        for lecture in sorted({lecture for group in groups for lecture in group["lectureIds"]}):
+            matched = []
+            for group in groups:
+                for stem in group["stems"]:
+                    stem_lecture = stem.get("lectureId") or (group["lectureIds"][0] if len(group["lectureIds"]) == 1 else None)
+                    if stem_lecture == lecture:
+                        matched.append((group, stem))
+            refs = "、".join(f"{group['sourceSection']}·{stem.get('sourceQuestion', group['sourceQuestion'])}" for group, stem in matched)
             report.append(f"| 第 {int(lecture[-2:])} 讲 | {len(matched)} | {refs} |")
         if subject == "内科":
             report += ["", "骨髓纤维化题（内科含诊断6·5）在现有讲义目录中无对应专章，归入血液的“未关联讲义”。"]
@@ -410,7 +483,7 @@ def main() -> None:
         report.append("病理题型与参考答案的选项数量没有冲突；但资料注明部分内容可能由AI生成，仍需逐题核对知识结论。")
     report.append("- 内科92题均缺原资料答案，暂不判分。")
     REPORT.write_text("\n".join(report) + "\n", encoding="utf-8")
-    print({"pathology": len(pathology), "med": len(med), "pathology_issues": len(issues), "med_unscored": sum(not group["stems"][0]["answer"] for group in med)})
+    print({"pathology": len(pathology), "med_groups": len(med), "med_stems": sum(len(group["stems"]) for group in med), "shared_med_groups": sum(bool(group.get("sharedStem")) for group in med), "pathology_issues": len(issues), "med_unscored": sum(not stem["answer"] for group in med for stem in group["stems"])})
 
 
 if __name__ == "__main__":

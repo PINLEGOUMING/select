@@ -599,9 +599,10 @@ function lectureChapterTree(content, subject) {
       }
       for (const lectureId of lectureIds) {
         const previous = chapterStats.get(lectureId) || { groupCount: 0, stemCount: 0, groupIds: [] }
+        const assignedStemCount = group.stems.filter((stem) => stem.lectureId === lectureId).length || group.stems.length
         chapterStats.set(lectureId, {
           groupCount: previous.groupCount + 1,
-          stemCount: previous.stemCount + group.stems.length,
+          stemCount: previous.stemCount + assignedStemCount,
           groupIds: previous.groupIds.includes(group.id) ? previous.groupIds : [...previous.groupIds, group.id],
         })
       }
@@ -1007,6 +1008,7 @@ function App() {
           <div className="question-side">
           <section className="question-card">
             <div className="question-card-top"><span className="question-type">{group.kindLabel}</span><span>题组 {groupIndex + 1} / {filteredGroups.length}</span>{group.hideSource ? null : <span>来源页 {group.page}</span>}</div>
+            {group.sharedStem ? <div className="shared-stem-panel"><strong>共用题干</strong><p>{group.sharedStem}</p><span>以下 {group.sharedQuestionCount || group.stems.length} 题共用此题干</span></div> : null}
             {group.options.some((option) => option.category) && group.stems.some((stem) => stem.optionCategory)
               ? <CategorizedAnswerTable group={group} selections={currentSelections} submitted={isSubmitted} onSelect={updateSelection} />
               : <div className="stem-list">
@@ -1045,9 +1047,9 @@ function OptionBank({ group }) {
   const categorized = sections.length > 0
   return (
     <aside className={`option-bank option-rail ${categorized ? 'categorized-option-bank' : ''}`}>
-      <div className="section-label"><span>共用选项</span><em>{group.kindLabel}</em></div>
+      <div className="section-label"><span>{group.sharedStem ? '各题选项' : '共用选项'}</span><em>{group.kindLabel}</em></div>
       {categorized ? <div className="option-category-list">{sections.map((section) => <section className="option-category" key={section.title}><h3>{section.title}</h3><div className="option-grid">{section.options.map((option) => <div className="shared-option" key={option.key}><b>{option.displayKey || option.key}</b><span>{option.label}</span></div>)}</div></section>)}</div> : <div className="option-grid">{group.options.map((option) => <div className="shared-option" key={option.key}><b>{option.displayKey || option.key}</b><span>{option.label}</span></div>)}</div>}
-      <p className="option-rail-hint">{group.optionBankSections?.length ? '选项按类别分区；字母与右侧答题区对应。' : (categorized ? '选项已按考点分区，区内固定打乱；右侧题干逐题作答。' : '选项固定在左侧，右侧题干逐题作答。')}</p>
+      <p className="option-rail-hint">{group.sharedStem ? '各小题选项按原题分区；字母与右侧答题区对应。' : (group.optionBankSections?.length ? '选项按类别分区；字母与右侧答题区对应。' : (categorized ? '选项已按考点分区，区内固定打乱；右侧题干逐题作答。' : '选项固定在左侧，右侧题干逐题作答。'))}</p>
     </aside>
   )
 }
@@ -1093,7 +1095,7 @@ function CategorizedAnswerTable({ group, selections, submitted, onSelect }) {
         const rows = group.stems.map((stem, index) => ({ stem, index })).filter(({ stem }) => stem.optionCategory === category)
         return (
           <section className="answer-table-section" key={category}>
-            <div className="answer-table-title"><strong>{category}</strong><span>{rows.length} 个题干 · {options.length} 个共用选项</span></div>
+            <div className="answer-table-title"><strong>{category}</strong><span>{rows.length} 个{group.sharedStem ? '小题' : '题干'} · {options.length} 个{group.sharedStem ? '选项' : '共用选项'}</span></div>
             <div className="answer-table-scroll">
               <table className="answer-table">
                 <thead>
@@ -1122,23 +1124,26 @@ function CategorizedAnswerRow({ group, stem, index, options, selection, submitte
   const correct = submitted && !unresolved && stemIsCorrect(selection, stem)
   const missed = submitted && !unresolved && answer.some((item) => !selection.includes(item))
   const answerDisplay = stem.answerDisplay || answer.map((item) => group.options.find((option) => option.key === item)?.displayKey || item).join('、')
+  const unresolvedLabel = stem.answerState === '暂无参考答案' ? '暂无答案' : '待核对'
+  const unresolvedResult = stem.answerState === '暂无参考答案' ? '暂无参考答案：暂不自动判分' : '原题页核对：暂不自动判分'
 
   return (
     <>
-      <tr className={`answer-table-row ${submitted ? (correct ? 'is-correct' : 'is-wrong') : ''}`}>
+      <tr className={`answer-table-row ${submitted && !unresolved ? (correct ? 'is-correct' : 'is-wrong') : ''}`}>
         <th scope="row" className="answer-table-number"><span>{String(index + 1).padStart(2, '0')}</span></th>
-        <td className="answer-table-stem"><div className="answer-table-stem-copy">{stem.image && <img src={assetPath(stem.image)} alt={stem.imageAlt || '题干图片'} />}{stem.text && <p>{stem.text}</p>}<span className={`answer-mode ${(multi || stem.answerMode === '排序') ? 'is-multi' : ''}`}>{unresolved ? '待核对' : (stem.answerMode === '排序' ? '排序' : (multi ? '多选' : '单选'))}</span></div></td>
+        <td className="answer-table-stem"><div className="answer-table-stem-copy">{stem.image && <img src={assetPath(stem.image)} alt={stem.imageAlt || '题干图片'} />}{stem.text && <p>{stem.text}</p>}<span className={`answer-mode ${(multi || stem.answerMode === '排序') ? 'is-multi' : ''}`}>{unresolved ? unresolvedLabel : (stem.answerMode === '排序' ? '排序' : (multi ? '多选' : '单选'))}</span></div></td>
         {options.map((option) => {
           const item = option.key
           const label = option.displayKey || item
           const active = selection.includes(item)
-          const isAnswer = submitted && answer.includes(item)
+          const isAnswer = submitted && !unresolved && answer.includes(item)
           const isMissed = submitted && isAnswer && !active
-          const stateLabel = isMissed ? '，漏选' : (submitted && active && !isAnswer ? '，错选' : '')
-          return <td key={item} className="answer-table-cell"><button type="button" aria-label={`${String(index + 1).padStart(2, '0')}题，选项 ${label}${stateLabel}`} className={`answer-chip ${active ? 'active' : ''} ${submitted && isAnswer ? 'answer' : ''} ${isMissed ? 'missed' : ''} ${submitted && active && !isAnswer ? 'wrong' : ''}`} onClick={() => onSelect(index, item)} disabled={submitted}>{label}</button></td>
+          const isWrong = submitted && !unresolved && active && !isAnswer
+          const stateLabel = isMissed ? '，漏选' : (isWrong ? '，错选' : '')
+          return <td key={item} className="answer-table-cell"><button type="button" aria-label={`${String(index + 1).padStart(2, '0')}题，选项 ${label}${stateLabel}`} className={`answer-chip ${active ? 'active' : ''} ${isAnswer ? 'answer' : ''} ${isMissed ? 'missed' : ''} ${isWrong ? 'wrong' : ''}`} onClick={() => onSelect(index, item)} disabled={submitted}>{label}</button></td>
         })}
       </tr>
-      {submitted && <tr className={`answer-table-result-row ${unresolved ? 'pending' : (correct ? 'ok' : 'bad')}`}><td colSpan={options.length + 2}><span><Icon name={unresolved ? 'file' : (correct ? 'check' : 'alert')} size={15} />{unresolved ? '原题页核对：暂不自动判分' : (correct ? '正确' : `讲义答案：${answerDisplay}`)}{missed && <span className="missed-legend">橙色 = 漏选</span>}</span></td></tr>}
+      {submitted && <tr className={`answer-table-result-row ${unresolved ? 'pending' : (correct ? 'ok' : 'bad')}`}><td colSpan={options.length + 2}><span><Icon name={unresolved ? 'file' : (correct ? 'check' : 'alert')} size={15} />{unresolved ? unresolvedResult : (correct ? '正确' : `讲义答案：${answerDisplay}`)}{missed && <span className="missed-legend">橙色 = 漏选</span>}</span></td></tr>}
     </>
   )
 }
