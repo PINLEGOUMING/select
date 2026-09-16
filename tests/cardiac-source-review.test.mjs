@@ -1,0 +1,62 @@
+import { readFileSync, existsSync } from 'node:fs'
+import { resolve } from 'node:path'
+import test from 'node:test'
+import assert from 'node:assert/strict'
+
+const data = JSON.parse(readFileSync(new URL('../src/data/med-data.json', import.meta.url)))
+const group = id => data.groups.find(item => item.id === id)
+const reviewedIds = ['p80-g3', 'p86-g1', 'p86-g2', 'p86-g3', 'p86-table1', 'p91-g4', 'p92-g1', 'p89-table1', 'p89-table2', 'p92-table1']
+
+test('reviewed cardiac groups have valid answer keys and unique options', () => {
+  for (const id of reviewedIds) {
+    const g = group(id)
+    assert.ok(g, id)
+    assert.equal(data.groups.filter(item => item.id === id).length, 1)
+    assert.equal(new Set(g.options.map(o => o.key)).size, g.options.length, id)
+    assert.equal(new Set(g.options.map(o => o.label)).size, g.options.length, id)
+    for (const s of g.stems) {
+      assert.ok(s.answer.length, `${id}: ${s.text}`)
+      assert.ok(s.answer.every(key => g.options.some(o => o.key === key)), `${id}: ${s.text}`)
+      assert.equal(new Set(s.answer).size, s.answer.length)
+      assert.equal(s.answerMode, s.answer.length > 1 ? '多选' : '单选')
+    }
+    if (g.lectureEvidence) assert.ok(existsSync(resolve('public', g.lectureEvidence.image)), id)
+  }
+})
+
+test('page 92 restores omitted/misread letters and separate SGLT2 limits', () => {
+  const g = group('p92-g1')
+  const label = key => g.options.find(o => o.key === key)?.label
+  assert.match(label('K'), /二度Ⅱ型/)
+  assert.equal(label('e'), '收缩压＜90 mmHg')
+  assert.equal(label('f'), '房颤')
+  assert.match(label('c'), /LVEF≤35%.*HR≥70/)
+  assert.equal(label('d'), undefined)
+  assert.deepEqual(g.stems.find(s => s.text === '伊伐布雷定适应证').answer, ['c'])
+  assert.deepEqual(g.stems.find(s => s.text === '伊伐布雷定不用于').answer, ['E', 'f'])
+  assert.deepEqual(g.stems.find(s => /达格列净/.test(s.text)).answer, ['Y'])
+  assert.deepEqual(g.stems.find(s => /恩格列净/.test(s.text)).answer, ['a'])
+  assert.deepEqual(g.stems.find(s => s.text === '血管扩张剂禁忌／不宜使用的情况').answer, ['X', 'e', 'h'])
+})
+
+test('chapter attribution separates hypertension cross-topic drugs from heart failure', () => {
+  assert.deepEqual(group('p80-g3').lectureIds, ['lecture-52'])
+  assert.ok(!group('p80-g3').options.some(o => o.key === 'X'))
+  assert.deepEqual(group('p92-g1').lectureIds, ['lecture-55'])
+  for (const id of ['p86-g1','p86-g2','p86-g3','p89-table1','p89-table2']) {
+    assert.deepEqual(group(id).lectureIds, ['lecture-54'])
+  }
+  const drugGroups = ['p80-g3','p91-g4','p92-g1'].map(group)
+  const signatures = drugGroups.map(g => JSON.stringify(g.stems.map(s => [s.text, s.answer.map(k => g.options.find(o => o.key === k).label).sort()]).sort()))
+  assert.equal(new Set(signatures).size, drugGroups.length, 'delete only truly identical groups')
+})
+
+test('all four original tables become answerable B-type groups', () => {
+  assert.deepEqual(group('p86-table1').stems.map(s => s.answer.join('')), ['ACDFH','BEGI'])
+  assert.equal(group('p89-table1').stems.length, 5)
+  assert.equal(group('p89-table2').stems.length, 5)
+  assert.equal(group('p92-table1').stems.length, 2)
+  assert.deepEqual(group('p89-table1').stems.map(s => s.answer.join('')), ['ABE','ABE','ABCE','ABCDFG','ABDF'])
+  assert.deepEqual(group('p89-table2').stems.map(s => s.answer.join('')), ['ABCD','ABCDE','ACDEG','ABDEF','BDEF'])
+  assert.deepEqual(group('p92-table1').stems.map(s => s.answer.join('')), ['ACDEG','BCDEFH'])
+})

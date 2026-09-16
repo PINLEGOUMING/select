@@ -28269,7 +28269,7 @@
     {
       "id": "p80-g3",
       "page": 80,
-      "title": "心衰药物的适应证与禁忌证",
+      "title": "降压及心血管药物的适应证与禁忌证（高血压用药串联）",
       "kind": "B",
       "kindLabel": "B型题",
       "options": [
@@ -28389,11 +28389,6 @@
           "sourceText": "W.糖尿病、蛋白尿"
         },
         {
-          "key": "X",
-          "label": "冠心病",
-          "sourceText": "X.冠心病"
-        },
-        {
           "key": "Y",
           "label": "甲亢",
           "sourceText": "Y.甲亢"
@@ -28443,25 +28438,33 @@
             "H",
             "V",
             "W",
-            "X"
+            "P"
           ],
           "sourceText": "ACEI/ARB/ARNI用 CDHVWX",
           "sourceY": 0,
           "answerMode": "多选"
         },
         {
-          "text": "ACEI/ARB/ARNI不用",
+          "text": "ACEI/ARB/ARNI共同的禁忌证",
           "answer": [
             "B",
-            "D",
             "G",
             "K",
             "N",
-            "S",
+            "S"
+          ],
+          "sourceText": "ACEI/ARB/ARNI共同的禁忌证 BGKNS",
+          "sourceY": 0,
+          "answerMode": "多选"
+        },
+        {
+          "text": "讲义所列ACEI另需避免的情况（不等同于ARB禁忌证）",
+          "answer": [
+            "D",
             "a",
             "e"
           ],
-          "sourceText": "ACEI/ARB/ARNI不用 BDGKNSae",
+          "sourceText": "讲义所列ACEI另需避免的情况（不等同于ARB禁忌证） Dae",
           "sourceY": 0,
           "answerMode": "多选"
         },
@@ -28472,7 +28475,6 @@
             "H",
             "P",
             "V",
-            "X",
             "Y",
             "b",
             "d"
@@ -28506,7 +28508,6 @@
             "L",
             "P",
             "V",
-            "X",
             "b",
             "d"
           ],
@@ -28574,11 +28575,11 @@
           "answerMode": "单选"
         }
       ],
-      "sourceText": "心衰药物的适应证与禁忌证（按原题页分组并结合讲义复核）",
+      "sourceText": "原题PDF第80页高血压用药串联，依据第52讲第7页核对；冠心病重复选项P/X合并为P。",
       "reviewState": "已按原题页与讲义复核",
       "topic": "循环",
       "lectureIds": [
-        "lecture-55"
+        "lecture-52"
       ],
       "lectureEvidence": {
         "lectureId": "lecture-52",
@@ -32336,8 +32337,7 @@
       "reviewState": "已按原题页与讲义复核",
       "topic": "循环",
       "lectureIds": [
-        "lecture-49",
-        "lecture-50"
+        "lecture-54"
       ],
       "lectureEvidence": {
         "lectureId": "lecture-54",
@@ -32413,7 +32413,7 @@
       "reviewState": "已按原题页与讲义复核",
       "topic": "循环",
       "lectureIds": [
-        "lecture-50"
+        "lecture-54"
       ],
       "lectureEvidence": {
         "lectureId": "lecture-54",
@@ -32421,6 +32421,100 @@
         "image": "med/lecture-pages/lecture-54-page-02.webp",
         "title": "第54讲第2页：内科含诊断 冠心病",
         "description": "本题组对应第54讲第2页讲义。"
+      }
+    },
+    {
+      "id": "p86-table1",
+      "page": 86,
+      "title": "二氢吡啶与非二氢吡啶CCB作用对照（表格题）",
+      "kind": "B",
+      "kindLabel": "B型题",
+      "options": [
+        {
+          "key": "A",
+          "label": "代表药：氨氯地平、硝苯地平等",
+          "sourceText": "A.代表药：氨氯地平、硝苯地平等"
+        },
+        {
+          "key": "B",
+          "label": "代表药：维拉帕米、地尔硫䓬",
+          "sourceText": "B.代表药：维拉帕米、地尔硫䓬"
+        },
+        {
+          "key": "C",
+          "label": "心室前负荷↓",
+          "sourceText": "C.心室前负荷↓"
+        },
+        {
+          "key": "D",
+          "label": "心室后负荷↓↓",
+          "sourceText": "D.心室后负荷↓↓"
+        },
+        {
+          "key": "E",
+          "label": "心室后负荷↓",
+          "sourceText": "E.心室后负荷↓"
+        },
+        {
+          "key": "F",
+          "label": "心率可反射性↑（按讲义简化对照表）",
+          "sourceText": "F.心率可反射性↑（按讲义简化对照表）"
+        },
+        {
+          "key": "G",
+          "label": "心率↓↓",
+          "sourceText": "G.心率↓↓"
+        },
+        {
+          "key": "H",
+          "label": "心肌收缩力可反射性↑（按讲义简化对照表）",
+          "sourceText": "H.心肌收缩力可反射性↑（按讲义简化对照表）"
+        },
+        {
+          "key": "I",
+          "label": "心肌收缩力↓↓",
+          "sourceText": "I.心肌收缩力↓↓"
+        }
+      ],
+      "stems": [
+        {
+          "text": "二氢吡啶类CCB：选择讲义对照表的代表药及所列效应",
+          "answer": [
+            "A",
+            "C",
+            "D",
+            "F",
+            "H"
+          ],
+          "sourceText": "二氢吡啶类CCB：选择讲义对照表的代表药及所列效应 ACDFH",
+          "sourceY": 0,
+          "answerMode": "多选"
+        },
+        {
+          "text": "非二氢吡啶类CCB：选择讲义对照表的代表药及所列效应（前负荷栏留空不设题）",
+          "answer": [
+            "B",
+            "E",
+            "G",
+            "I"
+          ],
+          "sourceText": "非二氢吡啶类CCB：选择讲义对照表的代表药及所列效应（前负荷栏留空不设题） BEGI",
+          "sourceY": 0,
+          "answerMode": "多选"
+        }
+      ],
+      "sourceText": "原题PDF第86页CCB表格，依据第54讲第4页对照表核对；箭头是讲义简化比较，不代表所有制剂均有同样程度的效应。",
+      "reviewState": "已按原题表格与讲义复核",
+      "topic": "循环",
+      "lectureIds": [
+        "lecture-54"
+      ],
+      "lectureEvidence": {
+        "lectureId": "lecture-54",
+        "page": 4,
+        "image": "med/lecture-pages/lecture-54-page-04.jpg",
+        "title": "第54讲第4页：内科含诊断 冠心病",
+        "description": "CCB作用对照表。"
       }
     },
     {
@@ -32572,8 +32666,7 @@
       "reviewState": "已按原题页与讲义复核",
       "topic": "循环",
       "lectureIds": [
-        "lecture-50",
-        "lecture-51"
+        "lecture-54"
       ],
       "lectureEvidence": {
         "lectureId": "lecture-54",
@@ -33648,6 +33741,247 @@
       }
     },
     {
+      "id": "p89-table1",
+      "page": 89,
+      "title": "冠脉疾病：缺血、坏死与典型心电图（表格题）",
+      "kind": "B",
+      "kindLabel": "B型题",
+      "options": [
+        {
+          "key": "A",
+          "label": "存在心肌缺血",
+          "sourceText": "A.存在心肌缺血"
+        },
+        {
+          "key": "B",
+          "label": "ST段可发生改变（原表“损伤”不等同于心肌坏死）",
+          "sourceText": "B.ST段可发生改变（原表“损伤”不等同于心肌坏死）"
+        },
+        {
+          "key": "C",
+          "label": "存在心肌坏死",
+          "sourceText": "C.存在心肌坏死"
+        },
+        {
+          "key": "D",
+          "label": "典型情况下冠脉完全闭塞（痉挛或血栓）",
+          "sourceText": "D.典型情况下冠脉完全闭塞（痉挛或血栓）"
+        },
+        {
+          "key": "E",
+          "label": "典型发作时ST段压低",
+          "sourceText": "E.典型发作时ST段压低"
+        },
+        {
+          "key": "F",
+          "label": "典型发作时ST段抬高",
+          "sourceText": "F.典型发作时ST段抬高"
+        },
+        {
+          "key": "G",
+          "label": "典型演变可出现病理性Q波",
+          "sourceText": "G.典型演变可出现病理性Q波"
+        }
+      ],
+      "stems": [
+        {
+          "text": "稳定型心绞痛：选择原表对应的表现（不考虑镜像导联）",
+          "answer": [
+            "A",
+            "B",
+            "E"
+          ],
+          "sourceText": "稳定型心绞痛：选择原表对应的表现（不考虑镜像导联） ABE",
+          "sourceY": 0,
+          "answerMode": "多选"
+        },
+        {
+          "text": "不稳定型心绞痛（不含变异型）：选择原表对应的表现",
+          "answer": [
+            "A",
+            "B",
+            "E"
+          ],
+          "sourceText": "不稳定型心绞痛（不含变异型）：选择原表对应的表现 ABE",
+          "sourceY": 0,
+          "answerMode": "多选"
+        },
+        {
+          "text": "NSTEMI：选择原表对应的表现（病理Q波多无）",
+          "answer": [
+            "A",
+            "B",
+            "C",
+            "E"
+          ],
+          "sourceText": "NSTEMI：选择原表对应的表现（病理Q波多无） ABCE",
+          "sourceY": 0,
+          "answerMode": "多选"
+        },
+        {
+          "text": "STEMI：选择原表典型演变对应的表现",
+          "answer": [
+            "A",
+            "B",
+            "C",
+            "D",
+            "F",
+            "G"
+          ],
+          "sourceText": "STEMI：选择原表典型演变对应的表现 ABCDFG",
+          "sourceY": 0,
+          "answerMode": "多选"
+        },
+        {
+          "text": "变异型心绞痛：痉挛发作时的表现（未发生心肌梗死）",
+          "answer": [
+            "A",
+            "B",
+            "D",
+            "F"
+          ],
+          "sourceText": "变异型心绞痛：痉挛发作时的表现（未发生心肌梗死） ABDF",
+          "sourceY": 0,
+          "answerMode": "多选"
+        }
+      ],
+      "sourceText": "原题PDF第89页表格转为共用选项题",
+      "reviewState": "已按原题表格与讲义复核",
+      "topic": "循环",
+      "lectureIds": [
+        "lecture-54"
+      ],
+      "lectureEvidence": {
+        "lectureId": "lecture-54",
+        "page": 8,
+        "image": "med/lecture-pages/lecture-54-page-08.webp",
+        "title": "第54讲第8页：内科含诊断 冠心病",
+        "description": "依据讲义原页核对。"
+      }
+    },
+    {
+      "id": "p89-table2",
+      "page": 89,
+      "title": "冠脉疾病的治疗药物选择（表格题）",
+      "kind": "B",
+      "kindLabel": "B型题",
+      "options": [
+        {
+          "key": "A",
+          "label": "硝酸酯类：缓解缺血症状，不能改善预后",
+          "sourceText": "A.硝酸酯类：缓解缺血症状，不能改善预后"
+        },
+        {
+          "key": "B",
+          "label": "β-R拮抗剂：须无休克、急性失代偿心衰、显著心动过缓等禁忌证",
+          "sourceText": "B.β-R拮抗剂：须无休克、急性失代偿心衰、显著心动过缓等禁忌证"
+        },
+        {
+          "key": "C",
+          "label": "CCB：无相应禁忌证时使用",
+          "sourceText": "C.CCB：无相应禁忌证时使用"
+        },
+        {
+          "key": "D",
+          "label": "抗血小板药",
+          "sourceText": "D.抗血小板药"
+        },
+        {
+          "key": "E",
+          "label": "抗凝药",
+          "sourceText": "E.抗凝药"
+        },
+        {
+          "key": "F",
+          "label": "符合时间窗及条件、无禁忌证时溶栓（不能替代首选的直接PCI）",
+          "sourceText": "F.符合时间窗及条件、无禁忌证时溶栓（不能替代首选的直接PCI）"
+        },
+        {
+          "key": "G",
+          "label": "CCB为首选药物",
+          "sourceText": "G.CCB为首选药物"
+        }
+      ],
+      "stems": [
+        {
+          "text": "稳定型心绞痛：原表可选药物（非PCI围术期，不常规抗凝）",
+          "answer": [
+            "A",
+            "B",
+            "C",
+            "D"
+          ],
+          "sourceText": "稳定型心绞痛：原表可选药物（非PCI围术期，不常规抗凝） ABCD",
+          "sourceY": 0,
+          "answerMode": "多选"
+        },
+        {
+          "text": "UA/NSTEMI（非变异型）：原表可选药物（无各药禁忌证）",
+          "answer": [
+            "A",
+            "B",
+            "C",
+            "D",
+            "E"
+          ],
+          "sourceText": "UA/NSTEMI（非变异型）：原表可选药物（无各药禁忌证） ABCDE",
+          "sourceY": 0,
+          "answerMode": "多选"
+        },
+        {
+          "text": "变异型心绞痛：原表可选药物及首选类别",
+          "answer": [
+            "A",
+            "C",
+            "D",
+            "E",
+            "G"
+          ],
+          "sourceText": "变异型心绞痛：原表可选药物及首选类别 ACDEG",
+          "sourceY": 0,
+          "answerMode": "多选"
+        },
+        {
+          "text": "STEMI：原表可选药物（血流动力学稳定，无各药禁忌证）",
+          "answer": [
+            "A",
+            "B",
+            "D",
+            "E",
+            "F"
+          ],
+          "sourceText": "STEMI：原表可选药物（血流动力学稳定，无各药禁忌证） ABDEF",
+          "sourceY": 0,
+          "answerMode": "多选"
+        },
+        {
+          "text": "急性右室梗死：原表可选药物（血流动力学稳定、无各药禁忌证；回心血量不足时不得启用β-R拮抗剂）",
+          "answer": [
+            "B",
+            "D",
+            "E",
+            "F"
+          ],
+          "sourceText": "急性右室梗死：原表可选药物（血流动力学稳定、无各药禁忌证；回心血量不足时不得启用β-R拮抗剂） BDEF",
+          "sourceY": 0,
+          "answerMode": "多选"
+        }
+      ],
+      "sourceText": "原题PDF第89页表格转为共用选项题",
+      "reviewState": "已按原题表格与讲义复核",
+      "topic": "循环",
+      "lectureIds": [
+        "lecture-54"
+      ],
+      "lectureEvidence": {
+        "lectureId": "lecture-54",
+        "page": 11,
+        "image": "med/lecture-pages/lecture-54-page-11.jpg",
+        "title": "第54讲第11页：内科含诊断 冠心病",
+        "description": "依据讲义原页核对。"
+      }
+    },
+    {
       "id": "p89-g2",
       "page": 89,
       "title": "心肌梗死心电图定位",
@@ -34706,13 +35040,13 @@
       "options": [
         {
           "key": "A",
-          "label": "血Cr>265",
-          "sourceText": "A.血Cr>265"
+          "label": "血肌酐＞265 μmol/L",
+          "sourceText": "A.血肌酐＞265 μmol/L"
         },
         {
           "key": "B",
-          "label": "血钾>5",
-          "sourceText": "B.血钾>5"
+          "label": "血钾＞5 mmol/L",
+          "sourceText": "B.血钾＞5 mmol/L"
         },
         {
           "key": "C",
@@ -34751,13 +35085,13 @@
         },
         {
           "key": "J",
-          "label": "伴快房扑房颤",
-          "sourceText": "J.伴快房扑房颤"
+          "label": "收缩性心衰伴快速心室率的房扑、房颤",
+          "sourceText": "J.收缩性心衰伴快速心室率的房扑、房颤"
         },
         {
           "key": "K",
-          "label": "二度Ⅰ型和三度房室传导阻滞",
-          "sourceText": "K.二度Ⅰ型和三度房室传导阻滞"
+          "label": "二度Ⅱ型和三度房室传导阻滞",
+          "sourceText": "K.二度Ⅱ型和三度房室传导阻滞"
         },
         {
           "key": "L",
@@ -34766,8 +35100,8 @@
         },
         {
           "key": "M",
-          "label": "血钾>5.5",
-          "sourceText": "M.血钾>5.5"
+          "label": "血钾＞5.5 mmol/L",
+          "sourceText": "M.血钾＞5.5 mmol/L"
         },
         {
           "key": "N",
@@ -34846,28 +35180,23 @@
         },
         {
           "key": "c",
-          "label": "慢性心衰在用β-R拮抗剂基础上仍LVEF<35%、NYHA II～IV级、HR>70次/分、窦性心律",
-          "sourceText": "c.慢性心衰在用β-R拮抗剂基础上仍LVEF<35%、NYHA II～IV级、HR>70次/分、窦性心律"
-        },
-        {
-          "key": "d",
-          "label": "肥厚型心肌病",
-          "sourceText": "d.肥厚型心肌病"
+          "label": "慢性心衰在用β-R拮抗剂基础上，仍LVEF≤35%、NYHAⅡ～Ⅳ级、HR≥70次/分、窦性心律",
+          "sourceText": "c.慢性心衰在用β-R拮抗剂基础上，仍LVEF≤35%、NYHAⅡ～Ⅳ级、HR≥70次/分、窦性心律"
         },
         {
           "key": "e",
-          "label": "不耐受干咳",
-          "sourceText": "e.不耐受干咳"
+          "label": "收缩压＜90 mmHg",
+          "sourceText": "e.收缩压＜90 mmHg"
         },
         {
           "key": "f",
-          "label": "急性右室梗死",
-          "sourceText": "f.急性右室梗死"
+          "label": "房颤",
+          "sourceText": "f.房颤"
         },
         {
           "key": "g",
-          "label": "电复律",
-          "sourceText": "g.电复律"
+          "label": "使用强心苷时禁忌电复律",
+          "sourceText": "g.使用强心苷时禁忌电复律"
         },
         {
           "key": "h",
@@ -34882,7 +35211,7 @@
       ],
       "stems": [
         {
-          "text": "ACEI/ARB/ARNI不用",
+          "text": "ACEI/ARB/ARNI共同的禁忌证",
           "answer": [
             "A",
             "M",
@@ -34890,23 +35219,23 @@
             "V",
             "b"
           ],
-          "sourceText": "ACEI/ARB/ARNI不用 AMRVb",
+          "sourceText": "ACEI/ARB/ARNI共同的禁忌证 AMRVb",
           "sourceY": 0,
           "answerMode": "多选"
         },
         {
-          "text": "不用ACEI",
+          "text": "讲义所列ACEI另需避免的情况（不等同于ARB禁忌证）",
           "answer": [
             "C",
             "I",
             "P"
           ],
-          "sourceText": "不用ACEI CIP",
+          "sourceText": "讲义所列ACEI另需避免的情况（不等同于ARB禁忌证） CIP",
           "sourceY": 0,
           "answerMode": "多选"
         },
         {
-          "text": "β-R拮抗剂不用",
+          "text": "讲义所列β-R拮抗剂禁忌／不宜启用的情况（急性失代偿者原已服药且无休克时不应突然停药）",
           "answer": [
             "E",
             "F",
@@ -34917,70 +35246,78 @@
             "T",
             "W"
           ],
-          "sourceText": "β-R拮抗剂不用 EFHKNQTW",
+          "sourceText": "讲义所列β-R拮抗剂禁忌／不宜启用的情况（急性失代偿者原已服药且无休克时不应突然停药） EFHKNQTW",
           "sourceY": 0,
           "answerMode": "多选"
         },
         {
-          "text": "醛固酮受体拮抗剂MRA不用",
+          "text": "醛固酮受体拮抗剂MRA禁忌证",
           "answer": [
             "B",
             "Y"
           ],
-          "sourceText": "醛固酮受体拮抗剂MRA不用 BY",
+          "sourceText": "醛固酮受体拮抗剂MRA禁忌证 BY",
           "sourceY": 0,
           "answerMode": "多选"
         },
         {
-          "text": "钠-葡萄糖共转运蛋白2抑制剂SGLT-2i（达格列净/恩格列净）",
+          "text": "达格列净不宜使用的肾功能界限",
           "answer": [
-            "Y",
-            "a"
+            "Y"
           ],
-          "sourceText": "钠-葡萄糖共转运蛋白2抑制剂SGLT-2i（达格列净/恩格列净） Ya",
-          "sourceY": 0,
-          "answerMode": "多选"
-        },
-        {
-          "text": "伊伐布雷定用",
-          "answer": [
-            "C"
-          ],
-          "sourceText": "伊伐布雷定用 C",
+          "sourceText": "达格列净不宜使用的肾功能界限 Y",
           "sourceY": 0,
           "answerMode": "单选"
         },
         {
-          "text": "伊伐布雷定不用",
+          "text": "恩格列净不宜使用的肾功能界限",
+          "answer": [
+            "a"
+          ],
+          "sourceText": "恩格列净不宜使用的肾功能界限 a",
+          "sourceY": 0,
+          "answerMode": "单选"
+        },
+        {
+          "text": "伊伐布雷定适应证",
+          "answer": [
+            "c"
+          ],
+          "sourceText": "伊伐布雷定适应证 c",
+          "sourceY": 0,
+          "answerMode": "单选"
+        },
+        {
+          "text": "伊伐布雷定不用于",
           "answer": [
             "E",
             "f"
           ],
-          "sourceText": "伊伐布雷定不用 Ef",
+          "sourceText": "伊伐布雷定不用于 Ef",
           "sourceY": 0,
           "answerMode": "多选"
         },
         {
-          "text": "利尿剂",
+          "text": "利尿剂在慢性心衰治疗中的作用／配伍原则",
           "answer": [
             "Z"
           ],
-          "sourceText": "利尿剂 Z",
+          "sourceText": "利尿剂在慢性心衰治疗中的作用／配伍原则 Z",
           "sourceY": 0,
           "answerMode": "单选"
         },
         {
-          "text": "强心苷类正性肌力药用",
+          "text": "强心苷类正性肌力药适用于",
           "answer": [
             "J",
             "S"
           ],
-          "sourceText": "强心苷类正性肌力药用 JS",
+          "sourceText": "强心苷类正性肌力药适用于 JS",
           "sourceY": 0,
           "answerMode": "多选"
         },
         {
-          "text": "强心苷类正性肌力药不用",
+          "text": "强心苷禁忌／不宜使用的情况及用药期间应避免的治疗",
           "answer": [
             "D",
             "G",
@@ -34992,28 +35329,28 @@
             "g",
             "i"
           ],
-          "sourceText": "强心苷类正性肌力药不用 DGHKNOXgi",
+          "sourceText": "强心苷禁忌／不宜使用的情况及用药期间应避免的治疗 DGHKNOXgi",
           "sourceY": 0,
           "answerMode": "多选"
         },
         {
-          "text": "血管扩张剂用",
+          "text": "血管扩张剂适用于",
           "answer": [
             "L",
             "U"
           ],
-          "sourceText": "血管扩张剂用 LU",
+          "sourceText": "血管扩张剂适用于 LU",
           "sourceY": 0,
           "answerMode": "多选"
         },
         {
-          "text": "血管扩张剂不用",
+          "text": "血管扩张剂禁忌／不宜使用的情况",
           "answer": [
             "X",
             "e",
             "h"
           ],
-          "sourceText": "血管扩张剂不用 Xeh",
+          "sourceText": "血管扩张剂禁忌／不宜使用的情况 Xeh",
           "sourceY": 0,
           "answerMode": "多选"
         }
@@ -35022,15 +35359,105 @@
       "reviewState": "已按原题页与讲义复核",
       "topic": "循环",
       "lectureIds": [
-        "lecture-55",
-        "lecture-56"
+        "lecture-55"
       ],
       "lectureEvidence": {
         "lectureId": "lecture-55",
-        "page": 6,
-        "image": "med/lecture-pages/lecture-55-page-06.webp",
-        "title": "第55讲第6页：内科含诊断 收缩性心衰",
-        "description": "本题组对应第55讲第6页讲义。"
+        "page": 7,
+        "image": "med/lecture-pages/lecture-55-page-07.jpg",
+        "title": "第55讲第7页：内科含诊断 收缩性心衰",
+        "description": "依据讲义原页核对。"
+      }
+    },
+    {
+      "id": "p92-table1",
+      "page": 92,
+      "title": "收缩性与舒张性心衰的治疗对照（表格题）",
+      "kind": "B",
+      "kindLabel": "B型题",
+      "options": [
+        {
+          "key": "A",
+          "label": "代表疾病：扩张型心肌病",
+          "sourceText": "A.代表疾病：扩张型心肌病"
+        },
+        {
+          "key": "B",
+          "label": "代表疾病：肥厚型心肌病",
+          "sourceText": "B.代表疾病：肥厚型心肌病"
+        },
+        {
+          "key": "C",
+          "label": "可使用β-R阻断剂（无禁忌证）",
+          "sourceText": "C.可使用β-R阻断剂（无禁忌证）"
+        },
+        {
+          "key": "D",
+          "label": "可使用ACEI/ARB/ARNI（无禁忌证）",
+          "sourceText": "D.可使用ACEI/ARB/ARNI（无禁忌证）"
+        },
+        {
+          "key": "E",
+          "label": "可使用利尿剂（有淤血／容量负荷时）",
+          "sourceText": "E.可使用利尿剂（有淤血／容量负荷时）"
+        },
+        {
+          "key": "F",
+          "label": "可使用CCB（无禁忌证）",
+          "sourceText": "F.可使用CCB（无禁忌证）"
+        },
+        {
+          "key": "G",
+          "label": "可使用强心苷（有适应证、无禁忌证）",
+          "sourceText": "G.可使用强心苷（有适应证、无禁忌证）"
+        },
+        {
+          "key": "H",
+          "label": "利尿剂避免过量，以免左室充盈下降",
+          "sourceText": "H.利尿剂避免过量，以免左室充盈下降"
+        }
+      ],
+      "stems": [
+        {
+          "text": "收缩性心衰：选择讲义对照表对应的代表疾病及治疗特点",
+          "answer": [
+            "A",
+            "C",
+            "D",
+            "E",
+            "G"
+          ],
+          "sourceText": "收缩性心衰：选择讲义对照表对应的代表疾病及治疗特点 ACDEG",
+          "sourceY": 0,
+          "answerMode": "多选"
+        },
+        {
+          "text": "舒张性心衰：选择讲义对照表对应的代表疾病及治疗特点",
+          "answer": [
+            "B",
+            "C",
+            "D",
+            "E",
+            "F",
+            "H"
+          ],
+          "sourceText": "舒张性心衰：选择讲义对照表对应的代表疾病及治疗特点 BCDEFH",
+          "sourceY": 0,
+          "answerMode": "多选"
+        }
+      ],
+      "sourceText": "原题PDF第92页表格转为共用选项题",
+      "reviewState": "已按原题表格与讲义复核",
+      "topic": "循环",
+      "lectureIds": [
+        "lecture-55"
+      ],
+      "lectureEvidence": {
+        "lectureId": "lecture-55",
+        "page": 7,
+        "image": "med/lecture-pages/lecture-55-page-07.jpg",
+        "title": "第55讲第7页：内科含诊断 收缩性心衰",
+        "description": "依据讲义原页核对。"
       }
     },
     {
