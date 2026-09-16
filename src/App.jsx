@@ -82,7 +82,7 @@ const CONTENT_LOADERS = {
     return appendSupplement(content, supplement)
   },
   surgery: async () => {
-    const [surgeryContent, surgeryFractureContent, surgeryDeformityContent, surgeryChronicInjuryContent, surgeryOrthoMixedContent, surgeryOrthoInfectionContent, surgeryNonpurulentArthritisContent, surgeryBoneTumorContent, surgeryTrunkSpineContent, surgeryDegenerativeSpineContent, surgeryLimbFractureContent, surgeryGeneralContent, surgeryGeneralCoreContent, surgeryGeneralLateContent] = await Promise.all([
+    const [surgeryContent, surgeryFractureContent, surgeryDeformityContent, surgeryChronicInjuryContent, surgeryOrthoMixedContent, surgeryOrthoInfectionContent, surgeryNonpurulentArthritisContent, surgeryBoneTumorContent, surgeryTrunkSpineContent, surgeryDegenerativeSpineContent, surgeryLimbFractureContent, surgeryGeneralContent, surgeryGeneralCoreContent, surgeryGeneralLateContent, surgeryTeacherContent] = await Promise.all([
       loadJson(() => import('./data/surgery-data.json')),
       loadJson(() => import('./data/surgery-fracture-data.json')),
       loadJson(() => import('./data/surgery-deformity-data.json')),
@@ -97,15 +97,18 @@ const CONTENT_LOADERS = {
       loadJson(() => import('./data/surgery-general-data.json')),
       import('./data/surgery-general-core-data.js').then((module) => module.default),
       import('./data/surgery-general-late-data.js'),
+      loadJson(() => import('./data/surgery-teacher-supplement.json')),
     ])
-    return {
+    return appendSupplement({
       ...surgeryContent,
+      meta: { ...surgeryContent.meta, lectureCount: surgeryContent.meta.lectureCount + surgeryTeacherContent.lectures.length },
+      lectures: [...surgeryContent.lectures, ...surgeryTeacherContent.lectures],
       topics: [...surgeryContent.topics.filter((topic) => topic !== '综合'), '骨科', '外科总论', '综合'],
       groups: [...surgeryContent.groups, ...surgeryFractureContent.groups, ...surgeryDeformityContent.groups, ...surgeryChronicInjuryContent.groups, ...surgeryOrthoMixedContent.groups, ...surgeryOrthoInfectionContent.groups, ...surgeryNonpurulentArthritisContent.groups, ...surgeryBoneTumorContent.groups, ...surgeryTrunkSpineContent.groups, ...surgeryDegenerativeSpineContent.groups, ...surgeryLimbFractureContent.groups, ...surgeryGeneralCoreContent.groups, ...surgeryGeneralLateContent.surgeryGeneralInfectionGroups, ...surgeryGeneralContent.groups, ...surgeryGeneralLateContent.surgeryGeneralLaterGroups],
-    }
+    }, surgeryTeacherContent)
   },
   biochemistry: async () => {
-    const [biochemistryContent, biochemistryLecture2Content, biochemistryLecture3Content, biochemistryLecture4Content, biochemistryLecture5Content, biochemistryLecture6Content, biochemistryLecture7Content, biochemistryLecture8Content, biochemistryLecture9Content, biochemistryLecture10Content, biochemistryLecture11Content, biochemistryLecture12Content, biochemistryLecture13Content, biochemistryLecture14Content, biochemistryLecture15Content, biochemistryLecture16Content, biochemistryLecture17Content, biochemistryLecture18Content, biochemistryLecture19Content, biochemistryLecture20Content] = await Promise.all([
+    const [biochemistryContent, biochemistryLecture2Content, biochemistryLecture3Content, biochemistryLecture4Content, biochemistryLecture5Content, biochemistryLecture6Content, biochemistryLecture7Content, biochemistryLecture8Content, biochemistryLecture9Content, biochemistryLecture10Content, biochemistryLecture11Content, biochemistryLecture12Content, biochemistryLecture13Content, biochemistryLecture14Content, biochemistryLecture15Content, biochemistryLecture16Content, biochemistryLecture17Content, biochemistryLecture18Content, biochemistryLecture19Content, biochemistryLecture20Content, biochemistryTeacherContent] = await Promise.all([
       loadJson(() => import('./data/biochemistry-data.json')),
       loadJson(() => import('./data/biochemistry-lecture2-data.json')),
       loadJson(() => import('./data/biochemistry-lecture3-data.json')),
@@ -126,13 +129,14 @@ const CONTENT_LOADERS = {
       loadJson(() => import('./data/biochemistry-lecture18-data.json')),
       loadJson(() => import('./data/biochemistry-lecture19-data.json')),
       loadJson(() => import('./data/biochemistry-lecture20-data.json')),
+      loadJson(() => import('./data/biochemistry-teacher-supplement.json')),
     ])
     const allContents = [biochemistryContent, biochemistryLecture2Content, biochemistryLecture3Content, biochemistryLecture4Content, biochemistryLecture5Content, biochemistryLecture6Content, biochemistryLecture7Content, biochemistryLecture8Content, biochemistryLecture9Content, biochemistryLecture10Content, biochemistryLecture11Content, biochemistryLecture12Content, biochemistryLecture13Content, biochemistryLecture14Content, biochemistryLecture15Content, biochemistryLecture16Content, biochemistryLecture17Content, biochemistryLecture18Content, biochemistryLecture19Content, biochemistryLecture20Content]
     const groups = allContents.flatMap((content) => content.groups).map((group) => ({
       ...group,
       topic: biochemistryParentForTopic(group.topic) || group.topic,
     }))
-    return {
+    return appendSupplement({
       ...biochemistryContent,
       meta: {
         ...biochemistryContent.meta,
@@ -140,13 +144,13 @@ const CONTENT_LOADERS = {
         lectureCount: 20,
         groupCount: groups.length,
         stemCount: groups.reduce((sum, group) => sum + group.stems.length, 0),
-        answerNote: '已收录第 01～20 讲题组；每题均只关联本讲讲义页，选项与答案均已按讲义复核。',
+        answerNote: '已收录第01～20讲题组及分章课后巩固；课后巩固答案按所提供文档文末答案表录入。',
       },
       topics: ['糖代谢', '生物氧化', '脂代谢', '氨基酸与蛋白质', '核苷酸代谢', '胆色素代谢与生物转化', '酶', '维生素', '小基因', '核酸'],
       groups,
       pages: allContents.flatMap((content) => content.pages),
       lectures: allContents.flatMap((content) => content.lectures),
-    }
+    }, biochemistryTeacherContent)
   },
 }
 
@@ -1143,7 +1147,7 @@ function CategorizedAnswerRow({ group, stem, index, options, selection, submitte
           return <td key={item} className="answer-table-cell"><button type="button" aria-label={`${String(index + 1).padStart(2, '0')}题，选项 ${label}${stateLabel}`} className={`answer-chip ${active ? 'active' : ''} ${isAnswer ? 'answer' : ''} ${isMissed ? 'missed' : ''} ${isWrong ? 'wrong' : ''}`} onClick={() => onSelect(index, item)} disabled={submitted}>{label}</button></td>
         })}
       </tr>
-      {submitted && <tr className={`answer-table-result-row ${unresolved ? 'pending' : (correct ? 'ok' : 'bad')}`}><td colSpan={options.length + 2}><span><Icon name={unresolved ? 'file' : (correct ? 'check' : 'alert')} size={15} />{unresolved ? unresolvedResult : (correct ? '正确' : `讲义答案：${answerDisplay}`)}{missed && <span className="missed-legend">橙色 = 漏选</span>}</span></td></tr>}
+      {submitted && <tr className={`answer-table-result-row ${unresolved ? 'pending' : (correct ? 'ok' : 'bad')}`}><td colSpan={options.length + 2}><span><Icon name={unresolved ? 'file' : (correct ? 'check' : 'alert')} size={15} />{unresolved ? unresolvedResult : (correct ? '正确' : `${group.answerSourceLabel || '讲义答案'}：${answerDisplay}`)}{missed && <span className="missed-legend">橙色 = 漏选</span>}</span></td></tr>}
     </>
   )
 }
