@@ -33743,44 +33743,44 @@
     {
       "id": "p89-table1",
       "page": 89,
-      "title": "冠脉疾病：缺血、坏死与典型心电图（表格题）",
+      "title": "冠脉疾病：缺血损伤、坏死与典型心电图（表格题）",
       "kind": "B",
       "kindLabel": "B型题",
       "options": [
         {
           "key": "A",
-          "label": "存在心肌缺血",
-          "sourceText": "A.存在心肌缺血"
+          "label": "心肌缺血",
+          "sourceText": "A.心肌缺血"
         },
         {
           "key": "B",
-          "label": "ST段可发生改变（原表“损伤”不等同于心肌坏死）",
-          "sourceText": "B.ST段可发生改变（原表“损伤”不等同于心肌坏死）"
+          "label": "心肌缺血损伤（不等同于心肌坏死）",
+          "sourceText": "B.心肌缺血损伤（不等同于心肌坏死）"
         },
         {
           "key": "C",
-          "label": "存在心肌坏死",
-          "sourceText": "C.存在心肌坏死"
+          "label": "心肌坏死",
+          "sourceText": "C.心肌坏死"
         },
         {
           "key": "D",
-          "label": "典型情况下冠脉完全闭塞（痉挛或血栓）",
-          "sourceText": "D.典型情况下冠脉完全闭塞（痉挛或血栓）"
+          "label": "冠状动脉完全闭塞",
+          "sourceText": "D.冠状动脉完全闭塞"
         },
         {
           "key": "E",
-          "label": "典型发作时ST段压低",
-          "sourceText": "E.典型发作时ST段压低"
+          "label": "ST段压低",
+          "sourceText": "E.ST段压低"
         },
         {
           "key": "F",
-          "label": "典型发作时ST段抬高",
-          "sourceText": "F.典型发作时ST段抬高"
+          "label": "ST段抬高",
+          "sourceText": "F.ST段抬高"
         },
         {
           "key": "G",
-          "label": "典型演变可出现病理性Q波",
-          "sourceText": "G.典型演变可出现病理性Q波"
+          "label": "病理性Q波（典型演变）",
+          "sourceText": "G.病理性Q波（典型演变）"
         }
       ],
       "stems": [
@@ -33791,7 +33791,7 @@
             "B",
             "E"
           ],
-          "sourceText": "稳定型心绞痛：选择原表对应的表现（不考虑镜像导联） ABE",
+          "sourceText": "稳定型心绞痛（不考虑镜像导联） ABE",
           "sourceY": 0,
           "answerMode": "多选"
         },
@@ -33802,7 +33802,7 @@
             "B",
             "E"
           ],
-          "sourceText": "不稳定型心绞痛（不含变异型）：选择原表对应的表现 ABE",
+          "sourceText": "不稳定型心绞痛（不含变异型） ABE",
           "sourceY": 0,
           "answerMode": "多选"
         },
@@ -33814,7 +33814,7 @@
             "C",
             "E"
           ],
-          "sourceText": "NSTEMI：选择原表对应的表现（病理Q波多无） ABCE",
+          "sourceText": "NSTEMI（典型表现） ABCE",
           "sourceY": 0,
           "answerMode": "多选"
         },
@@ -33828,7 +33828,7 @@
             "F",
             "G"
           ],
-          "sourceText": "STEMI：选择原表典型演变对应的表现 ABCDFG",
+          "sourceText": "STEMI（典型演变） ABCDFG",
           "sourceY": 0,
           "answerMode": "多选"
         },
@@ -33840,12 +33840,12 @@
             "D",
             "F"
           ],
-          "sourceText": "变异型心绞痛：痉挛发作时的表现（未发生心肌梗死） ABDF",
+          "sourceText": "变异型心绞痛（痉挛发作，未发生心肌梗死） ABDF",
           "sourceY": 0,
           "answerMode": "多选"
         }
       ],
-      "sourceText": "原题PDF第89页表格转为共用选项题",
+      "sourceText": "原题PDF第89页第一张表；对照第54讲第7—8页核对。心肌缺血损伤与心肌坏死分列，ST段改变单独作答。",
       "reviewState": "已按原题表格与讲义复核",
       "topic": "循环",
       "lectureIds": [
@@ -33856,7 +33856,7 @@
         "page": 8,
         "image": "med/lecture-pages/lecture-54-page-08.webp",
         "title": "第54讲第8页：内科含诊断 冠心病",
-        "description": "依据讲义原页核对。"
+        "description": "第54讲第8页：心绞痛的ST段改变、NSTEMI与STEMI的闭塞程度、坏死标志物和典型心电图；变异型心绞痛的缺血损伤亦见第7页。"
       }
     },
     {
@@ -33868,18 +33868,18 @@
       "options": [
         {
           "key": "A",
-          "label": "硝酸酯类：缓解缺血症状，不能改善预后",
-          "sourceText": "A.硝酸酯类：缓解缺血症状，不能改善预后"
+          "label": "硝酸酯类",
+          "sourceText": "A.硝酸酯类"
         },
         {
           "key": "B",
-          "label": "β-R拮抗剂：须无休克、急性失代偿心衰、显著心动过缓等禁忌证",
-          "sourceText": "B.β-R拮抗剂：须无休克、急性失代偿心衰、显著心动过缓等禁忌证"
+          "label": "β受体拮抗剂",
+          "sourceText": "B.β受体拮抗剂"
         },
         {
           "key": "C",
-          "label": "CCB：无相应禁忌证时使用",
-          "sourceText": "C.CCB：无相应禁忌证时使用"
+          "label": "钙通道阻滞剂（CCB）",
+          "sourceText": "C.钙通道阻滞剂（CCB）"
         },
         {
           "key": "D",
@@ -33893,13 +33893,8 @@
         },
         {
           "key": "F",
-          "label": "符合时间窗及条件、无禁忌证时溶栓（不能替代首选的直接PCI）",
-          "sourceText": "F.符合时间窗及条件、无禁忌证时溶栓（不能替代首选的直接PCI）"
-        },
-        {
-          "key": "G",
-          "label": "CCB为首选药物",
-          "sourceText": "G.CCB为首选药物"
+          "label": "溶栓治疗（符合时间窗及条件，且无禁忌证）",
+          "sourceText": "F.溶栓治疗（符合时间窗及条件，且无禁忌证）"
         }
       ],
       "stems": [
@@ -33911,7 +33906,7 @@
             "C",
             "D"
           ],
-          "sourceText": "稳定型心绞痛：原表可选药物（非PCI围术期，不常规抗凝） ABCD",
+          "sourceText": "稳定型心绞痛（非PCI围术期，无用药禁忌证） ABCD",
           "sourceY": 0,
           "answerMode": "多选"
         },
@@ -33924,20 +33919,19 @@
             "D",
             "E"
           ],
-          "sourceText": "UA/NSTEMI（非变异型）：原表可选药物（无各药禁忌证） ABCDE",
+          "sourceText": "UA/NSTEMI（非变异型，无用药禁忌证） ABCDE",
           "sourceY": 0,
           "answerMode": "多选"
         },
         {
-          "text": "变异型心绞痛",
+          "text": "变异型心绞痛（急性冠脉综合征治疗，无用药禁忌证）",
           "answer": [
             "A",
             "C",
             "D",
-            "E",
-            "G"
+            "E"
           ],
-          "sourceText": "变异型心绞痛：原表可选药物及首选类别 ACDEG",
+          "sourceText": "变异型心绞痛（急性冠脉综合征治疗，无用药禁忌证） ACDE",
           "sourceY": 0,
           "answerMode": "多选"
         },
@@ -33950,7 +33944,7 @@
             "E",
             "F"
           ],
-          "sourceText": "STEMI：原表可选药物（血流动力学稳定，无各药禁忌证） ABDEF",
+          "sourceText": "STEMI（血流动力学稳定，无用药禁忌证） ABDEF",
           "sourceY": 0,
           "answerMode": "多选"
         },
@@ -33962,12 +33956,21 @@
             "E",
             "F"
           ],
-          "sourceText": "急性右室梗死：原表可选药物（血流动力学稳定、无各药禁忌证；回心血量不足时不得启用β-R拮抗剂） BDEF",
+          "sourceText": "急性右室梗死（血流动力学稳定、回心血量充足，无用药禁忌证） BDEF",
           "sourceY": 0,
           "answerMode": "多选"
+        },
+        {
+          "text": "变异型心绞痛首选药物",
+          "answer": [
+            "C"
+          ],
+          "sourceText": "变异型心绞痛首选药物 C",
+          "sourceY": 0,
+          "answerMode": "单选"
         }
       ],
-      "sourceText": "原题PDF第89页表格转为共用选项题",
+      "sourceText": "原题PDF第89页第二张表；原表来自第54讲第18页治疗小结。六种药物各保留一个选项，CCB首选另设同组选药题。适用本讲对照表的分类与条件，不替代临床个体化处方。",
       "reviewState": "已按原题表格与讲义复核",
       "topic": "循环",
       "lectureIds": [
@@ -33975,10 +33978,10 @@
       ],
       "lectureEvidence": {
         "lectureId": "lecture-54",
-        "page": 11,
-        "image": "med/lecture-pages/lecture-54-page-11.jpg",
-        "title": "第54讲第11页：内科含诊断 冠心病",
-        "description": "依据讲义原页核对。"
+        "page": 18,
+        "image": "med/lecture-pages/lecture-54-page-18.webp",
+        "title": "第54讲第18页：内科含诊断 冠心病 · 治疗小结",
+        "description": "对应讲义“七、全部小结—（二）治疗小结—2.药物（注意禁忌症）”原表；变异型按本讲ACS分类理解，不泛化为所有单纯冠脉痉挛均需抗凝。"
       }
     },
     {
