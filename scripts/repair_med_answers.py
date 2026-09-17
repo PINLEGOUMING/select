@@ -229,7 +229,7 @@ def corrected_group_blocks() -> dict[str, tuple[list[str], list[dict]]]:
         [
             option("A", "垂体后叶素"), option("B", "针对流感嗜血杆菌"), option("C", ">500ml/d或>100ml/次"),
             option("D", "妥布霉素"), option("E", "亚胺培南"), option("F", "介入栓塞支气管动脉"),
-            option("G", "头孢他啶/哌拉西林等三、四代头孢"), option("H", "氨苄西林"),
+            option("G", "头孢他啶/哌酮/吡肟等三、四代头孢"), option("H", "氨苄西林"),
             option("I", "手术切除"), option("J", "美罗培南"), option("K", "环丙沙星"),
             option("L", "阿莫西林"), option("M", "厄他培南"), option("N", "二、三代头孢"),
             option("O", "左氧氟沙星"), option("P", "呼吸喹诺酮类"), option("Q", "诺氟沙星"),
@@ -268,12 +268,12 @@ def corrected_group_blocks() -> dict[str, tuple[list[str], list[dict]]]:
     p08_images = group(
         "p08-g2", "肺炎的影像学表现", "呼吸", ["lecture-07"],
         [
-            option("①", "X线或CT支气管充气征、大叶性实变影"), option("②", "叶间隙下坠、蜂窝状腔"),
+            option("①", "X线或CT支气管充气征、大叶性实变影"), option("②", "叶间隙下坠、蜂窝状脓肿"),
             option("③", "绝无空洞"), option("④", "易形成空洞，斑片或实变影"),
             option("⑤", "肺炎中最易形成空洞，斑片或实变影"), option("⑥", "不易形成空洞"),
             option("⑦", "磨玻璃斑片或实变影，多分布在双肺外周胸膜下"),
-            option("⑧", "早期网格影，后期沿气管/肺纹理散在分布不规则斑片影，多累及双肺下叶"),
-            option("⑨", "大片实变及明显胸腔积液"), option("⑩", "多发易变结节、空洞、液气囊腔（可致脓气胸）"),
+            option("⑧", "早期网格影，后期沿支气管/肺纹理散在分布的不规则斑片影，多累及双肺下叶"),
+            option("⑨", "大片实变及明显胸腔积液少见"), option("⑩", "多发易变结节、空洞、液气囊腔（可致脓气胸）"),
         ],
         [
             stem("肺炎链球菌肺炎", "①③"), stem("金葡菌肺炎", "⑤⑩"), stem("克雷伯杆菌肺炎", "②④"),
@@ -285,13 +285,13 @@ def corrected_group_blocks() -> dict[str, tuple[list[str], list[dict]]]:
         [
             option("A", "不宜用抗生素预防继发性细菌感染；一旦合并细菌感染再及时选用敏感抗生素"),
             option("B", "治疗首选青霉素类"), option("C", "苯唑西林、氯唑西林或头孢呋辛"),
-            option("D", "若青霉素耐药可用喹诺酮、头孢喹诺或头孢曲松"),
-            option("E", "β-内酰胺类；重症联合大环内酯类或氟喹诺酮类"),
+            option("D", "若青霉素耐药可用喹诺酮、头孢噻肟或头孢曲松"),
+            option("E", "β-内酰胺类；重症联合喹诺酮类或氨基糖苷类（阿米卡星/妥布霉素）"),
             option("F", "对大环内酯类如红霉素、罗红霉素、阿奇霉素高耐药"),
             option("G", "对症治疗，抗病毒药（奥司他韦、利巴韦林、阿昔洛韦）"),
             option("H", "首选喹诺酮类如左氧氟沙星/莫西沙星"),
             option("I", "MRSA用万古霉素、替考拉宁、利奈唑胺或头孢洛林"), option("J", "四环素类"),
-            option("K", "重症者可酌情用糖皮质激素"), option("L", "β-内酰胺类抗生素、头孢菌素类"),
+            option("K", "重症者可酌情用糖皮质激素"), option("L", "β-内酰胺类如青霉素、头孢菌素类"),
         ],
         [
             stem("肺炎链球菌肺炎", "BD"), stem("金葡菌肺炎", "CI"), stem("克雷伯杆菌肺炎", "E"),
@@ -302,7 +302,7 @@ def corrected_group_blocks() -> dict[str, tuple[list[str], list[dict]]]:
         "p08-g4", "肺炎及相关疾病的好发部位", "呼吸", ["lecture-07", "lecture-08", "lecture-04"],
         [
             option("A", "上叶下部、下叶上部近胸膜处"), option("B", "单侧肺下叶"), option("C", "上叶尖后段"),
-            option("D", "双肺中叶和背侧"), option("E", "左肺下叶"), option("F", "下叶"),
+            option("D", "双肺下叶和背侧"), option("E", "左肺下叶"), option("F", "下叶"),
             option("G", "右肺上叶后段或下叶背段"), option("H", "双肺胸膜下、基底部"),
             option("I", "上叶尖后段、下叶背段和后基底段"),
         ],
@@ -381,15 +381,20 @@ def corrected_group_blocks() -> dict[str, tuple[list[str], list[dict]]]:
         [stem("VVI", "DFGM"), stem("VDD", "BGHIK"), stem("DDD", "BCHJK"), stem("AAI", "ADEJL")],
     )
 
-    p07_compare_options = [option("A", "多无咯血"), option("B", "大量脓痰"), option("C", "多长期低热"), option("D", "多不发热或高热（继发感染）")]
     p07_compare = [
-        group("p07-g1", "支气管扩张症与COPD鉴别", "呼吸", ["lecture-05", "lecture-01"], p07_compare_options, [stem("支气管扩张症", "BCD"), stem("COPD", "AB")]),
-        group("p07-g2", "支气管扩张症与肺结核鉴别", "呼吸", ["lecture-05", "lecture-08"], p07_compare_options, [stem("支气管扩张症", "ABD"), stem("肺结核", "AC")]),
-        group("p07-g3", "支气管扩张症与慢性肺脓肿鉴别", "呼吸", ["lecture-05", "lecture-06"], p07_compare_options, [stem("支气管扩张症", "ABD"), stem("慢性肺脓肿", "ABC")]),
+        group("p07-g1", "支气管扩张症与COPD鉴别", "呼吸", ["lecture-05", "lecture-01"],
+              [option("A", "多无咯血和杵状指"), option("B", "长期咳痰"), option("C", "大量脓痰"), option("D", "多有咯血和杵状指")],
+              [stem("支气管扩张症", "BCD"), stem("COPD", "AB")]),
+        group("p07-g2", "支气管扩张症与肺结核鉴别", "呼吸", ["lecture-05", "lecture-08"],
+              [option("A", "多有咯血"), option("B", "大量脓痰"), option("C", "多长期低热"), option("D", "多不发热或高热（继发感染）")],
+              [stem("支气管扩张症", "ABD"), stem("肺结核", "AC")]),
+        group("p07-g3", "支气管扩张症与慢性肺脓肿鉴别", "呼吸", ["lecture-05", "lecture-06"],
+              [option("A", "长期咳大量脓痰"), option("B", "多有咯血和杵状指"), option("C", "痰分3层、厚壁空洞"), option("D", "痰分4层、薄壁囊腔")],
+              [stem("支气管扩张症", "ABD"), stem("慢性肺脓肿", "ABC")]),
     ]
     p07_pneumonia = group(
         "p07-g4", "社区获得性与医院获得性肺炎", "呼吸", ["lecture-07"],
-        [option("A", "社区获得性肺炎的定义"), option("B", "肺炎链球菌"), option("C", "G-杆菌（大肠杆菌、克雷伯杆菌、鲍曼不动杆菌、铜绿假单胞菌）"), option("D", "支原体"), option("E", "空气吸入、误吸上呼吸道定植菌、邻近感染灶、血行播散等"), option("F", "衣原体"), option("G", "误吸胃肠道定植菌（胃食管反流、脑卒中、醉酒等）"), option("H", "流感嗜血杆菌"), option("I", "呼吸道病毒"), option("J", "金葡菌"), option("K", "医院获得性肺炎的定义"), option("L", "通过人工气道吸入环境中的致病菌")],
+        [option("A", "在医院外发生的肺炎，或在医院外感染了有明确潜伏期的病原体而在入院后平均潜伏期内发病的肺炎"), option("B", "肺炎链球菌"), option("C", "G-杆菌（大肠杆菌、克雷伯杆菌、鲍曼不动杆菌、铜绿假单胞菌）"), option("D", "支原体"), option("E", "空气吸入、误吸上呼吸道定植菌、邻近感染灶蔓延、血行播散等"), option("F", "衣原体"), option("G", "误吸胃肠道定植菌（胃食管反流病、脑卒中、醉酒等）"), option("H", "流感嗜血杆菌"), option("I", "呼吸道病毒"), option("J", "金葡菌"), option("K", "在入院时不存在、也不处于潜伏期，在入院>48小时后在医院内新发生的肺炎"), option("L", "通过人工气道吸入环境中的致病菌")],
         [stem("社区获得性肺炎CAP", "ABDEFHI"), stem("医院获得性肺炎HAP", "CGJKL"), stem("CAP最常见的病原体", "B")],
     )
 

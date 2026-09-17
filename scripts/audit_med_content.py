@@ -64,7 +64,7 @@ def main() -> None:
     assert not mode_errors, f"answer mode mismatch: {mode_errors}"
 
     by_id = {group["id"]: group for group in payload["groups"]}
-    assert [item["label"] for item in by_id["p07-g1"]["options"]] == ["多无咯血", "长期咳痰", "大量脓痰", "多有咯血和杵状指"]
+    assert [item["label"] for item in by_id["p07-g1"]["options"]] == ["多无咯血和杵状指", "长期咳痰", "大量脓痰", "多有咯血和杵状指"]
     assert [stem["text"] for stem in by_id["p07-g1"]["stems"]] == ["支气管扩张症", "COPD"]
     assert len(by_id["p19-g1"]["stems"]) == 7, "p19 comparison bank was merged or truncated"
     assert [group["id"] for group in payload["groups"] if group["page"] == 22] == ["p22-g1", "p22-g2"], "page 22 question banks were merged"
