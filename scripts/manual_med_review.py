@@ -409,13 +409,18 @@ def reviewed_groups(payload: dict) -> list[dict]:
         stems(("防治高尿酸血症肾病", "D"), ("白细胞淤滞症的治疗", "BE"), ("M3型的治疗", "ACFG")),
     )
     p54_2 = group(
-        "p54-g2", "急性白血病联合化疗方案", "血液", ["lecture-33", "lecture-34"],
+        "p54-g2", "急性白血病的联合化疗", "血液", ["lecture-34"],
         opts(
             ("A", "伊达比星"), ("B", "化疗前用羟基脲、水化进行短期预处理"), ("C", "柔红霉素"), ("D", "高三尖杉酯碱"),
-            ("E", "化疗前用地塞米松、水化进行短期预处理"), ("F", "IA（伊达比星+阿糖胞苷）"), ("G", "长春新碱"), ("H", "VP"),
-            ("I", "DA（柔红霉素+阿糖胞苷）"), ("J", "DVP"), ("K", "阿糖胞苷"), ("L", "泼尼松"), ("M", "HA（高三尖杉酯碱+阿糖胞苷）"), ("N", "DVLP"), ("O", "左旋门冬酰胺酶"),
+            ("E", "化疗前用地塞米松、水化进行短期预处理"), ("F", "IA"), ("G", "长春新碱"), ("H", "VP"),
+            ("I", "DA"), ("J", "DVP"), ("K", "阿糖胞苷"), ("L", "泼尼松"), ("M", "HA"), ("N", "DVLP"), ("O", "左旋门冬酰胺酶"),
         ),
-        stems(("AML（除M3型）", "BFIM"), ("ALL", "EHJN"), ("只能用于治疗AML", "D"), ("只能用于治疗ALL", "O")),
+        stems(
+            ("AML（除M3型）的预处理及联合化疗方案", "BFIM"), ("ALL的预处理及联合化疗方案", "EHJN"),
+            ("IA方案组成", "AK"), ("DA方案组成", "CK"), ("HA方案组成", "DK"),
+            ("VP方案组成", "GL"), ("DVP方案组成", "CGL"), ("DVLP方案组成", "CGLO"),
+            ("只能用于治疗AML", "D"), ("只能用于治疗ALL", "O"),
+        ),
     )
     p54_3 = group(
         "p54-g3", "慢性髓系白血病分期", "血液", ["lecture-34"],
@@ -1009,3 +1014,5 @@ def apply_manual_review(payload: dict) -> None:
     # Make the chapter map an explicit integrity contract for future rebuilds.
     for item in payload["groups"]:
         item["topic"] = page_topic(item["page"])
+        if item["id"] == "p43-g1":
+            item["lectureIds"] = ["lecture-28"]

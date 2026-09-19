@@ -14958,12 +14958,7 @@
       "reviewState": "已按原题页与讲义复核",
       "topic": "血液",
       "lectureIds": [
-        "lecture-28",
-        "lecture-29",
-        "lecture-30",
-        "lecture-32",
-        "lecture-33",
-        "lecture-34"
+        "lecture-28"
       ],
       "lectureEvidence": {
         "lectureId": "lecture-28",
@@ -18913,7 +18908,7 @@
     {
       "id": "p54-g2",
       "page": 54,
-      "title": "急性白血病联合化疗方案",
+      "title": "急性白血病的联合化疗",
       "kind": "B",
       "kindLabel": "B型题",
       "options": [
@@ -18944,8 +18939,8 @@
         },
         {
           "key": "F",
-          "label": "IA（伊达比星+阿糖胞苷）",
-          "sourceText": "F.IA（伊达比星+阿糖胞苷）"
+          "label": "IA",
+          "sourceText": "F.IA"
         },
         {
           "key": "G",
@@ -18959,8 +18954,8 @@
         },
         {
           "key": "I",
-          "label": "DA（柔红霉素+阿糖胞苷）",
-          "sourceText": "I.DA（柔红霉素+阿糖胞苷）"
+          "label": "DA",
+          "sourceText": "I.DA"
         },
         {
           "key": "J",
@@ -18979,8 +18974,8 @@
         },
         {
           "key": "M",
-          "label": "HA（高三尖杉酯碱+阿糖胞苷）",
-          "sourceText": "M.HA（高三尖杉酯碱+阿糖胞苷）"
+          "label": "HA",
+          "sourceText": "M.HA"
         },
         {
           "key": "N",
@@ -18995,26 +18990,89 @@
       ],
       "stems": [
         {
-          "text": "AML（除M3型）",
+          "text": "AML（除M3型）的预处理及联合化疗方案",
           "answer": [
             "B",
             "F",
             "I",
             "M"
           ],
-          "sourceText": "AML（除M3型） BFIM",
+          "sourceText": "AML（除M3型） B F(A+K) I(C+K) M(D+K)",
           "sourceY": 0,
           "answerMode": "多选"
         },
         {
-          "text": "ALL",
+          "text": "ALL的预处理及联合化疗方案",
           "answer": [
             "E",
             "H",
             "J",
             "N"
           ],
-          "sourceText": "ALL EHJN",
+          "sourceText": "ALL E H(G+L) J(C+G+L) N(C+G+L+O)",
+          "sourceY": 0,
+          "answerMode": "多选"
+        },
+        {
+          "text": "IA方案组成",
+          "answer": [
+            "A",
+            "K"
+          ],
+          "sourceText": "IA（A+K）",
+          "sourceY": 0,
+          "answerMode": "多选"
+        },
+        {
+          "text": "DA方案组成",
+          "answer": [
+            "C",
+            "K"
+          ],
+          "sourceText": "DA（C+K）",
+          "sourceY": 0,
+          "answerMode": "多选"
+        },
+        {
+          "text": "HA方案组成",
+          "answer": [
+            "D",
+            "K"
+          ],
+          "sourceText": "HA（D+K）",
+          "sourceY": 0,
+          "answerMode": "多选"
+        },
+        {
+          "text": "VP方案组成",
+          "answer": [
+            "G",
+            "L"
+          ],
+          "sourceText": "VP（G+L）",
+          "sourceY": 0,
+          "answerMode": "多选"
+        },
+        {
+          "text": "DVP方案组成",
+          "answer": [
+            "C",
+            "G",
+            "L"
+          ],
+          "sourceText": "DVP（C+G+L）",
+          "sourceY": 0,
+          "answerMode": "多选"
+        },
+        {
+          "text": "DVLP方案组成",
+          "answer": [
+            "C",
+            "G",
+            "L",
+            "O"
+          ],
+          "sourceText": "DVLP（C+G+L+O）",
           "sourceY": 0,
           "answerMode": "多选"
         },
@@ -19037,11 +19095,10 @@
           "answerMode": "单选"
         }
       ],
-      "sourceText": "急性白血病联合化疗方案（按原题页分组并结合讲义复核）",
+      "sourceText": "急性白血病的联合化疗（按原题页分组并结合讲义复核）",
       "reviewState": "已按原题页与讲义复核",
       "topic": "血液",
       "lectureIds": [
-        "lecture-33",
         "lecture-34"
       ],
       "lectureEvidence": {

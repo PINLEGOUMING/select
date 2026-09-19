@@ -292,6 +292,7 @@ const MED_CHAPTER_OVERRIDES = {
   'p42-g1': ['lecture-28'],
   'p42-g2': ['lecture-28'],
   'p42-g3': ['lecture-28'],
+  'p43-g1': ['lecture-28'],
   'p45-g1': ['lecture-30'],
   'p45-g2': ['lecture-30'],
   'p45-g3': ['lecture-30'],
