@@ -28790,10 +28790,11 @@
             "E",
             "G",
             "H",
+            "J",
             "L",
             "N"
           ],
-          "sourceText": "S1减弱 BDEGHLN",
+          "sourceText": "S1减弱 BDEGHJLN",
           "sourceY": 0,
           "answerMode": "多选"
         },
