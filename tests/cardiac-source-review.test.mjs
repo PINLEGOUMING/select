@@ -5,7 +5,7 @@ import assert from 'node:assert/strict'
 
 const data = JSON.parse(readFileSync(new URL('../src/data/med-data.json', import.meta.url)))
 const group = id => data.groups.find(item => item.id === id)
-const reviewedIds = ['p80-g3', 'p81-g2', 'p86-g1', 'p86-g2', 'p86-g3', 'p86-table1', 'p91-g4', 'p92-g1', 'p89-table1', 'p89-table2', 'p92-table1']
+const reviewedIds = ['p80-g3', 'p81-g2', 'p82-g3', 'p86-g1', 'p86-g2', 'p86-g3', 'p86-table1', 'p91-g4', 'p92-g1', 'p89-table1', 'p89-table2', 'p92-table1']
 
 test('reviewed cardiac groups have valid answer keys and unique options', () => {
   for (const id of reviewedIds) {
@@ -55,6 +55,20 @@ test('S1 weakening includes cardiomyopathy after restoring the misprinted J opti
   const g = group('p81-g2')
   assert.equal(g.options.find(o => o.key === 'J')?.label, '心肌病')
   assert.deepEqual(g.stems.find(s => s.text === 'S1减弱').answer, ['B', 'D', 'E', 'G', 'H', 'J', 'L', 'N'])
+})
+
+test('page 82 auscultation locations use their own option bank', () => {
+  const g = group('p82-g3')
+  assert.deepEqual(g.options.map(o => [o.key, o.label]), [
+    ['A', '肺动脉瓣'],
+    ['B', '主动脉瓣第二听诊区'],
+    ['C', '三尖瓣'],
+    ['D', '二尖瓣'],
+    ['E', '室间隔'],
+    ['F', '主动脉瓣第一听诊区'],
+    ['G', '心脏裸区'],
+  ])
+  assert.deepEqual(g.stems.map(s => s.answer.join('')), ['D', 'A', 'F', 'BEG', 'C', 'F', 'B'])
 })
 
 test('all four original tables become answerable B-type groups', () => {
