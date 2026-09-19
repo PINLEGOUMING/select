@@ -7,7 +7,7 @@
     "lectureCount": 41,
     "groupCount": 160,
     "stemCount": 505,
-    "correctionGroupCount": 19,
+    "correctionGroupCount": 20,
     "generatedBy": "scripts/build_physiology_content.py",
     "siteIntegrated": true,
     "lectureLinked": true,
@@ -18,8 +18,8 @@
     "lectureSetFingerprint": "e213273a2bdc0fffcd942dd08aad8cfea51dd719a65fe9cedfe0d6cd9c3f46c0"
   },
   "statusSummary": {
-    "与今年讲义一致": 141,
-    "已校正": 19
+    "与今年讲义一致": 140,
+    "已校正": 20
   },
   "corrections": [
     {
@@ -281,6 +281,93 @@
               "A",
               "D",
               "ACDE"
+            ]
+          }
+        }
+      ],
+      "status": "已校正"
+    },
+    {
+      "id": "phys-038",
+      "topic": "循环系统",
+      "sourcePage": 33,
+      "lectureEvidence": {
+        "lectureId": "lecture-09",
+        "lectureNumber": 9,
+        "lectureTitle": "生理 心脏泵血",
+        "page": 9,
+        "score": 0.5096,
+        "method": "按今年讲义原文人工复核并定位",
+        "image": "physiology/lecture-pages/lecture-09-page-09.webp",
+        "title": "第9讲第9页：生理 心脏泵血",
+        "description": "本题组已按第9讲第9页逐项核对题目、选项与答案。"
+      },
+      "corrections": [
+        {
+          "title": "曲线题题干补全",
+          "body": "将两个重复的“骨骼肌收缩能力↑的表现”题干分别明确为长度-张力曲线和张力-速度曲线；同时明确心肌顺应性↓所问为心室压力-容积曲线。答案 C、D、AE、B 不变。 依据：今年讲义第 9 页“曲线小结”分别列出：骨骼肌收缩能力↑时长度-张力曲线上移、张力-速度曲线右上移；心肌收缩能力↑时心室功能曲线左上移且收缩末期压力-容积曲线斜率增大；心肌顺应性↓时心室压力-容积曲线左上移。",
+          "lectureId": "lecture-09",
+          "lecturePages": [
+            9
+          ],
+          "before": {
+            "options": [
+              {
+                "key": "A",
+                "label": "室功能曲线左上移"
+              },
+              {
+                "key": "B",
+                "label": "心室压力-容积曲线左上移"
+              },
+              {
+                "key": "C",
+                "label": "长度-张力曲线上移"
+              },
+              {
+                "key": "D",
+                "label": "张力-速度曲线右上移"
+              },
+              {
+                "key": "E",
+                "label": "收缩末期压力-容积曲线斜率增大"
+              }
+            ],
+            "answers": [
+              "C",
+              "D",
+              "AE",
+              "B"
+            ]
+          },
+          "after": {
+            "options": [
+              {
+                "key": "A",
+                "label": "室功能曲线左上移"
+              },
+              {
+                "key": "B",
+                "label": "心室压力-容积曲线左上移"
+              },
+              {
+                "key": "C",
+                "label": "长度-张力曲线上移"
+              },
+              {
+                "key": "D",
+                "label": "张力-速度曲线右上移"
+              },
+              {
+                "key": "E",
+                "label": "收缩末期压力-容积曲线斜率增大"
+              }
+            ],
+            "answers": [
+              "C",
+              "D",
+              "AE",
+              "B"
             ]
           }
         }
@@ -2960,7 +3047,7 @@
         "lectureNumber": 9,
         "lectureTitle": "生理 心脏泵血",
         "page": 8,
-        "score": 0.1836,
+        "score": 0.1822,
         "method": "限定本章讲义范围后的字符三元组相似度匹配，并完成人工勘误复核",
         "image": "physiology/lecture-pages/lecture-09-page-08.webp",
         "title": "第9讲第8页：生理 心脏泵血",
@@ -2978,14 +3065,83 @@
         "lectureNumber": 9,
         "lectureTitle": "生理 心脏泵血",
         "page": 9,
-        "score": 0.4773,
-        "method": "限定本章讲义范围后的字符三元组相似度匹配，并完成人工勘误复核",
+        "score": 0.5096,
+        "method": "按今年讲义原文人工复核并定位",
         "image": "physiology/lecture-pages/lecture-09-page-09.webp",
         "title": "第9讲第9页：生理 心脏泵血",
         "description": "本题组已按第9讲第9页逐项核对题目、选项与答案。"
       },
-      "corrections": [],
-      "status": "与今年讲义一致"
+      "corrections": [
+        {
+          "title": "曲线题题干补全",
+          "body": "将两个重复的“骨骼肌收缩能力↑的表现”题干分别明确为长度-张力曲线和张力-速度曲线；同时明确心肌顺应性↓所问为心室压力-容积曲线。答案 C、D、AE、B 不变。 依据：今年讲义第 9 页“曲线小结”分别列出：骨骼肌收缩能力↑时长度-张力曲线上移、张力-速度曲线右上移；心肌收缩能力↑时心室功能曲线左上移且收缩末期压力-容积曲线斜率增大；心肌顺应性↓时心室压力-容积曲线左上移。",
+          "lectureId": "lecture-09",
+          "lecturePages": [
+            9
+          ],
+          "before": {
+            "options": [
+              {
+                "key": "A",
+                "label": "室功能曲线左上移"
+              },
+              {
+                "key": "B",
+                "label": "心室压力-容积曲线左上移"
+              },
+              {
+                "key": "C",
+                "label": "长度-张力曲线上移"
+              },
+              {
+                "key": "D",
+                "label": "张力-速度曲线右上移"
+              },
+              {
+                "key": "E",
+                "label": "收缩末期压力-容积曲线斜率增大"
+              }
+            ],
+            "answers": [
+              "C",
+              "D",
+              "AE",
+              "B"
+            ]
+          },
+          "after": {
+            "options": [
+              {
+                "key": "A",
+                "label": "室功能曲线左上移"
+              },
+              {
+                "key": "B",
+                "label": "心室压力-容积曲线左上移"
+              },
+              {
+                "key": "C",
+                "label": "长度-张力曲线上移"
+              },
+              {
+                "key": "D",
+                "label": "张力-速度曲线右上移"
+              },
+              {
+                "key": "E",
+                "label": "收缩末期压力-容积曲线斜率增大"
+              }
+            ],
+            "answers": [
+              "C",
+              "D",
+              "AE",
+              "B"
+            ]
+          }
+        }
+      ],
+      "status": "已校正"
     },
     {
       "id": "phys-039",

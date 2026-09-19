@@ -7,7 +7,7 @@
     "lectureCount": 41,
     "groupCount": 160,
     "stemCount": 505,
-    "correctionGroupCount": 19,
+    "correctionGroupCount": 20,
     "generatedBy": "scripts/build_physiology_content.py",
     "siteIntegrated": true,
     "lectureLinked": true,
@@ -5275,32 +5275,58 @@
         {
           "key": "A",
           "label": "环向右扩大",
-          "sourceText": "A. 环向右扩大"
+          "sourceText": "A. 环向右扩大",
+          "splitFrom": [
+            "A"
+          ]
         },
         {
           "key": "B",
-          "label": "环向左扩大、斜率增大",
-          "sourceText": "B. 环向左扩大、斜率增大"
+          "label": "环向左扩大",
+          "sourceText": "B. 环向左扩大、斜率增大",
+          "splitFrom": [
+            "B"
+          ]
         },
         {
           "key": "C",
-          "label": "横径增大",
-          "sourceText": "C. 横径增大"
+          "label": "收缩末期压力-容积曲线斜率增大",
+          "sourceText": "B. 环向左扩大、斜率增大",
+          "splitFrom": [
+            "B"
+          ]
         },
         {
           "key": "D",
-          "label": "环向上扩大",
-          "sourceText": "D. 环向上扩大"
+          "label": "横径增大",
+          "sourceText": "C. 横径增大",
+          "splitFrom": [
+            "C"
+          ]
         },
         {
           "key": "E",
-          "label": "横径减小",
-          "sourceText": "E. 横径减小"
+          "label": "环向上扩大",
+          "sourceText": "D. 环向上扩大",
+          "splitFrom": [
+            "D"
+          ]
         },
         {
           "key": "F",
+          "label": "横径减小",
+          "sourceText": "E. 横径减小",
+          "splitFrom": [
+            "E"
+          ]
+        },
+        {
+          "key": "G",
           "label": "环缩小（舒张功能障碍环向左缩小）",
-          "sourceText": "F. 环缩小（舒张功能障碍环向左缩小）"
+          "sourceText": "F. 环缩小（舒张功能障碍环向左缩小）",
+          "splitFrom": [
+            "F"
+          ]
         }
       ],
       "stems": [
@@ -5308,10 +5334,10 @@
           "number": 1,
           "text": "后负荷增加时，心室压力-容积环和环的横径如何变化（多选）",
           "sourceText": "1. 后负荷增加时，心室压力-容积环和环的横径如何变化（多选）：",
-          "answerRaw": "DE",
+          "answerRaw": "EF",
           "answer": [
-            "D",
-            "E"
+            "E",
+            "F"
           ],
           "answerMode": "多选"
         },
@@ -5319,10 +5345,10 @@
           "number": 2,
           "text": "前负荷增加时，心室压力-容积环和环的横径如何变化（多选）",
           "sourceText": "2. 前负荷增加时，心室压力-容积环和环的横径如何变化（多选）：",
-          "answerRaw": "AC",
+          "answerRaw": "AD",
           "answer": [
             "A",
-            "C"
+            "D"
           ],
           "answerMode": "多选"
         },
@@ -5330,10 +5356,11 @@
           "number": 3,
           "text": "收缩能力增强时，心室压力-容积环和环的横径如何变化（多选）",
           "sourceText": "3. 收缩能力增强时，心室压力-容积环和环的横径如何变化（多选）：",
-          "answerRaw": "BD",
+          "answerRaw": "BCE",
           "answer": [
             "B",
-            "D"
+            "C",
+            "E"
           ],
           "answerMode": "多选"
         },
@@ -5341,10 +5368,10 @@
           "number": 4,
           "text": "顺应性减小时，心室压力-容积环和环的横径如何变化（多选）",
           "sourceText": "4. 顺应性减小时，心室压力-容积环和环的横径如何变化（多选）：",
-          "answerRaw": "EF",
+          "answerRaw": "FG",
           "answer": [
-            "E",
-            "F"
+            "F",
+            "G"
           ],
           "answerMode": "多选"
         }
@@ -5362,12 +5389,13 @@
         "lectureNumber": 9,
         "lectureTitle": "生理 心脏泵血",
         "page": 8,
-        "score": 0.1836,
+        "score": 0.1822,
         "method": "限定本章讲义范围后的字符三元组相似度匹配，并完成人工勘误复核",
         "image": "physiology/lecture-pages/lecture-09-page-08.webp",
         "title": "第9讲第8页：生理 心脏泵血",
         "description": "本题组已按第9讲第8页逐项核对题目、选项与答案。"
-      }
+      },
+      "optionSplitVersion": 1
     },
     {
       "id": "phys-038",
@@ -5405,7 +5433,7 @@
       "stems": [
         {
           "number": 1,
-          "text": "骨骼肌收缩能力↑的表现",
+          "text": "骨骼肌收缩能力↑时，长度-张力曲线的变化",
           "sourceText": "1. 骨骼肌收缩能力↑的表现：",
           "answerRaw": "C",
           "answer": [
@@ -5415,7 +5443,7 @@
         },
         {
           "number": 2,
-          "text": "骨骼肌收缩能力↑的表现",
+          "text": "骨骼肌收缩能力↑时，张力-速度曲线的变化",
           "sourceText": "2. 骨骼肌收缩能力↑的表现：",
           "answerRaw": "D",
           "answer": [
@@ -5436,7 +5464,7 @@
         },
         {
           "number": 4,
-          "text": "心肌顺应性↓的表现",
+          "text": "心肌顺应性↓时，心室压力-容积曲线的变化",
           "sourceText": "4. 心肌顺应性↓的表现：",
           "answerRaw": "B",
           "answer": [
@@ -5448,7 +5476,76 @@
       "sourceText": "7. A. 室功能曲线左上移 B. 心室压力-容积曲线左上移 C. 长度-张力曲线上移 D. 张力-速度曲线右上移 E. 收缩末期压力-容积曲线斜率增大 1. 骨骼肌收缩能力↑的表现： 2. 骨骼肌收缩能力↑的表现： 3. 心肌收缩能力↑的表现（多选）： 4. 心肌顺应性↓的表现：",
       "reviewState": "已按 2027 考研讲义核对",
       "reviewIssues": [],
-      "reviewNotes": [],
+      "reviewNotes": [
+        {
+          "title": "曲线题题干补全",
+          "body": "将两个重复的“骨骼肌收缩能力↑的表现”题干分别明确为长度-张力曲线和张力-速度曲线；同时明确心肌顺应性↓所问为心室压力-容积曲线。答案 C、D、AE、B 不变。 依据：今年讲义第 9 页“曲线小结”分别列出：骨骼肌收缩能力↑时长度-张力曲线上移、张力-速度曲线右上移；心肌收缩能力↑时心室功能曲线左上移且收缩末期压力-容积曲线斜率增大；心肌顺应性↓时心室压力-容积曲线左上移。",
+          "lectureId": "lecture-09",
+          "lecturePages": [
+            9
+          ],
+          "before": {
+            "options": [
+              {
+                "key": "A",
+                "label": "室功能曲线左上移"
+              },
+              {
+                "key": "B",
+                "label": "心室压力-容积曲线左上移"
+              },
+              {
+                "key": "C",
+                "label": "长度-张力曲线上移"
+              },
+              {
+                "key": "D",
+                "label": "张力-速度曲线右上移"
+              },
+              {
+                "key": "E",
+                "label": "收缩末期压力-容积曲线斜率增大"
+              }
+            ],
+            "answers": [
+              "C",
+              "D",
+              "AE",
+              "B"
+            ]
+          },
+          "after": {
+            "options": [
+              {
+                "key": "A",
+                "label": "室功能曲线左上移"
+              },
+              {
+                "key": "B",
+                "label": "心室压力-容积曲线左上移"
+              },
+              {
+                "key": "C",
+                "label": "长度-张力曲线上移"
+              },
+              {
+                "key": "D",
+                "label": "张力-速度曲线右上移"
+              },
+              {
+                "key": "E",
+                "label": "收缩末期压力-容积曲线斜率增大"
+              }
+            ],
+            "answers": [
+              "C",
+              "D",
+              "AE",
+              "B"
+            ]
+          }
+        }
+      ],
       "topic": "循环系统",
       "lectureIds": [
         "lecture-09"
@@ -5458,8 +5555,8 @@
         "lectureNumber": 9,
         "lectureTitle": "生理 心脏泵血",
         "page": 9,
-        "score": 0.4773,
-        "method": "限定本章讲义范围后的字符三元组相似度匹配，并完成人工勘误复核",
+        "score": 0.5096,
+        "method": "按今年讲义原文人工复核并定位",
         "image": "physiology/lecture-pages/lecture-09-page-09.webp",
         "title": "第9讲第9页：生理 心脏泵血",
         "description": "本题组已按第9讲第9页逐项核对题目、选项与答案。"
