@@ -29731,7 +29731,7 @@
     {
       "id": "p83-g2",
       "page": 83,
-      "title": "心包及胸骨左缘杂音",
+      "title": "胸骨左缘3～4肋间听诊",
       "kind": "B",
       "kindLabel": "B型题",
       "options": [
@@ -29778,11 +29778,11 @@
       ],
       "stems": [
         {
-          "text": "胸骨左缘3～4肋间听诊：舒张期杂音",
+          "text": "舒张期杂音",
           "answer": [
             "F"
           ],
-          "sourceText": "胸骨左缘3～4肋间听诊：舒张期杂音 F",
+          "sourceText": "舒张期杂音 F",
           "sourceY": 0,
           "answerMode": "单选"
         },
@@ -29818,7 +29818,7 @@
           "answerMode": "多选"
         }
       ],
-      "sourceText": "心包及胸骨左缘杂音（按原题页分组并结合讲义复核）",
+      "sourceText": "胸骨左缘3～4肋间听诊（按原题页分组并结合讲义复核）",
       "reviewState": "已按原题页与讲义复核",
       "topic": "循环",
       "lectureIds": [
