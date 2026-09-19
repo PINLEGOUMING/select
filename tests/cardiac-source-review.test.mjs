@@ -5,7 +5,7 @@ import assert from 'node:assert/strict'
 
 const data = JSON.parse(readFileSync(new URL('../src/data/med-data.json', import.meta.url)))
 const group = id => data.groups.find(item => item.id === id)
-const reviewedIds = ['p80-g3', 'p81-g2', 'p82-g3', 'p82-g4', 'p83-g2', 'p86-g1', 'p86-g2', 'p86-g3', 'p86-table1', 'p91-g4', 'p92-g1', 'p89-table1', 'p89-table2', 'p92-table1']
+const reviewedIds = ['p80-g3', 'p81-g2', 'p82-g3', 'p82-g4', 'p83-g2', 'p83-g3', 'p86-g1', 'p86-g2', 'p86-g3', 'p86-table1', 'p91-g4', 'p92-g1', 'p89-table1', 'p89-table2', 'p92-table1']
 
 test('reviewed cardiac groups have valid answer keys and unique options', () => {
   for (const id of reviewedIds) {
@@ -89,6 +89,14 @@ test('page 83 left sternal border group preserves the source heading hierarchy',
   assert.equal(g.title, '胸骨左缘3～4肋间听诊')
   assert.equal(g.stems[0].text, '舒张期杂音')
   assert.deepEqual(g.stems.map(s => s.answer.join('')), ['F', 'AEG', 'CH', 'BD'])
+})
+
+test('page 83 ventricular enlargement directions match the source and lecture', () => {
+  const g = group('p83-g3')
+  assert.equal(g.options.find(o => o.key === 'G')?.label, '心前区/剑突下搏动弥散')
+  assert.equal(g.options.find(o => o.key === 'H')?.label, '心尖搏动多向左下移位')
+  assert.equal(g.options.find(o => o.key === 'J')?.label, '心尖搏动多向左移位')
+  assert.deepEqual(g.stems.map(s => s.answer.join('')), ['ADFHIKMO', 'BCEGJLN'])
 })
 
 test('all four original tables become answerable B-type groups', () => {
