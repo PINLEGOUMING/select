@@ -5,7 +5,7 @@ import assert from 'node:assert/strict'
 
 const data = JSON.parse(readFileSync(new URL('../src/data/med-data.json', import.meta.url)))
 const group = id => data.groups.find(item => item.id === id)
-const reviewedIds = ['p80-g3', 'p81-g2', 'p82-g3', 'p86-g1', 'p86-g2', 'p86-g3', 'p86-table1', 'p91-g4', 'p92-g1', 'p89-table1', 'p89-table2', 'p92-table1']
+const reviewedIds = ['p80-g3', 'p81-g2', 'p82-g3', 'p82-g4', 'p86-g1', 'p86-g2', 'p86-g3', 'p86-table1', 'p91-g4', 'p92-g1', 'p89-table1', 'p89-table2', 'p92-table1']
 
 test('reviewed cardiac groups have valid answer keys and unique options', () => {
   for (const id of reviewedIds) {
@@ -69,6 +69,19 @@ test('page 82 auscultation locations use their own option bank', () => {
     ['G', '心脏裸区'],
   ])
   assert.deepEqual(g.stems.map(s => s.answer.join('')), ['D', 'A', 'F', 'BEG', 'C', 'F', 'B'])
+})
+
+test('page 82 valve murmur patterns preserve the original option bank', () => {
+  const g = group('p82-g4')
+  assert.deepEqual(g.options.map(o => [o.key, o.label]), [
+    ['A', '一贯型'],
+    ['B', '收缩期'],
+    ['C', '递减型'],
+    ['D', '递增型'],
+    ['E', '递增递减型'],
+    ['F', '舒张期'],
+  ])
+  assert.deepEqual(g.stems.map(s => s.answer.join('')), ['DF', 'AB', 'BE', 'CF'])
 })
 
 test('all four original tables become answerable B-type groups', () => {
