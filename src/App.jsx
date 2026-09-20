@@ -3,7 +3,7 @@ import { useEffect, useMemo, useState } from 'react'
 const SUBJECTS = {
   med: {
     label: '内科',
-    title: '内科-学成选择题byBi8bo&戒不掉甜食',
+    title: '内科-学成选择题',
     subtitle: '306 临床医学综合能力（内科）',
     sectionLabel: '内科章节',
     defaultTopic: '呼吸',
@@ -11,7 +11,7 @@ const SUBJECTS = {
   },
   pathology: {
     label: '病理',
-    title: '病理-学成选择题byBi8bo&戒不掉甜食',
+    title: '病理-学成选择题',
     subtitle: '306 临床医学综合能力（病理学）',
     sectionLabel: '病理章节',
     defaultTopic: '消化系统',
@@ -19,7 +19,7 @@ const SUBJECTS = {
   },
   surgery: {
     label: '外科',
-    title: '外科-学成选择题byBi8bo&戒不掉甜食',
+    title: '外科-学成选择题',
     subtitle: '306 临床医学综合能力（外科学）',
     sectionLabel: '外科章节',
     defaultTopic: '颈部疾病',
@@ -27,7 +27,7 @@ const SUBJECTS = {
   },
   physiology: {
     label: '生理',
-    title: '生理-学成选择题（2027讲义校正版）',
+    title: '生理-学成选择题',
     subtitle: '306 临床医学综合能力（生理学）',
     sectionLabel: '生理章节',
     defaultTopic: '绪论',
@@ -35,7 +35,7 @@ const SUBJECTS = {
   },
   biochemistry: {
     label: '生化',
-    title: '生化-学成选择题（讲义校对版）',
+    title: '生化-学成选择题',
     subtitle: '生物化学分章题库',
     sectionLabel: '生化知识目录',
     defaultTopic: '糖代谢',
